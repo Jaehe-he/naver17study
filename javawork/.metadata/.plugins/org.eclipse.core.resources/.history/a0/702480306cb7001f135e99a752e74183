@@ -1,0 +1,12 @@
+package day1211;
+
+public class Ex2DataType {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int kor = 90;
+		int eng = 93;
+		System.out.println("합계 = " + kor + eng); //String + int + int : 묵시적 형변환에 의해서 String+int = String
+	}
+
+}

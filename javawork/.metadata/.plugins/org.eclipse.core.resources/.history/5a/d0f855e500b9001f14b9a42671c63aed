@@ -1,0 +1,30 @@
+package day1213;
+
+import java.util.Scanner;
+
+public class Ex9While {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * 1글자씩 입력하다가 x(대소문자 상관없음)를 입력하면 빠져나와서
+		 * 입력한 데이터들을 분석한 결과를 출력하시오
+		 * 
+		 *  대문자 : 3
+		 *  소문자 : 4
+		 *  숫자 : 3
+		 *
+		 */
+		
+		Scanner sc = new Scanner(System.in);
+		char ch;
+		
+		ch = sc.next().charAt();
+		
+		while(true) {
+			
+		}
+		
+	}
+
+}

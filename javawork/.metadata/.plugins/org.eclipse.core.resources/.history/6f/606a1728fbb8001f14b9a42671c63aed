@@ -1,0 +1,17 @@
+package day1213;
+
+import java.util.Scanner;
+
+public class Ex7While {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int score, total = 0, count = 0; //개행연산자, 증감연산자를 쓸 경우 초기값 미리 설정해야함
+		double avg;
+		
+		
+		
+	}
+
+}
