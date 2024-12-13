@@ -20,8 +20,8 @@ public class Ex12For {
 	
 	for(int i = 1; i <= n; i++) {
 		sum += i;
+		System.out.printf("1부터 n까지의 합계 : %d", sum);
 		}
-	System.out.printf("1부터 n까지의 합계 : %d", sum);
 	}
 
 }

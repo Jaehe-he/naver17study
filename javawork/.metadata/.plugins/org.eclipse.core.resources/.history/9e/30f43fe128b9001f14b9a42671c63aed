@@ -15,13 +15,12 @@ public class Ex12For {
 		
 	Scanner sc = new Scanner(System.in);
 	int sum = 0;
-	System.out.print("n 입력 : ");
 	int n = sc.nextInt();
 	
 	for(int i = 1; i <= n; i++) {
 		sum += i;
+		System.out.printf("1부터 n까지의 합계 : %d", sum);
 		}
-	System.out.printf("1부터 n까지의 합계 : %d", sum);
 	}
 
 }
