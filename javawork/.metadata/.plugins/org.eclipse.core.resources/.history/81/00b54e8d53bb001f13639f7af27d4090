@@ -1,0 +1,17 @@
+package day1216;
+
+public class Ex3Random {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * 임의의 난수를 구한후 숫자 알아맞추기
+		 * 맞췄을경우
+		 * 	계속 하시겠습니까? y
+		 * 		=> 새로운 난수 발생, 카운트 변수 0으로 초기화
+		 * 	y가 아닐 경우 프로그램 종료
+		 * 
+		 */
+	}
+
+}

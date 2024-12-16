@@ -1,0 +1,10 @@
+package day1216;
+
+public class Ex9LoopExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("다중 for문을 이용해서 * 찍어보기");
+	}
+
+}

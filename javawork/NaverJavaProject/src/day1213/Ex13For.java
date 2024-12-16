@@ -14,6 +14,8 @@ public class Ex13For {
 		 * (for문 사용) 
 		 */
 		
+		/*
+		//내가 푼 답
 		Scanner sc = new Scanner(System.in);
 		int countup = 0, countdown = 0;
 		int sum = 0;
@@ -33,5 +35,32 @@ public class Ex13For {
 		System.out.printf("40세 미만 : %d\n", countdown);
 		System.out.printf("평균 나이 : %5.2f", avg);
 	}
-
+	*/
+		//강사님께서 푼 답
+		//0~100세를 벗어나는 경우 다시 입력(인원수 제외)
+		//continue : for문은 i++로 이동
+		Scanner sc = new Scanner(System.in);
+		int count1 = 0, count2 = 0, sum = 0, age =0;
+		double avg;
+		
+		for(int i=1;i<=5;i++) {
+			System.out.println(i + "번째 나이 입력");
+			age=sc.nextInt();
+			if (age < 0 || age > 100) {
+				System.out.println("다시 입력하세요");
+				i--; //i--안해주면 i는 증가한 상태로 입력되기 때문에 무조건 필요!!!!
+				continue;
+			}
+			sum+=age;
+			if(age>=40)
+				count1++;
+			else
+				count2++;
+		}
+		avg=(double)sum/5; //avg=sum/5.0이렇게 적어도 됨
+		
+		System.out.println("40세 이상 인원 수 : "+count1);
+		System.out.println("40세 미만 인원 수 : "+count2);
+		System.out.println("평균 나이 : "+avg);
+	}
 }
