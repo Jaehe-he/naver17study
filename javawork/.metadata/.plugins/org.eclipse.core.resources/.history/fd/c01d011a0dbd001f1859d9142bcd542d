@@ -1,0 +1,13 @@
+package day1218;
+
+import java.util.Date;
+
+public class FormatExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Date date = new Date();
+		System.out.println(date); //Wed Dec 18 15:54:27 KST 2024
+	}
+
+}

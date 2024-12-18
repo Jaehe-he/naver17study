@@ -1,0 +1,17 @@
+package day1218;
+
+class Car{
+	static String carCompony="현대";
+	
+	private String carName;
+	private int carPrice;
+}
+
+public class Ex9Object {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

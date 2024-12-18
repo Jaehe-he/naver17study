@@ -1,0 +1,23 @@
+package day1218;
+
+class Apple {
+	static String message="Hello"; //static 붙으면 클래스 멤버변수
+	static final String EMP="비트캠프";//상수
+	String name = "캔디"; //인스턴스 멤버 변수 (같은 클래스 내에선 this라고 읽는데 다른 클래스의 경우 u로 지정해줘야함?
+}
+
+public class Ex7Object {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// 다른 클래스의 static 변수는 클래스명.변수명 이렇게 접근한다
+		System.out.println("메세지 : " + Apple.message);
+		System.out.println("EMP : " + Apple.EMP);
+		
+		Apple.message="Happy Day";
+		System.out.println(Apple.message);
+		
+		Apple.EMP="삼성전자"; //final 상수여서 값을 변경할 수 없음
+	}
+
+}
