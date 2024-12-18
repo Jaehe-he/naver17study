@@ -1,0 +1,49 @@
+package day1217;
+
+import java.util.Scanner;
+
+public class Ex12ArraySearch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String []member = {"강호동", "김태희", "손미나", "이지혜",
+				"송중기", "김사랑", "손석구", "박미나", "리나", "김신"};
+		String searchName;
+
+		Scanner sc = new Scanner(System.in);
+		
+		/*
+		 * 검색할 성씨는? 이
+		 * 		이지혜
+		 * 		총 1 명 검색
+		 * 
+		 * 검색할 성씨는? 강
+		 * 		강호동
+		 * 		강리나
+		 * 		총 2명 검색
+		 * 
+		 * 검색할 성씨는? 홍
+		 * 		"홍" 씨성을 가진 멤버는 없습니다.
+		 * 
+		 * => 대소문자 상관없이 exit 입력 시 종료
+		 */
+		
+		while(true) {
+			System.out.print("검색할 성씨는?");
+			searchName = sc.nextLine();
+			int count=0;
+			for(int i=0; i<member.length;i++) {
+				if (member[i].startsWith(searchName)) {
+					count++;
+				} else {
+					System.out.println("\""+searchName+"\"씨 성을 가진 멤버는 없습니다.");
+				}
+			System.out.println("총"+count+"명 검색");
+				
+				if (searchName.equalsIgnoreCase("EXIT"))
+					break;
+			}
+		}
+	}
+
+}

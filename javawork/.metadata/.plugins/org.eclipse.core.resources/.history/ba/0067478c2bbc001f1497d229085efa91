@@ -1,0 +1,11 @@
+package day1217;
+
+public class Ex9ArrayAge {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int []datas = {12, 34, 54, 20, 33, 59, 41, 44, 27, 21};
+		System.out.println("인원수 : " + datas.length);
+	}
+
+}

@@ -1,0 +1,21 @@
+package day1217;
+
+public class Ex10ArraySearch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int []datas = {12, 5, 8, 10, 9, 16, 19, 3, 1, 7};
+		System.out.println("갯수:"+datas.length);
+		int searchNum;
+		boolean find;
+		
+		/*
+		 * 숫자를 입력하면 그 숫자가 몇번째 있는지 출력
+		 * 없을 경우 해당 숫자가 없습니다라고 출력
+		 * 0을 입력시 검색 종료
+		 */
+		
+		
+	}
+
+}

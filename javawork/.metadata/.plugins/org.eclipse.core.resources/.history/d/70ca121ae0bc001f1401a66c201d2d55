@@ -1,0 +1,15 @@
+package day1218;
+
+import java.util.Scanner;
+
+public class Ex2Lotto {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int money;
+		int [] lotto=new int[6];
+		Random r = new Random();
+	}
+
+}
