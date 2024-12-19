@@ -1,0 +1,27 @@
+package day1219;
+
+class Orange{
+	private String name;
+	private String color;
+	private int age;
+	
+	//생성자
+	Orange(){
+		this.name = "이말자";
+		this.color="노랑";
+		this.age=30;
+	}
+	public void writeMember() {
+		System.out.println("name="+name+",color="+color+",age="+age);
+	}
+}
+
+public class Ex4Constructor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Orange a1 = new Orange();
+		a1.writeMember();
+	}
+
+}

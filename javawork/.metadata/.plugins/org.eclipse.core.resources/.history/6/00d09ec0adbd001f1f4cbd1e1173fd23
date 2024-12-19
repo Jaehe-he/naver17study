@@ -1,0 +1,32 @@
+package day1219;
+
+import java.util.Scanner;
+
+public class Ex2ObjectArray {
+	
+	public static void dataInput(Student s) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("학생이름은?");
+		String name = sc.nextLine();
+		System.out.println("학생주소는?");
+		String addr = sc.nextLine();
+		System.out.println("학생혈액형은?");
+		String blood = sc.nextLine();
+	
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int inwon;
+		Student []stuArray;
+		
+		System.out.println("입력할 인원수는?");
+		inwon = Integer.parseInt(sc.nextLine());
+		
+		//메모리 할당
+		stuArray = new Student[inwon];
+
+	}
+
+}

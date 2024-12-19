@@ -1,0 +1,24 @@
+package day1219;
+
+public class Ex6VarArgs {
+
+	public static void writeColor(String color1) {
+		System.out.println("color1="+color1);
+	}
+	
+	public static void writeColor(String color1, String color2) {
+		System.out.println("color1="+color1+ " , color2 = "+color2);
+	}
+	
+	public static void writeColor(String color1, String color2, String color3) {
+		System.out.println("color1="+color1+ " , color2 = " + color2 + " , color3 = " + color3);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		writeColor("red");
+		writeColor("yellow", "green");
+		writeColor("white", "orange", "black");
+	}
+
+}

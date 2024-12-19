@@ -1,0 +1,20 @@
+package day1219;
+
+public class Ex11MyCarArray {
+	
+	public static void showTitle() {
+		System.out.println("자동차면\t가격\t색상\t구입일");
+		System.out.println("=".repeat(50));
+	}
+	
+	public static void writeMyCar(MyCar myCar) {
+		System.out.println(myCar.getCarName()+"\t"+myCar.getCarPrice()
+				+"\t"+myCar.getCarColor()+"\t"+myCar.getGuipDay());
+	}	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

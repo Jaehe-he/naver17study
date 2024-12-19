@@ -1,0 +1,22 @@
+package day1219;
+
+/*
+ * 생성자란?
+ * 1. 객체 생성 시 자동 호출
+ * 2. 리턴타입이 없다 (형식 [접근지정자] 클래스명
+ */
+
+class Apple{
+	Apple(){
+		System.out.println("디폴트 생성자");
+	}
+}
+
+public class Ex3Constructor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Apple a1 = new Apple(); //생성자 자동 호출
+	}
+
+}

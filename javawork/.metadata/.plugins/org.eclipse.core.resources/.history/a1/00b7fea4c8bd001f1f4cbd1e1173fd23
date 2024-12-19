@@ -1,0 +1,14 @@
+package day1219;
+
+public class Ex7VarArgs {
+	
+	public static int calcNum(int ... n) {
+		int sum=0;
+		System.out.println("총 "+ n + "개의 점수");
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package day1219;
+
+public class Ex9StringToken {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String msg = "red|green|yellow|white|black";
+		String msg = "red,green,yellow,white,black";
+		//|로 분리해서 출력
+		String []arr=msg.split(",");
+		for(String a:arr) {
+			System.out.println(a);
+		}
+	}
+
+}

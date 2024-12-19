@@ -1,0 +1,12 @@
+package day1219;
+
+public class Ex10MyCarArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//toString 없으면 getter, setter가 있어야하는 그 번거로움을 없애기 위해 toString사용
+		MyCar my1 = new MyCar();
+		System.out.println(my1); //toString이 있을 경우 자동 호출. my1.toString인데 안적어줘도 됨
+	}
+
+}

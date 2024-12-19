@@ -1,0 +1,23 @@
+package day1219;
+
+public class Sawon {
+
+	/*
+	 * 멤버변수
+	 * 사원명(sawonName), 직급 (position), 가족수(famSu)
+	 */
+	
+	/*
+	 * 디폴트 생성자 
+	 * 사원명, 직급, 가족수를 인자로 받는 생성자
+	 */
+	
+	/*
+	 * setter & getter method
+	 */
+	
+	/*
+	 * 직급에 따라 gibonPay를 구하는데 부장 -> 450, 과장 -> 300, 대리 -> 250, 사원 -> 150
+	 * 
+	 */
+}

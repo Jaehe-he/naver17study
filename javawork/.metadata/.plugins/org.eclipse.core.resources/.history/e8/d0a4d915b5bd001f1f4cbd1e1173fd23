@@ -1,0 +1,20 @@
+package day1219;
+
+class Orange{
+	private String name;
+	private String color;
+	private int age;
+	
+	public void writeMember() {
+		System.out.println("name="+name+",color="+color+",age="+age);
+	}
+}
+
+public class Ex4Constructor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

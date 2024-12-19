@@ -1,0 +1,7 @@
+package day1219;
+
+public class Student {
+	private String stuName;
+	private String stuAddress;
+	private String stuBlood;
+}
