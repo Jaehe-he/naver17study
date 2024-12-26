@@ -1,0 +1,17 @@
+package day1226;
+
+import javax.swing.JFrame;
+
+public class Ex2JTable extends JFrame{
+	public Ex2JTable() {
+		// TODO Auto-generated constructor stub
+		super("JTable공부");
+		this.setBounds(300, 100, 300, 300);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+package day1226;
+
+public class Sawon {
+	private String sawonName;
+	private int age;
+	private String hp; //핸드폰
+	private String address;
+	
+	public Sawon() {
+		//TODO Auto-generated constructor stub
+	}
+
+//	public Sawon(String sawonName, int age, String hp, String address) {
+//		super(); //상속 받을 때 사용하나, 상속 안받아도 상관은 없음
+		this.sawonName = sawonName;
+		this.age = age;
+		this.hp = hp;
+		this.address = address;
+	}
+	
+	
+	
+}

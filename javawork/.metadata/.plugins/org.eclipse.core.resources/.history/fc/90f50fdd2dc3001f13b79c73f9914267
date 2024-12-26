@@ -1,0 +1,19 @@
+package day1226;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Ex1SawonArrayList {
+	List<Sawon> sawonList = new ArrayList<Sawon>();
+	static final String SAWONFILE="c:/naver1210/mysawon.txt";
+	
+	public Ex1SawonArrayList() {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+	}
+
+}

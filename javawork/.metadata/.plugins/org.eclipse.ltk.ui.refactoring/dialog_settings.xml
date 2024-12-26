@@ -7,5 +7,8 @@
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item key="moveWizard.updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
+		<item key="CreateGetters" value="false"/>
+		<item key="CreateSetters" value="false"/>
+		<item key="CreateTopLevel" value="true"/>
 	</section>
 </section>

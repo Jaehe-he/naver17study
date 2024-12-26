@@ -1,0 +1,72 @@
+package day1226;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Ex1SawonArrayList {
+	List<Sawon> sawonList = new ArrayList<Sawon>();
+	static final String SAWONFILE="c:/naver1210/mysawon.txt";
+	
+	public Ex1SawonArrayList() {
+		//생성시 파일 불러오기
+		this.sawonFileRead();
+		
+	}
+	
+	//파일에서 읽어서 sawonList에 넣기
+	public void sawonFileRead() {
+		
+	}
+	
+	//파일 저장
+	public void sawonFileSave() {
+		
+	}
+	
+	//이름 입력시 인덱스 반환
+	public int getSearchName(String name) {
+		int idx= -1;
+		
+		return idx;
+	}
+	
+	//사원 삭제
+	public void deleteSawon(String name) {
+		
+	}
+	
+	//사원 검색
+	public void searchSawon(String name) {
+		
+	}
+	
+	//사원목록 출력
+	public void writeSawonList() {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex1SawonArrayList ex1 = new Ex1SawonArrayList();
+		Scanner sc = new Scanner(System.in);
+		int menu=0;
+		
+		while(true) {
+			System.out.println("*** 사원관리 메뉴 ***");
+			System.out.println("1. 사원정보 추가");
+			System.out.println("2. 사원정보 검색");
+			System.out.println("3. 사원 삭제");
+			System.out.println("4. 전체사원 출력");
+			System.out.println("5. 저장후 종료");
+			System.out.println("번호를 선택하세요 : ");
+			
+			try {
+				menu = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				menu=4; //문자 입력시 4번으로 나오도록 한다
+			}
+		}
+	}
+
+}

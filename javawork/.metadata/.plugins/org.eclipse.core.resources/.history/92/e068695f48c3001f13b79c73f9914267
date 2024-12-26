@@ -1,0 +1,23 @@
+package day1226;
+
+import javax.swing.JFrame;
+
+public class Ex2JTable extends JFrame{
+	JTable table;
+	public Ex2JTable() {
+		// TODO Auto-generated constructor stub
+		super("JTable공부");
+		this.setBounds(300, 100, 300, 300); //시작위치와 크기 지정
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//x버튼 클릭 시 종료
+		this.initDesign();
+		this.setVisible(true); //프레임 보이게 하기
+	//참고! setBounds는 Visible 전에 있어야함. Default부분은 어디에 있든 상관 없음
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex2JTable ex2 = new Ex2JTable();
+		
+	}
+
+}

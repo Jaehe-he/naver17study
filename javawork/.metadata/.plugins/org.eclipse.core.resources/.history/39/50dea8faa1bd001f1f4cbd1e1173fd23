@@ -1,7 +1,0 @@
-package day1218.book;
-
-public class Car {
-		String model;
-		boolean start;
-		int speed;
-}

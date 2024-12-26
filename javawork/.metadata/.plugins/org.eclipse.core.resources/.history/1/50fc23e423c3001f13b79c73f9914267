@@ -1,0 +1,29 @@
+package day1224;
+
+import java.util.List;
+import java.util.Vector;
+
+public class Ex12FileList {
+	static final String FILENAME="d:/naver1210/sawon.txt";
+	
+	List<String> sawonList=new Vector<String>();
+	
+	public Ex12FileList() {
+		// TODO Auto-generated constructor stub
+		//파일에서 이름을 읽어서 sawonList 에 추가해주세요
+		
+	}
+	
+	public void sawonMemberList()
+	{
+		//사원 이름을 번호와 함께 출력해주세요
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex12FileList ex12=new Ex12FileList();
+		ex12.sawonMemberList();
+	}
+
+}

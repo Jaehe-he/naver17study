@@ -1,0 +1,18 @@
+package day1226;
+
+public class EX3JTableSawon {
+
+	
+	public EX3JTableSawon() {
+		super("사원파일 읽기");
+		this.setBounds(300, 100, 300, 300);
+		this.setDefaultCloseOperation(JFream.EXIT_ON_CLOSE);
+		this.setVisisble(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Ex3JTableSawon();
+	}
+
+}
