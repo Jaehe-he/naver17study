@@ -1,0 +1,20 @@
+package day1227.book;
+
+//p704
+//Workable
+
+
+//Speakable
+
+
+//p705
+//Person
+
+public class Book705 { //p705 LambdaExample
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package day1227;
+
+public class Ex4Thread {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package day1227;
+
+public class Ex8SocketServer extends Thread{
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		super.run();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

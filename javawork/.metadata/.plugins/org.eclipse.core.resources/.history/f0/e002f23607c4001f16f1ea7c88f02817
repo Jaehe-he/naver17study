@@ -1,0 +1,28 @@
+package day1227;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class Ex8SocketServer extends Thread{
+	
+	ServerSocket serverSocket;
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println("서버 소켓을 생성해보자");
+		try {
+			serverSocket = new ServerSocket(6000);
+			
+		} catch (IOException e) {
+			System.out.println("서버 소켓 생성 실패 : " +e.getMessage());;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex8SocketServer server = new Ex8SocketServer();
+		server.start(); //run 메서드 호출
+	}
+
+}
