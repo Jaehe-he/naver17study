@@ -304,7 +304,7 @@
               </children>
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_Jnn54sNREe-zxqbrJRMT5A" containerData="7156" selectedElement="_Jnn548NREe-zxqbrJRMT5A" horizontal="true">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_Jnn548NREe-zxqbrJRMT5A" containerData="5000" selectedElement="_Jnn55cNREe-zxqbrJRMT5A">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_Jnn548NREe-zxqbrJRMT5A" containerData="5000" selectedElement="_Jnn55MNREe-zxqbrJRMT5A">
                 <children xsi:type="advanced:Placeholder" xmi:id="_Jnn55MNREe-zxqbrJRMT5A" elementId="org.eclipse.ui.editorss" containerData="6489" ref="_JnohFsNREe-zxqbrJRMT5A"/>
                 <children xsi:type="basic:PartStack" xmi:id="_Jnn55cNREe-zxqbrJRMT5A" elementId="bottom" containerData="3511" selectedElement="_Jnn56sNREe-zxqbrJRMT5A">
                   <tags>org.eclipse.e4.secondaryDataStack</tags>
@@ -731,7 +731,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JnojM8NREe-zxqbrJRMT5A" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Db8N8MQqEe-v9c1SLYqwGw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_Jnp0YcNREe-zxqbrJRMT5A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ZyiFwMlqEe-3xf1mT1fbvw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_Jnp0YcNREe-zxqbrJRMT5A"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JnojQMNREe-zxqbrJRMT5A" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -739,8 +739,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JnojQsNREe-zxqbrJRMT5A" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Db9cEMQqEe-v9c1SLYqwGw" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_JnpySMNREe-zxqbrJRMT5A"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Db-DIMQqEe-v9c1SLYqwGw" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_Jnpy7sNREe-zxqbrJRMT5A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Zyis0slqEe-3xf1mT1fbvw" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_JnpySMNREe-zxqbrJRMT5A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ZyjT4MlqEe-3xf1mT1fbvw" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_Jnpy7sNREe-zxqbrJRMT5A"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JnojRsNREe-zxqbrJRMT5A" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -773,7 +773,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JnojmMNREe-zxqbrJRMT5A" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Db-qMMQqEe-v9c1SLYqwGw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_Jnp0BMNREe-zxqbrJRMT5A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Zyj688lqEe-3xf1mT1fbvw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_Jnp0BMNREe-zxqbrJRMT5A"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_JnojpMNREe-zxqbrJRMT5A" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
