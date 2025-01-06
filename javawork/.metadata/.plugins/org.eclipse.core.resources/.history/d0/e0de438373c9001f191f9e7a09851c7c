@@ -1,0 +1,17 @@
+package day0103db;
+
+public class Ex1OracleConnect {
+
+	static final String ORACLE_DRIVER = "oracle.jdbc.OracleDriver";
+	
+	public Ex1OracleConnect() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex1OracleConnect ex1 = new Ex1OracleConnect(); //생성자 호출
+
+	}
+
+}

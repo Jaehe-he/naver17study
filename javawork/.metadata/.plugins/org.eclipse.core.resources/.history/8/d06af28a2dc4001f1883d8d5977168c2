@@ -1,6 +1,0 @@
-package day1227.book;
-
-@FunctionalInterface
-public interface Speakable {
-	void speak(String content);
-}

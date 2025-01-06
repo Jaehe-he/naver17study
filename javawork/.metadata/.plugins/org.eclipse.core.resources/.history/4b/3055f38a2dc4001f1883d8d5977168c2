@@ -1,7 +1,0 @@
-package day1227.book;
-
-@FunctionalInterface
-public interface Workable {
-	void work(String name, String job);
-
-}

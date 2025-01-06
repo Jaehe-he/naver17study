@@ -1,0 +1,26 @@
+package day0103db;
+
+public class Ex2MysqlConnect {
+	static final String MYSQL_DRIVER="com.mysql.cj.jdbc.Driver";
+	// db에 접근하려면 url과 id, password가 필요하다
+	String url = "jdbc:oracle:thin:@localhost:1521/xe"; //127.0.0.1 (localhost) //Oracle은 1521 , MySQL은 3306
+	String username = "angel";
+	String password = "pw1234";
+	
+	
+	public Ex2MysqlConnect() {
+		// TODO Auto-generated constructor stub
+		try {
+			Class.forName(MYSQL_DRIVER);
+			System.out.println("Mysql 드라이버 성공!");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Mysql 드라이버 실패 : "+e.getMessage());
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex2MysqlConnect ex2 = new Ex2MysqlConnect();
+	}
+
+}
