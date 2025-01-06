@@ -1,0 +1,13 @@
+package day0106db;
+
+public class ShopDto {
+	private int idx; //변수명은 컬럼명과 달라도 되지만 헷갈릴 수 있음. 웬만하면 맞추기(권장)
+	private String sangpum;
+	private int su;
+	private int danga;
+
+	public ShopDto() {
+		// TODO Auto-generated constructor stub
+		
+	}
+}

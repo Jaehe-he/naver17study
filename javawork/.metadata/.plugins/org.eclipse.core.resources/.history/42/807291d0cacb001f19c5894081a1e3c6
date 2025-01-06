@@ -1,0 +1,24 @@
+package day0106db;
+
+import db.connect.MysqlConnect;
+
+public class Ex1ShopMysql {
+	MysqlConnect mysqlConnect = new MysqlConnect();
+	
+	
+	//shop에 상품 추가
+	public void insertShop(String snagpum, int su, int danga) {
+		
+	}
+	
+	//전체 shop 데이터 출력
+	public void writeShop() {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

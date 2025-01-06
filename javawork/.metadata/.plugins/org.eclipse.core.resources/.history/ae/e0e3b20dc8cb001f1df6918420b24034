@@ -1,0 +1,5 @@
+package db.connect;
+
+public class MysqlConnect {
+
+}

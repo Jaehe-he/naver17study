@@ -1,0 +1,22 @@
+package day0106db;
+
+import javax.swing.JFrame;
+
+public class Ex2ShopTable extends JFrame {
+
+	public Ex2ShopTable() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void initDesign() {
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

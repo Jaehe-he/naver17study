@@ -80,3 +80,15 @@ select pow(2,3), mod(10,3) from dual; -- 8   1
 -- least(숫자1, 숫자2...): 가장 작은 숫자 구하기
 select greatest(100, 34, 56, 200, 49) from dual; -- 200
 select least(100, 34, 56, 200, 49) from dual; -- 34
+
+
+-- ==================================================================
+
+-- 2025.01.06.월
+-- 연습용 테이블 생성
+create table shop( -- 만약 shop으로 했을 때 오류뜰 경우 DB명.shop으로 작성
+	idx smallint auto_increment primary key,
+	sangpum varchar(30),
+    su smallint default 1,
+    danga int,
+    ipgoday datetime);

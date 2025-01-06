@@ -1,0 +1,138 @@
+package day0106db;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import db.connect.MysqlConnect;
+
+public class Ex1ShopMysql {
+   
+   MysqlConnect mysqlConnect = new MysqlConnect();
+   
+   //shop 에 상품 추가
+   public void insertShop(String sampum,int su,int danga) {
+      
+      System.out.println("상품을 추가합니다.");
+      
+      Connection conn=null;
+      PreparedStatement pstmt = null;
+      
+      String sql="insert into shop (sampum,su,danga,ipgoday) values (?,?,?,now())";
+      
+      //db 연결
+      conn = mysqlConnect.getConnection();
+      
+      try {
+         pstmt=conn.prepareStatement(sql); // 이떄 sql문을 검사한다.
+         // ? 갯수만큼 데이타를 넣어준다 (바인딩 이라고 한다.)
+         // 첫번째 물음표 부터 1번,2번...
+         pstmt.setString(1, sampum); //타입별로
+         pstmt.setInt(2, su);
+         pstmt.setInt(3, danga);
+         
+         //바인딩을 모두 마친후 실행을 하는데 이때 sql문을 보내면 안됨. 그냥 실행만 가능
+         pstmt.execute();//실행
+         System.out.println("상품 추가를 하였습니다.");
+         
+         
+      } catch (SQLException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      } finally {
+    	  mysqlConnect.dbClose(pstmt, conn);
+      }
+      
+   }
+   
+   
+   //전체 shop 데이타 출력
+   public void writeShop() {
+      System.out.println("전체 상품을 출력합니다.");
+      System.out.println("인덱스\t상품명\t수량\t단가\t총금액");
+      }
+   
+   //상품 삭제
+   public void deleteShop(String sampum) {
+      
+      System.out.println("상품을 삭제합니다.");
+      
+   }
+   
+   //상품 조회
+   public void searchSampum(String sampum) {
+      
+      System.out.println("상품을 조회합니다.");
+      
+   }
+   
+   //상품 수정
+   public void updateShop(int idx,int su,int danga) {
+      
+      System.out.println("상품을 수정합니다.");
+      
+   }
+   
+   
+   
+   public static void main(String[] args) {
+      // TODO Auto-generated method stub
+      
+      Scanner sc=new Scanner(System.in);
+      Ex1ShopMysql ex=new Ex1ShopMysql();
+      
+      while(true) {
+         
+         System.out.println("\t** 상품관리 메뉴 **\n");
+         System.out.println("1.상품추가 2.전체출력 3.상품조회 4.상품삭제 5.상품수정 6.종료");
+         System.out.print("번호 선택(1-6) :");
+         int menu=Integer.parseInt(sc.nextLine());
+         
+         switch(menu) {
+         
+            case 1-> {
+            System.out.println("상품명을 입력하세요");
+            String sang=sc.nextLine();
+            System.out.println("수량을 입력하세요.");
+            int su=Integer.parseInt(sc.nextLine());
+            System.out.println("단가를 입력하세요.");
+            int dan=Integer.parseInt(sc.nextLine());
+            
+            ex.insertShop(sang, su, dan);
+            }
+            
+            case 2-> {
+               ex.writeShop();
+            }
+            
+            case 3-> {
+               ex.searchSampum(null);
+               
+            }
+            
+            case 4-> {
+               ex.deleteShop(null);
+            }
+            
+            case 5-> {
+               ex.updateShop(0, 0, 0);
+            }
+            
+            default -> {
+               System.out.println("프로그램을 종료합니다.");
+               System.exit(0);
+            }
+         }//switch 종료
+         
+         
+         
+      }//while 종료
+      
+      
+      
+      
+
+   }
+
+}

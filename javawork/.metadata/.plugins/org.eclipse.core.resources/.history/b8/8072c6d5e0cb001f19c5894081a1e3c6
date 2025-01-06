@@ -1,0 +1,13 @@
+package day0106db;
+
+public class ShopDto {
+	private int idx;
+	private String sangpum;
+	private int su;
+	private int danga;
+
+	public ShopDto() {
+		// TODO Auto-generated constructor stub
+		
+	}
+}
