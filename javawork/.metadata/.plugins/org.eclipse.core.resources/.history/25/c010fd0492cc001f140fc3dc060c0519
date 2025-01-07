@@ -1,0 +1,13 @@
+package day0107db;
+
+public class FoodOrderDto {
+	private int idx;
+	private int num;
+	private String orderName;
+	private int orderCnt;
+	private String bookingDay;
+	
+	public FoodOrderDto() {
+		// TODO Auto-generated constructor stub
+	}
+}

@@ -1,0 +1,15 @@
+//DB관리하는 클래스
+package day0107db;
+
+import java.sql.Connection;
+
+import db.connect.MysqlConnect;
+
+public class FoodModel {
+	MysqlConnect mysqlConnect = new MysqlConnect();
+	
+	//메뉴등록 insert하는 메서드
+	public void foodMenuInsert(String foodName, int foodPrice, int foodSize) {
+		Connection conn = MysqlConnect.getConnection();
+	}
+}

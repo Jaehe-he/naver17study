@@ -1,0 +1,90 @@
+package day0107db;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+/*
+ * create table foodrest (
+	num smallint auto_increment primary key,
+    foodname varchar(30),
+    foodprice int,
+    foodsize varchar(20) default '보통');
+ * 
+ * create table foodorder (
+	idx smallint auto_increment primary key,
+    num smallint,
+    ordername varchar(20),
+    ordercnt smallint,
+    bookingday datetime,
+    constraint fk_foodorder_num foreign key(num) references foodrest(num)); 
+ * 
+ */
+
+public class Ex1FoodMysqlDb extends JFrame{
+	FoodModel foodModel = new FoodModel();
+	DefaultTableModel foodResTableModel;
+	DefaultTableModel foodOrderTableModel;
+	JTable foodResTable;
+	JTable foodOrderTable;
+	
+	JButton btnFoodResAdd, btnFoodResDel;
+	JButton btnFoodOrderAdd, btnFoodOrderDel;
+	JTextField tfFoodNum, tfOrderName, tfOrderCnt, tfBookingDay;
+	
+	public Ex1FoodMysqlDb() {
+		// TODO Auto-generated method stub
+		super("메뉴 등록 및 예약");
+		this.setBounds(200,100, 800, 400);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.initDesign();
+		this.setVisible(true);
+	
+	}
+	
+	public void initDesign() {
+		//상단에 버튼들 배치
+		JPanel p1 = new JPanel();
+		btnFoodResAdd = new JButton("메뉴등록");
+		btnFoodResDel = new JButton("메뉴삭제");
+		btnFoodOrderAdd = new JButton("예약하기");
+		btnFoodOrderDel = new JButton("예약취소");
+		
+		p1.add(btnFoodResAdd);
+		p1.add(btnFoodResDel);
+		p1.add(btnFoodOrderAdd);
+		p1.add(btnFoodOrderDel);
+		this.add("North", p1);
+		
+		//왼쪽에 등록된 메뉴보이게 하기
+		String []menuTitle = {"번호", "메뉴명"};
+		foodResTableModel = new DefaultTableModel(menuTitle,0); //제목과 행 갯수는 일단 0으로
+		foodResTable = new JTable(foodResTableModel);
+		this.add("West", new JScrollPane(foodResTable));
+		
+		//가운데 예약테이블 보이게 하기
+		String []orderTitle = {"번호", "예약자", "메뉴명", "가격", "사이즈", "인원수", "예약일"};
+		foodOrderTableModel = new DefaultTableModel(orderTitle, 0);
+		foodOrderTable = new JTable(foodOrderTableModel);
+		this.add("CenteR", new JScrollPane(foodOrderTable))
+	}
+	
+	public void writeFoodMenu() {
+		
+	}
+	
+	public void writeFoodOrderJoin() {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Ex1FoodMysqlDb ex1 = new Ex1FoodMysqlDb();
+
+	}
+
+}

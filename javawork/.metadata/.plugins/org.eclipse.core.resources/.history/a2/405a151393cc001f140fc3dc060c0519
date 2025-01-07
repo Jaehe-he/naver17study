@@ -1,0 +1,27 @@
+package day0107db;
+
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+
+/*
+ * create table foodorder (
+	idx smallint auto_increment primary key,
+    num smallint,
+    ordername varchar(20),
+    ordercnt smallint,
+    bookingday datetime,
+    constraint fk_foodorder_num foreign key(num) references foodrest(num)); 
+ * 
+ */
+
+public class Ex1FoodMysqlDb extends JFrame{
+	FoodModel foodModel = new FoodModel();
+	DefaultTableModel foodResTableModel;
+	DefaultTableModel foodOrderTableModel;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

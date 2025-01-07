@@ -1,0 +1,10 @@
+package day0106db;
+
+public class Ex3PersonTable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

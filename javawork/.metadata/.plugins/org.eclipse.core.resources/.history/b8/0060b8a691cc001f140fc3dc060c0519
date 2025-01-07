@@ -1,0 +1,9 @@
+package day0107db;
+
+public class FoodOrderDto {
+	private int idx;
+	private int num;
+	private String orderName;
+	private int orderCnt;
+	
+}

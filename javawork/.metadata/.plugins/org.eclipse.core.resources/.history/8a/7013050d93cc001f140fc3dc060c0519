@@ -1,0 +1,16 @@
+package day0107db;
+
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+
+public class Ex1FoodMysqlDb extends JFrame{
+	FoodModel foodModel = new FoodModel();
+	DefaultTableModel foodResTableModel;
+	DefaultTableModel foodOrderTableModel;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,17 @@
+package day0106db;
+
+import java.sql.Connection;
+import java.util.List;
+
+import db.connect.MysqlConnect;
+
+public class PersonModel {
+	MysqlConnect connect = new MysqlConnect();
+	
+	public List<Vector><String>> getAllDatas(){
+		List<java.util.Vector<String>> list = new Vector<Vector<String>>();
+		Connection conn = connect.getConnection();
+	}
+	
+	
+}
