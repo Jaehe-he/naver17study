@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Black+And+White+Picture&family=Dokdo&family=Dongle&family=East+Sea+Dokdo&family=Gaegu&family=Hi+Melody&family=Jersey+10&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Playwrite+IE+Guides&family=Rubik+Vinyl&display=swap" rel="stylesheet">
+
+    <style>
+        /*body 아래의 모든 태그에 적용*/
+        body *{
+            font-family: 'Jua';
+        }
+
+        /*방문하지 않은 링크 스타일*/
+        a:link{
+            color : black;
+            text-decoration : none; /*하이퍼링크의 밑줄을 없앰*/
+        }
+
+        /*visited : 한번 클릭(방문)했던 링크에 대한 스타일 적용*/
+        a:visited{
+            color : gray;
+            text-decoration: none;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>A Tag Study!!</h2>
+    <div style = "font-size: 20px;">
+        <!-- target 지정하면 새로운 탭에 해당 url이 실행됨 -->
+        <a href = "http://www.naver.com"> Naver </a><br> <!-- a href : 어디로 이동할지 주소 or 파일명 입력-->
+        <a href = "http://www.naver.com" target="_blank">Naver</a><br><br>
+
+        <a href = "http://m.nate.com">Nate</a><br><br>
+        <a href = "http://m.nate.com" target="_new">Nate</a><br><br> <!--_blank나 _new나 똑같이 새 탭으로 실행됨-->
+
+        <a href = "http://www.google.com">Google</a><br><br>
+    </div>
+
+    <div style = "margin-top : 20px;">
+        <ul>
+            <li><h3>2025-01-07 수업</h3></li>
+            <ol>
+                <li>
+                    <a href = "../day20250107/ex1_htmltag.html">1번 예제</a>
+                </li>
+                <li>
+                    <a href = "../day20250107/ex2_style.html">2번 예제</a>
+                </li>
+            </ol>
+            <li><h3>2025-01-08 수업</h3></li>
+            <ol>
+                <li>
+                    <a href = "../day20250108/ex1_classstyle.html">1번 예제</a>
+                </li>
+                <li>
+                    <a href = "../day20250108/ex2_image.html">2번 예제</a>
+                </li>
+                <li>
+                    <a href = "../day20250108/ex3_imagepre.html">3번 예제</a>
+                </li>
+                <li>
+                    <a href = "../day20250108/ex4_olul.html">4번 예제</a>
+                </li>
+                <li>
+                    <a href = "../day20250108/ex5_ul가로메뉴.html">5번 예제</a>
+                </li>
+                <li>
+                    <a href = "../day20250108/ex6_atag.html">6번 예제</a>
+                </li>
+            </ol>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> /* body 안에 속성을 지정해준 것보다 <style>안에 적용한게 우선*/
+        div.two>img {
+            width : 100px;
+            height : 120px;
+            border-style : groove;
+            border-width : 5px;
+            border-color : hotpink;
+        }
+
+        div.three>img {
+            width : 100px;
+            height : 100px;
+            border : solid 2px gray;
+            border-radius : 100px; /*모서리에 대한 각도(100이면 원형)*/
+        }
+
+        div.one>img {
+            /* 4개의 모서리의 각도를 각각 다르게 줄 수 있음 -> 좌상 우상 우하 좌하 */
+            border-radius : 10px 20px 30px 40px;
+        }
+
+        #twoloc {
+            /*postition : relative, absolute(많이 사용), fixed, static ...*/
+            position : absolute;
+            left : 400px;
+            top : 100px;
+            border : solid 2px gray;
+            width : 300px;
+            height : 150px;
+            text-align : center; /* 가로(수평)방향 가운데 : center 사용*/
+            padding-top : 20px; /*padding-top : 상단의 안쪽 여백 지정. 전체 지정 : padding */
+        }
+
+        div.three>h3{
+            width : 300px;
+            text-align : center;
+            border : inset 4px gold; /*inset : groove와 비슷한데 음영 들어간 것*/
+            text-shadow : 5px 5px 5px gray; /*text-shadow : 글자 그림자(수평위치 상하위치 흐림정도) */
+        }
+
+        div.three{
+            border : solid 5px red;
+            width :400px;
+            box-shadow : 5px 5px 5px orange; /*box-shadow : 박스 그림자*/
+            /*브라우저 크기를 변경해도 우측 하단으로 고정된다*/
+            position : fixed;
+            right : 50px; /*웹 페이지 크기 기준으로 오른쪽에서 여백 50px (margin이랑 다른 개념*/
+            bottom : 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2> imag tag 연습 </h2>
+    <div class = "one"><!-- src가 상대주소일 때는 상위 폴더로 올라갔다가 해야함(?)-->
+        <!-- title : 그림에 마우스 가져다댔을 때 나오는 글-->
+         <!-- width/height  : 비율로 크기를 조절하고 싶을 땐 둘 중에 하나만 줘도 됨-->
+          <!-- hspace(수평), vspace(수직) : 여백 추가 (margin의 일부) -->
+        <img alt = "박보영" src = "../photo/12.jpg" 
+        title = "박보영입니다" width = "100"
+        border = "5" hspace = "20" vspace = "20">
+        하늘은 맑고 바람이 좋습니다<br>
+        오늘 점심은 뭐먹을까요?
+    </div>
+    <div class = "two" id = "twoloc">
+        <img alt = "수지" src = "../photo/19.jpg">
+        <img alt = "박신혜" src = "../photo/13.jpg">
+    </div>
+    <div class = "three">
+        <h3> Shop 제품들 </h3>
+        <img alt = "" src = "../photo2/14.jpg" title = "신발들">
+        <img alt = "" src = "../photo2/30.jpg" title = "머리띠">
+    </div>
+</body>
+</html>

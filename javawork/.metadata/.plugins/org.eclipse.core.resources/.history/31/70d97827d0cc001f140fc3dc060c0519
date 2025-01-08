@@ -1,6 +1,5 @@
 package day0107db;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -33,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
  * 
  */
 
-public class Ex1FoodMysqlDb extends JFrame{
+public class Ex2 extends JFrame{
 	FoodModel foodModel = new FoodModel();
 	DefaultTableModel foodResTableModel;
 	DefaultTableModel foodOrderTableModel;
@@ -45,7 +44,7 @@ public class Ex1FoodMysqlDb extends JFrame{
 	JTextField tfFoodNum, tfOrderName, tfOrderCnt, tfBookingDay;
 	JTextField tfFoodName, tfFoodPrice, tfFoodSize;
 	
-	public Ex1FoodMysqlDb() {
+	public Ex2() {
 		// TODO Auto-generated method stub
 		super("메뉴 등록 및 예약");
 		this.setBounds(200,100, 800, 400);
@@ -152,7 +151,7 @@ public class Ex1FoodMysqlDb extends JFrame{
 				int row = foodResTable.getSelectedRow();
 				//선택 안했을 경우 -1
 				if(row==-1) {
-					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "삭제하려는 메뉴를 선택해주세요.");
+					JOptionPane.showMessageDialog(Ex2.this, "삭제하려는 메뉴를 선택해주세요.");
 					return; //메서드 종료
 				}
 				
@@ -166,10 +165,10 @@ public class Ex1FoodMysqlDb extends JFrame{
 				//그렇지 않으면 메시지 알림
 				if(cnt==0) {
 					foodModel.deleteFoodMenu(num);
-					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "삭제되었습니다.");
+					JOptionPane.showMessageDialog(Ex2.this, "삭제되었습니다.");
 					writeFoodMenu(); //전체 메뉴 다시 출력
 				} else {
-					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "해당 메뉴는 예약자가 있어서 삭제가 안됩니다\n 먼저 예약을 취소 후 삭제해주세요.");
+					JOptionPane.showMessageDialog(Ex2.this, "해당 메뉴는 예약자가 있어서 삭제가 안됩니다\n 먼저 예약을 취소 후 삭제해주세요.");
 				}
 			}
 		});
@@ -216,7 +215,7 @@ public class Ex1FoodMysqlDb extends JFrame{
 				int row = foodOrderTable.getSelectedRow();
 				//선택 안했을 경우 -1
 				if (row == -1) {
-					JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "취소할 예약번호를 선택해주세요.");
+					JOptionPane.showMessageDialog(Ex2.this, "취소할 예약번호를 선택해주세요.");
 					return; // 메서드 종료
 				}
 				//선택한 행의 0번열의 idx값 얻기
@@ -226,7 +225,7 @@ public class Ex1FoodMysqlDb extends JFrame{
 				//삭제
 				foodModel.deleteOrder(idx);
 				//메시지 알림
-				JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "예약이 취소되었습니다.");
+				JOptionPane.showMessageDialog(Ex2.this, "예약이 취소되었습니다.");
 			}
 		});
 	}
@@ -256,7 +255,7 @@ public class Ex1FoodMysqlDb extends JFrame{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Ex1FoodMysqlDb ex1 = new Ex1FoodMysqlDb();
+		Ex2 ex1 = new Ex2();
 
 	}
 

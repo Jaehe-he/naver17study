@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Black+And+White+Picture&family=Dokdo&family=Dongle&family=East+Sea+Dokdo&family=Gaegu&family=Hi+Melody&family=Jersey+10&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Playwrite+IE+Guides&family=Rubik+Vinyl&display=swap" rel="stylesheet">
+    <style>
+        h3 {
+            color : rgb(97, 171, 250);
+            background-color : rgb(223, 235, 207);
+            width : 600px;
+            text-align : center;
+            font-family : 'Gaegu';
+        }
+
+        /*hover : 마우스를 올렸을 때의 스타일 적용*/
+        h3:hover{
+            color : blue;
+            background-color : rgb(255, 175, 175);
+            text-shadow : 3px 3px 3px gray;
+            /* pointer : 손가락 모양의 커서 / crosshair : 십자모양*/
+            cursor : pointer;
+        }
+        
+        /*active : 마우스로 클릭했을 때의 스타일 적용*/
+        h3:active {
+            border : groove 5px rgb(255, 244, 180);
+        }
+
+        /*가로방향으로 메뉴가 나오도록 스타일을 적용시켜보자*/
+        div.menu>ul>li{
+            list-style : none; /*li 앞의 표식 없애기*/
+            float : left; /*모든 요소들을 가로 방향으로 나열할 때 사용*/
+            width : 100px;
+            border : solid 1px rgb(38, 53, 215);
+            margin-right : 5px; /*margin : 요소 밖의 여백*/
+            font-size : 16px;
+            text-align : center;
+            height : 40px;
+            line-height : 40px; /*한 줄일 경우 높이(height)하고 행높이를 같게 주면 글자 중앙배치 가능*/
+            cursor : pointer;
+            border-radius : 20px;
+            background-color : #c1e1fe;
+            font-family : 'Jua';
+        }
+        div.menu>ul>li:hover {
+            color : white;
+            background-color: black;
+            box-shadow: 5px 5px 5px gray;
+        }
+
+        h1.one{
+            font-family : 'Hi Melody' /*글꼴의 +는 공백으로 바꿔줘야함*/
+        }
+
+        h1.two{
+            font-family : 'Rubik Vinyl'
+        }
+    </style>
+</head>
+<body>
+    <h1 class = "one"> Font Test1. Have a good Day!! </h1>
+    <h1 class = "two"> Font Test2. Have a good Day!! </h1>
+    <h3> UL을 이용한 간단한 가로 메뉴</h3>
+    <div class = "menu">
+        <ul>
+            <li>Home</li>
+            <li>샵소개</li>
+            <li>방명록</li>
+            <li>게시판</li>
+            <li>오시는길</li>                           
+        </ul>
+    </div>
+</body>
+</html>

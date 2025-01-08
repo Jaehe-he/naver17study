@@ -58,6 +58,7 @@ public class Ex1FoodMysqlDb extends JFrame{
 	public void initDesign() {
 		//상단에 버튼들 배치
 		JPanel p1 = new JPanel();
+    	p1.setBackground(Color.LIGHT_GRAY);
 		btnFoodResAdd = new JButton("메뉴등록");
 		btnFoodResDel = new JButton("메뉴삭제");
 		btnFoodOrderAdd = new JButton("예약하기");

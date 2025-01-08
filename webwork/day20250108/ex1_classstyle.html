@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> /* <style> 안에서는 주석이 //는 안됨
+        /* 범용 클래스(특정 클래스에 종속하지 않고 모두 적용) - 모든 태그에 적용하려면 .클래스명 */
+        .happy{
+            font-size : 20px;
+            background-color: pink;
+            border : solid 5px green; /* 테두리 */
+        }
+
+        /* 특정 태그에서만 사용 가능한 클래스 만들기 */
+        div.hello {
+            color : orange;
+            background-color : cyan;
+            font-size : 2em;
+            width : 300px;
+        }
+
+        /* id는 #으로 표현, 아이디는 고유이름이므로 앞에 태그는 안써도 된다 */
+        #one {
+            border : dotted 2px gray;
+            background-color : #ffeeff; /* 연하게 하고 싶을 땐 가운데(ee)가 커지면 됨. 같을 땐 하나씩만 적어도됨(fef)*/
+        }
+
+        #two {
+            border : dashed 2px green;
+            color : blue;
+            background-color : #ccf;
+        }
+
+        /* >: 바로 아래 태그(자식태그)
+        공백 : 모든 자식태그 */
+        div.java>div { /* Div ID Two에는 적용이 안되는데 그 이유는 id가 먼저 적용되기 때문 */
+            font-family : 'Impact';
+            color : red;
+        }
+
+        div.java>b{ /*div 클래스 안에 java인거 안에 b태그인 것에 스타일을 적용해라*/
+            font-size : 2em;
+            font-style : italic;
+        }
+        
+    </style>
+</head>
+<body>
+    <span style = "color : blueviolet;" class = "happy"> 오늘은 수요일입니다.</span>
+    <br><br>
+    <b class = "happy">Happy Day!!!</b>
+    <u class = "happy"> Underline style </u>
+    <br><br>
+    <div class = "hello"> Hello!! </div> <!-- span과 div 차이점 : 자동줄바꿈 여부. div는 자동줄바꿈 O-->
+    <b class = "hello"> hello class 적용되나요? </b> <!-- 적용 안됨 -->
+    <div class = "hello happy"> 안녕하세요 </div> <!-- 여러 클래스 적용 시 공백으로 구분-->
+    <hr> <!-- 구분선 -->
+    <div> HTML study!! </div>
+    <div id = "one"> Div Class ID One </div> <!-- for문 안에서 디자인할 땐 id 적으면 안됨 (다른 곳에도 적용되기 때문) -->
+    <div class = "java">
+        Div Class Java
+        <div id = "two">
+            Div ID Two
+        </div>
+        <div>
+            div class java의 아래태그 div
+        </div>
+        <b> div class java의 아래태그 b</b>
+    </div>
+</body>
+</html>

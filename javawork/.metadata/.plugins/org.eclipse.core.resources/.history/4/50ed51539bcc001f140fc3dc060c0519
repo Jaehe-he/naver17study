@@ -1,6 +1,0 @@
-//DB관리하는 클래스
-package day0107db;
-
-public class FoodModel {
-
-}
