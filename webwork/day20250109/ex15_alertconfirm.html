@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3 class = "alert alert-danger"> 대표적인 JS함수 alert, prompt, confirm </h3>
+        <input type = "button" value = "alert이란?"
+        onclick = "alert('메세지 알림을 해주는 함수입니다.')">
+        <br><br>
+        <input type = "button" value = "prompt란?"
+        onclick = "func1()">
+
+        <script>
+            function func1(){
+                /*java의 데이터타입 명시처럼 javascript는 es5는 var를, es6은 let를 사용함*/
+                /*prompt : 입력받도록 함*/
+                var name = prompt("당신의 이름은 무엇입니까?", "이영자");
+                alert(`내 이름은 ${name}입니다!!!!`);
+            }
+        </script>
+        <br><br>
+        <input type = "button" value = "confirm이란?"
+        onclick = "func2()">
+        
+        <script>
+            /*확인 or 취소 버튼 나옴*/
+            function func2(){
+                var ans = confirm("데이터를 추가하시겠어요?");
+                alert(ans); //true/false
+            }
+        </script>
+
+    </body>
+</html>

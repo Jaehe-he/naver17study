@@ -67,49 +67,79 @@
 
         
         <tr>
-            <th></th>
+            <th>color</th>
             <td>
-                
+                <input type = "color" value = "#ccffff"> <!--default : black-->
             </td>
         </tr>
 
         
         <tr>
-            <th></th>
+            <th>date</th>
             <td>
-                
+                <input type = "date" value = "2025-01-09">
+                &nbsp;
+                <input type = "datetime-local" value="2025-01-09 13:00"> <!--datetime-local : 시간 선택 가능-->
             </td>
         </tr>
 
         
         <tr>
-            <th></th>
+            <th>button</th>
             <td>
-                
+                <input type = "button" value="Ok">
+                &nbsp;&nbsp;
+                <button type = "button">Cancel</button>
             </td>
         </tr>
 
         
         <tr>
-            <th></th>
+            <th>submit(폼단위 전송)</th>
             <td>
-                
+                <input type = "submit" value = "전송">
+                &nbsp;
+                <button type = "submit">전송</button>
+                &nbsp;
+                <!--submit 기능인데 버튼이미지로-->
+                <input type = "image" src="../mycar/mycar12.png" width="100" height = "50">
             </td>
         </tr>
 
         
         <tr>
-            <th></th>
+            <th>select</th>
             <td>
-                
+                <select>
+                    <option>java</option>
+                    <option selected>html5</option> <!-- selected : 기본값으로 보임 (안했을 경우 가장 먼저 쓴게 기본으로 나옴)-->
+                    <option>javascript</option>
+                    <option>springboot</option>
+                    <option>oracle</option>
+                </select>
+                &nbsp;
+                <select>
+                    <option selected disabled hidden>도시선택</option> <!-- disabled hidden : 선택목록에는 없고 처음에만 보이도록 설정-->
+                    <option>서울</option>
+                    <option>성남</option>
+                    <option>용인</option>
+                    <option>제주도</option>
+                    <option>부산</option>
+                </select>
+                &nbsp;
+                <select size = "3"> <!-- 보여지는게 3개. 생략 시 default는 1-->
+                    <option>Java</option>
+                    <option>MySQL</option>
+                    <option>Spring</option>
+                </select>
             </td>
         </tr>
 
         
         <tr>
-            <th></th>
+            <th>progress</th>
             <td>
-                
+                <progress value="30" max="100"></progress>
             </td>
         </tr>
     </table>

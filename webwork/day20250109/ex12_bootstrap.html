@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <table class = "table" style = "width: 300px; margin-bottom: 20px; float : left;">
+        <caption align="top"><b>[표1 table만 지정]</b></caption> <!-- align="top"을 안주면 HTML5는 아래 배치됨-->
+        <thead>
+            <tr>
+                <th width = "100">이름</th>
+                <th width = "200">핸드폰</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>이영자</td>
+                <td>010-2222-3333</td>
+            </tr>
+            <tr>
+                <td>유재석</td>
+                <td>010-1234-5678</td>
+            </tr>
+            <tr>
+                <td>강호동</td>
+                <td>010-5555-7523</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--table table-striped : 홀수번 행에 색 지정-->
+    <table class = "table table-striped" style = "width: 300px; margin-bottom: 20px;float : left">
+        <caption align="top"><b>[표1 table-striped 지정]</b></caption> <!-- align="top"을 안주면 HTML5는 아래 배치됨-->
+        <thead>
+            <tr>
+                <th width = "100">이름</th>
+                <th width = "200">핸드폰</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>이영자</td>
+                <td>010-2222-3333</td>
+            </tr>
+            <tr>
+                <td>유재석</td>
+                <td>010-1234-5678</td>
+            </tr>
+            <tr>
+                <td>강호동</td>
+                <td>010-5555-7523</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- table table-bordered : 테이블 모든 테두리에 선그려짐-->
+    <table class = "table table-bordered" style = "width: 300px; margin-bottom: 20px;">
+        <caption align="top"><b>[표1 table-bordered 지정]</b></caption> <!-- align="top"을 안주면 HTML5는 아래 배치됨-->
+        <thead>
+            <tr>
+                <th width = "100">이름</th>
+                <th width = "200">핸드폰</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>이영자</td>
+                <td>010-2222-3333</td>
+            </tr>
+            <tr>
+                <td>유재석</td>
+                <td>010-1234-5678</td>
+            </tr>
+            <tr>
+                <td>강호동</td>
+                <td>010-5555-7523</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <!-- info : 하늘색 계통의 배경색 버튼-->
+     <!--버튼 크기 default : 미디움-->
+    <div class = "alert alert-info">Bootstrap5의 Button들</div>
+    <button type = "button" class = "btn btn-info btn-sm">하늘색 버튼</button> <!-- btn만 주면 테두리 없음-->
+    <button type = "button" class = "btn btn-success btn-lg">초록색 버튼</button>
+    <button type = "button" class = "btn btn-primary">파란색 버튼</button>
+    <button type = "button" class = "btn btn-danger">빨간색 버튼</button>
+    <button type = "button" class = "btn btn-secondary">회색 버튼</button>
+
+    <br><br>
+    <h4 class = "alert alert-success">Bootstrap5의 image들</h4>
+    <img src = "../photo/12.jpg" width="150" height="150" class="rounded-circle"> <!--rounded-circle : 가로세로 길이가 동일해야 원으로 나옴-->
+    <img src = "../photo/16.jpg" width="150" class="rounded">
+    <img src = "../photo/2.jpg" width="150" class="img-thumbnail"> <!-- 사진처럼 나옴(액자처럼)-->
+</body>
+</html>

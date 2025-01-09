@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3 class = "alert alert-danger"> 태그 안에서 직접 이벤트 설정하기</h3>
+        <img src = "../photo/K-038.png" width = "200" border = "2"
+        onmouseover="this.src = '../photo/K-041.png'"
+        onmouseout="this.src='../photo/K-038.png'">
+
+        &nbsp;&nbsp;
+
+        <img src = "../photo/11.jpg" style = "width : 150px; border : solid 5px orange"
+        onmouseenter = "this.style.borderColor = 'green'"
+        onmouseleave = "this.style.borderColor = 'orange'" >
+        <br><br>
+        <!-- alert : 경고창 ==> this.value는 value가 있어야만 해당 내용이 출력됨-->
+        <button type = "button" class = "btn btn-success btn-sm"
+        onclick = "alert('Click')">데이터 추가</button>
+        &nbsp;&nbsp;
+        <input type = "button" value = "데이터 삭제" class = "btn btn-danger btn-sm"
+        onclick = "alert(this.value)">
+        <input type = "button" value = "데이터 수정" class = "btn btn-info btn-sm"
+        onclick = "hello('오늘 점심은 뭐야?')">
+
+        <!-- onclick에 hello()를 출력할 경우 <script></script>안에 함수를 따로 만들어줘야함 자바스크립트에는 없음-->
+        <!-- 함수 생성 : function 함수명(변수){}-->
+        <script>
+            function hello(msg){
+                alert("당신의 메세지는 ["+msg+"]입니까?")
+            }
+        </script>
+
+        <input type = "button" value = "기본버튼"
+        onclick = "change(this)"> <!-- 인자로 자기자신을 의미하는 this를 보냄-->
+
+        <script>
+            function change(inputButton){
+                inputButton.style.backgroundColor = 'orange';
+                inputButton.style.color = 'blue';
+            }
+        </script>
+
+        <input type = "button" value = "수학계산"
+        onclick = "add(5,7)"> <!--alert으로 5+7은 12입니다 라고 출력하는 add함수를 만드세요-->
+
+        <script>
+            function add(a,b){
+                //변수 타입 알아보기
+                console.log(typeof(a));
+                console.log(typeof(b));
+                //es5
+                //alert(a+"+"+b+"은 "+(a+b)+"입니다.")
+
+                //es6 `` : template literal
+                alert(`${a} + ${b}는 ${a+b} 입니다.`)
+            }
+        </script>
+        <hr>
+        <script>
+            /*html을 쓸 수 없기 때문에 document로 들어가서 써줘야함*/
+            for(var i=1;i<=10;i++){
+                document.write(`<b>${i}</b>&nbsp;`);
+            }
+        </script>
+        <br>
+        <script>
+            for(var i=0;i<=9;i++){
+                document.write(`<img src = "../number/${i}.gif">`);
+            }
+        </script>
+        <br><br>
+        <h4 class = "alert alert-danger">mycar도 width = 100으로 모두 출력</h4>
+
+        <script>
+            for(var i=1;i<=15;i++){
+                //document.write(`<img src = "../mycar/mycar${i}.png" style = "width : 100px;">`);
+                var s = `<img src ="../mycar/mycar${i}.png" width = 100 height = 70 style = "border:solid 3px green; margin : 3px;">`;
+                document.write(s);
+            }
+        </script>
+    </body>
+</html>
