@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width : 100px;
+            height : 100px;
+            border-radius: 100px;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        div.figure>marquee>figure{
+            float:left;
+            width:110px;
+        }
+        /* >썻을 때와 비슷 (>하면 바로 하위 버전을 부르지만, 그냥 공백은 그 범위 내에 해당 태그가 있으면 거기에 적용)
+        div.figure figure{
+            float:left;
+            width:110px;
+        }
+        */
+
+        div.figure>marquee>figure>figcaption{
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- marquee : 슬라이드가 지나가듯 왼쪽으로 흘러들어옴. 전광판 느낌
+     width 설정해주면 해당 범위 내에서 전광판처럼 들어옴-->
+     <!-- mark : 강조 (형광펜 쳐짐)-->
+      <!-- behavior = "slide" : 한번만 슬라이드 되고 멈춤-->
+    <marquee>Have a <mark>Nice</mark> Day!!</marquee>
+    <marquee>왼쪽으로 가고 사라졌다 다시 오른쪽에서 왼쪽으로 이동해요</marquee>
+    <marquee width = "400" behavior = "slide"> 왼쪽으로 가고 한번만 갔다가 끝나요</marquee>
+    <marquee width = "400" behavior = "alternate" direction = "right"> 오른쪽으로 가고 왔다갔다해요요 </marquee>
+    <div>
+        <a href = "http://www.naver.com">
+            <img src = "../photo/K-052.png"> Naver
+        </a>
+    </div>
+    <div>
+        <a href = "http://www.nate.com">
+            <!-- <figure><figcaption></figcaption></figure> : 짝을 지어서 만들어줌 (ex. 사진-글씨 짝을 이뤄서 함께 하고 싶을 때)-->
+            <figure>
+                <img src = "../photo/K-041.png">
+                <figcaption style= "padding-left: 40px;">
+                    <b>Nate</b>
+                </figcaption>
+            </figure>
+        </a>
+        <!-- 사진 누르면 원본 파일 출력되도록 만들기 -->
+        <a href = "../photo/K-049.png">
+            <figure>
+                <img src = "../photo/K-049.png">
+                <figcaption>
+                    <b>예쁜 유리잔 </b>
+                </figcaption>
+            </figure>
+        </a>
+    </div>
+    <hr>
+    <div class = "figure">
+        <marquee>
+            <figure>
+                <img src = "../photo/17.jpg">
+                <figcaption>
+                    <b>신민아</b>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src = "../photo/18.jpg">
+                <figcaption>
+                    <b>신세경</b>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src = "../photo/15.jpg">
+                <figcaption>
+                    <b>설현</b>
+                </figcaption>
+            </figure>
+        </marquee>
+    </div>
+</body>
+</html>

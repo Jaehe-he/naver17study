@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        figure,figcaption{
+            display : block;
+        }
+
+        #wrap{
+            width : 90%;
+            margin : 10px auto;
+        }
+
+        #photo img{
+            width : 100%;
+            max-width : 800px; /*아무리 늘려도 800px을 넘기지는 마라(해상도 문제 없도록 하기 위함)*/
+            height : auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 반응형의 가장 기본은 크기를 고정크기로 주지않고 퍼센트로 주는 것이다-->
+   <div id = "wrap">
+        <section id = "photo">
+            <figure>
+                <img src = "../photo/K-041.png">
+                <figcaption>
+                    <b>이미지 #1</b>
+                </figcaption>
+
+            </figure>
+            <figure>
+                <img src = "../photo/K-034.png">
+                <figcaption>
+                    <b>이미지 #2</b>
+                </figcaption>
+
+            </figure>
+            <figure>
+                <img src = "../photo/K-053.png">
+                <figcaption>
+                    <b>이미지 #3</b>
+                </figcaption>
+
+            </figure>
+        </section>
+   </div> 
+</body>
+</html>

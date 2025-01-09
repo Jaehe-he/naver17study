@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border:1px solid #000;
+            width : 200px;
+            height : 200px;
+            float : left;
+            margin: 40px;
+        }
+
+        div img{
+            width : 100px;
+            height : 100px;
+        }
+
+        #img1{
+            transform : translate(50px, 30px); /*x,y좌표만큼 이동*/
+        }
+
+        #img2 img{
+            transform:rotate(45deg) ; /*45도 회전*/
+        }
+
+        #img3 img{
+            transform : scale(2); /*2배 확대*/
+        }
+
+        #img4 img{
+            transform : skew(30deg, 40deg); /*x,y 방향으로 경사변형을 준다*/
+        }
+
+        #img1{
+            background-color: rgb(10,189,9);
+        }
+        
+        #img2{
+            background-color: rgba(10,189,9, 0.5); /*aplha : 0~1사이의 실수형*/
+        }
+        
+        #img3{
+            background-color: rgba(10,189,9, 0.2);
+        }
+        
+        #img4{
+            background-color: rgba(171,104,189, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id = "img1">
+        <img src = "../photo/12.jpg">
+    </div>
+    <div id = "img2">
+        <img src = "../photo/12.jpg">
+    </div>
+    <div id = "img3">
+        <img src = "../photo/12.jpg">
+    </div>
+    <div id = "img4">
+        <img src = "../photo/12.jpg">
+    </div>
+</body>
+</html>

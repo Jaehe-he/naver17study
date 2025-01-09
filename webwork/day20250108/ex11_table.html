@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table.tb{
+            width : 300px;
+            border-collapse : collapse;
+            border : inset 3px green;
+        }
+
+        table.tb>thead>tr{
+            height : 40px;
+            background-color : yellow;
+            color : blue;
+        }
+
+        table.tb>thead>tr>th{
+            border-right : dotted 1px gray;
+            border-bottom : double 4px red;
+        }
+
+        table.tb>tbody>tr>td{
+            border:solid 1px gray;
+            background-color: lightcyan;
+            text-align : center;
+        }
+    </style>
+</head>
+<body>
+    <table class = "tb">
+        <thead>
+            <tr>
+                <th>이름</th><th>나이</th><th>혈액형</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김길동</td><td>23세</td><td>A형</td>
+            </tr>
+            <tr>
+                <td>홍길동</td><td>25세</td><td>AB형</td>
+            </tr>
+            <tr>
+                <td>김범수</td><td>37세</td><td>O형</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr width = 300px; align = left color = "red" size = "5">
+
+</body>
+</html>

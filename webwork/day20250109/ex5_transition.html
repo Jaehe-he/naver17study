@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <!--
+
+
+    transition-property은 트랜지션 이벤트를 적용할 CSS 속성을 지정하기 위해 사용되는 속성이다
+    기본값은 all으로, 모든 속성에 트랜지션 이벤트가 적용된다.
+
+    transition-duration은 트랜지션 이벤트를 실행할 시간을 지정하기 위해 사용되는 속성이다.
+    transition-delay는 트랜지션 이벤트를 바로 실행시키지 않고 지연시키고자 하는 경우에 사용하는 속성이다
+
+
+
+
+    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*공통 css*/
+        #ex1, #ex2{
+            background : #905;
+            color : yellow;
+            width : 150px;
+            height : 20px;
+            overflow : hidden;
+            cursor : pointer;
+            font-family: 'Comic Sans MS';
+        }
+
+        #ex3 img{
+            width : 100px;
+            height : 100px;
+            opacity: 0.2; /*투명도 0~1*/
+            border : 5px solid #900;
+            transform : rotate(10deg);
+            cursor : pointer;
+            transition: all 3s; /*all : 전체 속성 변경 / 3s : 효과지속시간이 3초*/
+        }
+
+        /*이미지에 마우스를 올렸을 때의 애니메이션 효과주기*/
+        #ex3 img:hover{
+            opacity: 1.0; /*투명도 조절*/
+            border-color: #900;
+            transform: rotate(45deg); /*각도 조절*/
+        }
+
+        #ex1{
+            transition-property: width; /*width에 효과를 주겠다는 의미*/
+            transition-duration: 2s; /*효과 지속시간은 2초*/
+        }
+
+        #ex1:hover{
+            width : 400px;
+        }
+
+        #ex2{
+            transition : width 3s; /*같이 지정해도 됨*/
+        }
+
+        #ex2:hover{
+            width : 400px;
+        }
+    </style>
+</head>
+<body>
+    <p id = "ex1"> Transition Test </p>
+    <p id = "ex2"> Transition Test </p>
+    <p id = "ex3">
+        <img src = "../photo2/bottle01.jpg">    
+    </p>
+</body>
+</html>

@@ -184,26 +184,27 @@ public class Ex5MysqlInsertSelect {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from person where name like '%" + name +"%'";
+		String sql = "delete from person where name = '"+name+"'";
 		
 		conn = this.getConnection();
 		
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				count++;
-				
-				System.out.println("\t\t**검색 결과**");
-				System.out.println(count+"명 조회");
-			
-				String sql2 = "delete * from person";
-				System.out.println(count+"명의 데이터가 삭제되었습니다.");
+			int n=stmt.executeUpdate(sql);
+			if(n==0)
+				System.out.println("\""+name+"\" 님은 존재하지 않습니다");
+			else
+				System.out.println(n+"명의 데이터가 삭제되었습니다.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException|NullPointerException e) {
+				e.printStackTrace();
 			}
-			
-			if (count == 0)
-				System.out.println("이름에 \""+name+"\" 이름을 포함하고 있는 회원은 없습니다.");
 		}
 	}
 	

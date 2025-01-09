@@ -165,7 +165,6 @@ public class Ex5MysqlInsertSelect {
 	
 	//이름을 찾아 삭제하는 메서드
 	public void deletePerson(String name) {
-		int count = 0;
 		/*
 		 * name이 이영자라면
 		 * 이영자가 있을 경우

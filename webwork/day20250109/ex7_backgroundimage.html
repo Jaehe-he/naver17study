@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width : 300px;
+            height : 300px;
+            border : 1px solid black;
+            margin : 10px;
+            float : left; /*옆으로 나열(가로 범위 내에서)*/
+        }
+
+        #one{
+            background-image : url(../mycar/mycar13.png);
+            background-size : 50px 50px; /*기본 값이 repeat라서 해당 영역보다 사진 크기가 작을 경우 반복이 됨(원하지 않을 경우 no-repeat)*/
+            background-repeat : no-repeat; /*기본 값은 repeat*/
+            background-position: right bottom;
+        }
+
+        #two{
+            background : url(../mycar/mycar7.png);
+            background-size : 200px 170px;
+        }
+
+        #three{
+            background : url(../mycar/mycar7.png) center center; /*위치 선정*/
+            background-size : cover; /*배경이미지가 클 경우 짤리더라도 주어진 영역을 완전히 덮을 수 있도록 맞춰준다*/
+        
+        }
+
+        #four{
+            background : url(../mycar/mycar7.png) no-repeat center center;
+            background-size : contain; /*빈 공간이 생기더라도 이미지 전체가 나오게 해준다(너비에 맞게 해줌)*/
+        
+        }
+    </style>
+</head>
+<body>
+    <div id = "one">그림 위치 지정 + 반복 없앰</div>
+    <div id = "two">그림 사이즈만 지정</div>
+    <div id = "three"> cover 적용</div>
+    <div id = "four">contain으로 적용</div>
+</body>
+</html>

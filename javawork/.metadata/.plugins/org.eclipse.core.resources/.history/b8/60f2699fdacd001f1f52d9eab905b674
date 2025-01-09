@@ -41,7 +41,7 @@ public class Ex3OracleJoin {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String sql = "select\r\n"
-				+ "s.sangcode, sangname, sangprice, cntnum, to_char(cartday, 'yyyy-mm-dd') cartday\r\n"
+				+ "    s.sangcode, sangname, sangprice, cntnum, to_char(cartday, 'yyyy-mm-dd') cartday\r\n"
 				+ "from shop s, cart c\r\n"
 				+ "where s.sangcode = c.sangcode";
 		

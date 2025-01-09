@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width : 400px;
+            border : 5px groove gray;
+            border-collapse: collapse;
+        }
+
+        th,td{
+            border : 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <!--java나 javascript는 id를 많이 사용?-->
+    <h2> HTML5 FormTag들</h2>
+    <table>
+        <tr>
+            <th width = "100">text</th>
+            <td>
+                <input type = "text" value = "Hello">
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th>password</th>
+            <td>
+                <input type = "password" value = "12345">
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th>checkbox</th>
+            <td>
+                <!--label 안에 checkbox를 넣으면 글자를 클릭해도 체크가 됨-->
+                <!-- default가 체크가 되어있으면 좋겠다 싶으면 checked 작성해주기-->
+                <label><input type = "checkbox">운전면허</label>
+                &nbsp;&nbsp;&nbsp;
+                <label><input type = "checkbox" checked>운전면허</label>
+            </td>
+        </tr>
+
+        
+        <tr>
+            <!-- radio는 같은 그룹으로 묶을 경우 반드시 name이 같아야한다-->
+            <th>radio</th>
+            <td>
+                <label><input type = "radio" value = "men" name = "gender" checked>남자</label>
+                <label><input type = "radio" value = "women" name = "gender">여자</label>
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th>number</th>
+            <td><!--min, max 숫자 범위. step : 올라가고 내려가는 범위-->
+                <input type = "number" value="10" min="0" max="20" step="2">
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th></th>
+            <td>
+                
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th></th>
+            <td>
+                
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th></th>
+            <td>
+                
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th></th>
+            <td>
+                
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th></th>
+            <td>
+                
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th></th>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

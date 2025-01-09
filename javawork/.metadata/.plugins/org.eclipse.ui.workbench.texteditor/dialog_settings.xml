@@ -3,6 +3,7 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="this"/>
 		<item value="JTable"/>
 		<item value="JFrame"/>
 		<item value="dto"/>
