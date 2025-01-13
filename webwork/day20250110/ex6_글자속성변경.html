@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+
+            div.box{
+                width : 300px;
+                height : 200px;
+                line-height : 200px;
+                text-align : center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "box" style = "margin : 30px 100px;">
+            <b style = "font-size : 20px; font-family : 'Single Day'">
+                오늘은 즐거운 금요일입니다.
+            </b>
+        </div>
+        <div style = "margin : 20px 60px;">
+            <button type = "button" class = "tn btn-info btn-sm" id="btn1">점점 작게</button>
+            <button type = "button" class = "tn btn-info btn-sm" id="btn2">점점 크게</button>
+            <button type = "button" class = "tn btn-info btn-sm" id="btn3">글꼴 변경(Jua)</button>
+            <button type = "button" class = "tn btn-info btn-sm" id="btn4">글자색 변경</button>
+            <button type = "button" class = "tn btn-info btn-sm" id="btn5">글자 배경색 변경</button>
+            <button type = "button" class = "tn btn-info btn-sm" id="btn6">div 배경색 변경</button>
+        </div>
+
+        <script>
+            let font = document.querySelector("div.box>b");
+            document.getElementById("btn1").onclick = function(){
+                //현재 글꼴을 숫자타입으로 얻기
+                let fsize = parseInt(font.style.fontSize)
+                // alert(fsize);
+                fsize -= 2;
+                font.style.fontSize = fsize+"px";
+            }
+            document.getElementById("btn2").onclick = function(){                
+                let fsize = parseInt(font.style.fontSize)
+                // alert(fsize);  
+                fsize += 2;
+                font.style.fontSize = fsize+"px";
+            }
+            document.getElementById("btn3").onclick = function(){
+                //현재 글꼴을 얻는다
+                let fname = font.style.fontFamily;
+                
+                /* // 오류 뜸
+                if(fname == 'Single Day')
+                    fname = "Jua";
+                else
+                    fname = "Single Day";
+                */
+
+                if(fname == 'Jua')
+                    fname = "Single Day";
+                else
+                    fname = "Jua";
+
+                //글꼴 변경
+                font.style.fontFamily = fname;
+                
+                
+            }
+            document.getElementById("btn4").onclick = function(){
+                //고정색으로 변경
+                // font.style.color = "orange";
+
+                //rgb 색으로 변경 하는데 랜덤으로
+                //rgb(0~255, 0~255, 0~255) 이런식으로
+                // font.style.color = "rgb(255,0,255)"; //css가 형식을 문자로 받기 때문에 문자형식이어야 한다
+                //0~255 사이의 rgb 값을 랜덤하게 얻어보자
+                let r = Math.random()*256; //범위가 0~256까지이므로 *256을 해줘야함
+                // console.log(r); //어디가 오류인지 알기 위해
+                let g=Math.random()*256;
+                let b = Math.random()*256;
+
+                // font.style.color = "rgb("+r+","+g+","+b+")"; //방법1
+                font.style.color = `rgb(${r},${g},${b})`; //방법2. 템플릿 리터럴
+            }   
+
+            document.getElementById("btn5").onclick = function(){
+                let r1 = Math.random()*256; //범위가 0~256까지이므로 *256을 해줘야함
+                let g1=Math.random()*256;
+                let b1 = Math.random()*256;
+
+                //font의 b태그의 배경색 변경
+                font.style.backgroundColor = `rgb(${r1},${g1},${b1})`;
+            }
+
+            document.getElementById("btn6").onclick = function(){
+                let r2 = Math.random()*256; //범위가 0~256까지이므로 *256을 해줘야함
+                let g2 = Math.random()*256;
+                let b2 = Math.random()*256;
+
+                //div.box의 배경색 변경
+                div.box.style.backgroundColor=`rgb(${r2},${g2},${b2})`;
+            }
+
+        </script>
+    </body>
+</html>

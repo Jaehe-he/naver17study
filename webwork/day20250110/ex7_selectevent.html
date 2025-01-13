@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style = "margin:30px;">
+            <select onchange="alert(this.value)"> <!--마우스랑 키보드 둘다 수정되어야하므로 click이 아닌 onchange 사용-->
+                <option selected disabled hidden>선택하세요</option>
+                <option>네이버</option>
+                <option>네이트</option>
+                <option>구글</option>
+            </select>
+            <hr>
+            <select onchange="alert(this.value)"> <!--마우스랑 키보드 둘다 수정되어야하므로 click이 아닌 onchange 사용-->
+                <option selected disabled hidden>선택하세요</option>
+                <option value = "http://www.naver.com">네이버</option>
+                <option value = "http://www.nate.com">네이트</option>
+                <option value = "http://www.google.com">구글</option>
+            </select>
+            <hr>
+            <select id="mysel"> <!--마우스랑 키보드 둘다 수정되어야하므로 click이 아닌 onchange 사용-->
+                <option selected disabled hidden>선택하세요</option>
+                <option value = "http://www.naver.com">네이버</option>
+                <option value = "http://www.nate.com">네이트</option>
+                <option value = "http://www.google.com">구글</option>
+            </select>
+        </div>
+        <script>
+            //3번째 select 선택 시 해당 사이트로 이동
+            document.getElementById("mysel").onchange = function(){
+                //this는 자기자신의 인스턴스 값이다
+                let url = this.value; //this는 이벤트 발생한 document.getElementById("mysel")을 의미
+                // alert(url);
+                location.href=url; //해당 url페이지로 이동한다
+            }
+        </script>
+        <hr>
+        <div class = "photochange">
+            <select class = "myphotosel">
+                <option selected disabled hidden>사진을 선택하세요</option>
+                <option value = "../mycar/mycar11.png"> 노란색 폭스바겐</option>
+                <option value = "../mycar/mycar13.png"> 핑크색 폭스바겐</option>
+                <option value = "../photo/K-041.png"> 오늘 브런치</option>
+                <option value = "../photo/K-052.png">내가 좋아하는 컵</option>
+            </select>
+        </div>
+        <div class = "myphoto" style = "margin-top:20px;">
+            <!--onerror : src에서 사진이 발견되지 않았을 경우 임시 이미지로 대체한다-->
+            <img src = "" width = "300" onerror = "this.src='../photo/K-060.png'">
+            <br><br>
+            <h2>현재이미지는 임시이미지입니다</h2>
+        </div>
+        <script>
+            //select 이벤트
+            document.querySelector("div.photochange>.myphotosel").onchange = function(){
+                // alert(this.value);
+                //select의 value가 존재할 경우 text를 따로 얻으려면
+                let text=this.options[this.selectedIndex].label; //options : 폭스바겐, 오늘 브런치, 내가 좋아하는 컵
+                //alert(text);
+                //img의 요소값을 변수 myphoto에 얻는다
+                let myphoto = document.querySelector("div.myphoto>img");
+                //this.value를 myphoto의 src에 적용시킨다
+                myphoto.setAttribute("src",this.value);
+
+                //h2의 요소값을 얻는다
+                let msg = document.querySelector("div.myphoto>h2");
+                //innerText : text만 가능. html 코드는 적용안됨
+                //innerHTML : text, html 코드 모두 가능. html 적용
+                // msg.innerText=text;
+                msg.innerText="<u>"+text+"</u>"; //확인 <u>가 그대로 출력
+                msg.innerHTML = "<u>"+text+"</u>"; //확인. <u>가 밑줄로 적용
+
+            }
+        </script>
+    </body>
+</html>

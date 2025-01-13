@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+
+            div.leftDiv{
+                width : 200px;
+                margin : 30px 20px;
+            }
+
+            div.rightDiv{
+                margin-top : 30px;
+                height : 100px;
+                line-height : 100px;
+                font-size : 25px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "leftDiv">
+            <input type = "text" class = "txt1 form-control"
+            placeholder = "input message"> <!-- control : 부트스트랩에서 제공하는 것 / placeholder : 데이터 입력하면 사라지는 글 -->
+            <br>
+            <div class = "input-group"> <!-- 수평으로 나열하고 싶을 땐 div로 input-group으로 묶으면 됨-->
+                <input type = "text" class = "txt2 form-control"
+                placeholder="input message">
+                <button type = "button" class = "btn btn-success btn-sm" id = "btnok">OK</button>
+            </div>
+            <br>
+            <input type = "text" class = "txt3 form-control"
+            placeholder = "입력 후 엔터누르면 적용">
+            <br>
+            <div class = "input-group">
+                <b> 배경색 변경 : </b>
+                <input type = "color" class = "tcolor form-control" value = "#cfcfcf"> <!-- value : 16진수로 정확히 줘야 초기값으로 됨-->
+            </div>
+        </div>      
+        <div class = "rightDiv">
+        
+        </div>
+
+        <script>
+            //직접 입력 시 바로 메시지가 나타나게 하기
+            document.querySelector("div.leftDiv>.txt1").onkeyup=function(e){ //onkeyup : 키 눌렀다가 떼는 순간 발생(마지막 글자 읽음) / onkeypress : 마지막 글자 못읽음 / onkeydown : 마지막 글자 못읽음
+
+                // document.querySelector("div.rightDiv").innerHTML=this.value; // 방법 1
+                document.querySelector("div.rightDiv").innerHTML = e.target.value;//방법2
+            }
+
+            //버튼 ok 클릭 시 입력값 가져오기
+            document.querySelector("#btnok").onclick = function(){
+                //입력값
+                let msg = document.querySelector("div.leftDiv .txt2").value;
+                document.querySelector("div.rightDiv").innerHTML=msg;
+            }
+
+            //배경색 변경
+            document.querySelector(".tcolor").onchange = function(){ //onchange는 변경되면 값이 나옴 (onclick보다 onchange가 더 자연스러움)
+                // alert(this.value);
+                document.querySelector("div.rightDiv").style.backgroundColor=this.value;
+            }
+
+            //입력 후 Enter누르면 입력값 적용시키기
+            document.querySelector("div.leftDiv .txt3").onkeyup = function(e){
+                if(e.keyCode == 13){ //keyCode : 키보드의 아스킬코드값을 가져옴(Enter : 13 / ESC : 27)
+                    document.querySelector("div.rightDiv").innerHTML = this.value;
+                    this.value = "";
+                }
+            }
+        </script>
+    </body>
+</html>

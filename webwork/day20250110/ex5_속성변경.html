@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "box" style = "margin : 50px 100px;">
+            <img src = "../photo/11.jpg" width = "200" style = "border : 5px solid pink;">
+        </div>
+        <div style = "margin : 20px 130px;">
+            <button type = "button" class = "btn btn-success btn-sm" id = "btnsmall">점점작게</button>
+            <button type = "button" class = "btn btn-success btn-sm" id = "btnlarge">점점크게</button>
+        </div>
+        <script>
+            //버튼 클릭 시 현재 크기보다 20씩 점점작게/점점크게 변경
+            let photo = document.querySelector("div.box>img");
+            document.getElementById("btnsmall").onclick = function(){
+                // alert("small");
+                //현재 너비
+                let w = photo.getAttribute("width");
+                // alert(`값=${w}, 타입=`+typeof(w)); //값 200, 타입 = string
+                //-(빼기) 일 경우 굳이 타입 변환을 안해도 자동으로 바꿔줌
+                w -=20;
+                //다시 너비 속성 변경
+                photo.setAttribute("width", w);
+            }
+
+            document.getElementById("btnlarge").onclick = function(){
+                // alert("large");
+                
+                //현재 너비
+                let w = photo.getAttribute("width");
+                // alert(`값=${w}, 타입=`+typeof(w)); //값 200, 타입 = string
+                //-(빼기) 일 경우 굳이 타입 변환을 안해도 자동으로 바꿔줌
+                w = Number(w)+20; //20020 (더하기의 경우는 string 타입일 경우 나열됨 => Number()로 변환해줘야함)
+                //다시 너비 속성 변경
+                photo.setAttribute("width", w);
+            } 
+        </script>
+        <hr>
+        <div class = "box2" style = "margin : 50px 10px;">
+            <img src = "../photo2/8.jpg" style = "width : 200px;">
+        </div>
+        <div style = "margin : 20px 50px;">
+            <button type = "button" class = "btn btn-success btn-sm" id = "btnsmall2">점점작게</button>
+            <button type = "button" class = "btn btn-success btn-sm" id = "btnlarge2">점점크게</button>
+        </div>
+
+        <script>
+            /*잘 확인하기!!! 속성으로 있을 때와 style 시트로 있을 때의 코드가 다름*/
+            //사진의 요소값을 얻어보자
+            let photo2 = document.querySelector("div.box2>img");
+            document.getElementById("btnsmall2").onclick = function(){
+                //photo2의 style의 width값을 얻어보자
+                let w = photo2.style.width; //200px 반환
+                //뒤의 px를 떼고 10진수 숫자만 얻기
+                let w2 = parseInt(w,10); //10진수 숫자만 얻기. w를 10진수로 변환 (default가 10진수)
+                alert(w2);
+                w2-=20;
+                //style의 width 변경
+                photo2.style.width = w2+"px";
+            }
+
+            document.getElementById("btnlarge2").onclick = function() {
+                // let w = photo2.style.width;
+                // let w2 = parseInt(w);
+                // alert(w2);
+                // w2 += 20;
+                // photo2.style.width = w2+"px";
+
+                /*위 코드를 줄인 것*/
+                let w = parseInt(photo2.style.width)+20;
+                photo2.style.width = w+"px";
+            }
+        </script>
+    </body>
+</html>
