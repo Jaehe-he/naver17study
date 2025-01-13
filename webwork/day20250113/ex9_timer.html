@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+
+            .loc{
+                position:absolute;
+                left:0;
+                top:250px;
+            }
+
+            .loc .photo{
+                position:absolute;
+                left:0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "msg">
+            <h3><b>3초 뒤, 5초 뒤 사진을 추가해보세요</b></h3>
+        </div>
+        <script>
+            //setTimeout : 일정한 시간이 지난 후 딱 한번 함수 호출
+            // setTimeout(function(){
+            //     document.querySelector(".msg").innerHTML+=`<img src="../photo/15.jpg" width=120>`; //3초 뒤 사진을 추가해보세요 뒤에 추가하는거므로 +=``으로 적음
+            // },3000);
+
+            //화살표함수(arrow function)
+            setTimeout(() => {
+                document.querySelector(".msg").innerHTML+=`<img src="../photo/2.jpg" width=120>`; 
+            }, 3000);
+
+            setTimeout(() => {
+                document.querySelector(".msg").innerHTML+=`<img src="../photo/8.jpg" width=113>`; 
+            }, 5000);
+
+            console.log(window.innerWidth);
+        </script>
+        <hr>
+        <div class="loc">
+            <h6>오른쪽으로 이동하다가 윈도우 끝까지 가면 다시 시작위치로</h6>
+            <img src="../photo2/26.jpg" width="100" class="photo">
+            <br><br><br><br><br><br>
+            <button type="button" class="btn btn-danger btn-sm btnstop">멈춤</button>
+        </div>
+        <script>
+            let leftLoc=0;
+            let interval = setInterval(() => {
+                leftLoc+=10;
+                document.querySelector(".photo").style.left=leftLoc+"px";
+                if(leftLoc>window.innerWidth-100)
+                leftLoc=0;
+            }, 100); //100 -> 200으로 바꾸면 더 느리게 감(0.2초마다 진행돼서)
+
+            //버튼 이벤트
+            document.querySelector(".btnstop").onclick=function(){
+                clearInterval(interval); //interval 함수 멈춤
+            }
+        </script>
+    </body>
+</html>

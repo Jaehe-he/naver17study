@@ -43,13 +43,55 @@
             //     this.style.color="red";
             // }
 
-            // //한번에 이벤트를 적용할 경우
+            //한번에 이벤트를 적용할 경우
+            for(let s of b){
+                s.onmouseover = function(){
+                    this.style.color="gray";
+                }
+                s.onmouseout = function(){
+                    this.style.color="black";
+                }
+            }
+        </script>
+        <hr>
+        <div class = "cars">
+            <script>
+                for(let i=1;i<=15;i++){
+                    document.write(`<img src="../mycar/mycar${i}.png"
+                    style="width:120px;height:120px;border:2px solid orange;margin:10px;">`);
+                }
+            </script>
+        </div>
+        <script>
+            //문제 : 자동차에 마우스를 올리면 다른 이미지로 바뀌고 벗어나면 다시 원래의 이미지로 변경
+            // 교수님의 풀이
+            let cars = document.querySelectorAll("div.cars>img");
+            console.log(cars.length);
+            for(let car of cars){
+                let oldPhoto="";
+                car.onmouseover=function(){
+                    //마우스가 위치한 곳의 이미지를 얻기
+                    oldPhoto=this.getAttribute("src");
+                    console.log(oldPhoto);
+
+                    //새로운 이미지로 변경
+                    this.setAttribute("src","../photo/K-049.png");
+                }
+                car.onmouseout = function(){
+                    this.setAttribute("src",oldPhoto);
+                }
+            }
+
+
+            // //내가 한 것(못풀음)
             // for(let s of b){
+            //     let b = document.querySelectorAll(".cars .src");
             //     s.onmouseover = function(){
-            //         this.style.color="gray";
+            //         this.img = `<img src = "../photo/${s}.jpg"
+            //         style="width:120px;height:120px;border:2px solid orange;margin:10px;">`;
             //     }
             //     s.onmouseout = function(){
-            //         this.style.color="black";
+            //         this.setAttribute("src", b);
             //     }
             // }
         </script>

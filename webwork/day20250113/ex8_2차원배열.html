@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <h6 class="alert alert-info">2차원 배열</h6>
+        <script>
+            let arr1=[ //4행 2열의 2차원 배열
+                ["장미꽃","hotpink"],
+                ["안개꽃","orange"],
+                ["다알리아","blue"],
+                ["국화꽃", "yellow"]
+            ];
+            document.write(`0행0열의 값은? ${arr1[0][0]}<br>`);
+            document.write(`1행의 1열의 값은? ${arr1[1][1]}<br>`);
+            document.write(`행의 갯수는? ${arr1.length}<br>`);
+            document.write(`0행의 열갯수는? ${arr1[0].length}<br>`);
+
+            for(let i=0;i<arr1.length;i++){
+                document.write(`<h5 style="color:${arr1[i][1]}">${arr1[i][0]}</h5>`);
+            }
+        </script>
+        <hr>
+        <script>
+            let arr2 = new Array(); //arr2는 4행 3열
+            arr2.push([100,56,67,100]);
+            arr2.push([89,100,72,89]);
+            arr2.push([96,58,49,78]);
+
+            for(let i=0;i<arr2.length;i++){
+                document.write(`<div style="width:70px;height:70px;float:left;">`)
+                for(let j=0;j<arr2[i].length;j++){
+                    document.write(`<div style="font-size:30px;border:1px solid gray;">${arr2[i][j]}</div>`);
+                }
+                document.write("</div>");
+            }
+        </script>
+    </body>
+</html>
