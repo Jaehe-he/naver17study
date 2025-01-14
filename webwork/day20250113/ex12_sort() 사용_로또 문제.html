@@ -1,3 +1,5 @@
+<!--개인적으로 궁금해서 찾아본 것-->
+<!-- 정렬을 sort()를 사용해서 풀 수 있지는 않은가?-->
 <!DOCTYPE html>
 <html>
 
@@ -42,7 +44,7 @@
         window.onload = function () {
             let lotto = document.querySelectorAll(".mylotto>.lotto");
             lotto[1].style.backgroundColor = "#ab8599";
-            lotto[2].style.backgroundColor = "#cc8501"
+            lotto[2].style.backgroundColor = "#cc8501";
             lotto[5].style.backgroundColor = "#db9981";
 
             //버튼이벤트
@@ -62,30 +64,12 @@
                     }
                 }
 
-                //오름차순으로 정렬한다
-                for (let i = 0; i < num.length - 1; i++) {
-                    for (let j = i + 1; j < num.length; j++) {
-                        if (num[i] > num[j]) {
-                            let temp = num[i];
-                            num[i] = num[j];
-                            num[j] = temp;
-                        }
-                    }
-                }
+                // 오름차순으로 정렬한다
+                num.sort((a, b) => a - b);
 
-                //위의 변수 lotto 에 정렬된 숫자를 넣어준다
-                // let a = document.querySelectorAll(".mylotto>.lotto");
-                // for (let i = 0; i < num.length; i++) {
-                //     a[i].innerHTML = `${num[i]}`;
-                // }
-                
-                // for (let i = 0; i < num.length; i++) {
-                //     document.querySelectorAll(".mylotto>.lotto")[i].innerHTML = `${num[i]}`;
-                // }
-
-                //강사님 풀이
-                for(let i=0;i<lotto.length;i++){
-                    lotto[i].innerHTML=num[i];
+                // 위의 변수 lotto 에 정렬된 숫자를 넣어준다
+                for (let i = 0; i < num.length; i++) {
+                    document.querySelectorAll(".mylotto>.lotto")[i].innerHTML = `${num[i]}`;
                 }
             }
         }

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+
+            div,dateview{
+                margin:20px;
+            }
+        </style>
+        <script>
+            window.onload=function(){
+                //처음 실행 시 자동으로 현재날짜에 대한 달력 나오게 하기
+                calendarView();
+                console.log(curYear+","+curMonth);
+
+                //년도 선택 시 curYear 변경
+                document.querySelector(".selyear").onchange=function(){
+                    curYear=this.value;
+                    console.log(curYear);
+                    calendarView(); //바뀐 날짜로 달력 다시 그리기
+                }
+
+                    //월 선택 시 curMonth 변경
+                    document.querySelector(".selmonth").onchange=function(){
+                    curMonth=this.value;
+                    console.log(curMonth);
+                    calendarView(); //바뀐 날짜로 달력 다시 그리기
+                }
+
+                //오늘 버튼 이벤트
+                document.querySelector("#btntoday").onclick=function(){
+                    
+                    //today로 변경
+                    console.log("todayYear="+todayYear);
+                    curYear=todayYear;
+                    curMonth=todayMonth;
+
+                    //select도 현재년월로 변경
+                    document.querySelector(".selyear").value=curYear;
+                    document.querySelector(".selmonth").value=curMonth;
+                    //달력 다시 출력
+                    calendarView();
+                }
+            }
+            function calendarView(){
+                //달력을 테이블로 그려서 .dateview에 넣기
+
+                //해당 월의 1일의 요일이 필요하므로 아래 코드 작성
+                let newdate = new Date(curYear, curMonth-1, 1); 
+                let week = newdate.getDay(); //요일 숫자
+                console.log("week="+week); //이번달 1일의 요일(0 : 일, 6:토)
+
+                //해당 년도의 월이 몇일까지 있는지 구하기
+                let endday;
+                switch(Number(curMonth)){
+                    case 2:
+                        endday=curYear%4==0 && curYear%100!=0||curYear%400==0?29:28;
+                        break;
+                    case 4: case 6: case 9: case 11:
+                        endday = 30;
+                        break;
+                    default:
+                        endday=31;
+                }
+                console.log("endday="+endday);
+
+                //출력
+                let s="";
+                s+=`
+                    <table class="table table-bordered">
+                        <caption align="top"><h5><b>${curYear}년 ${curMonth}월 달력
+                        </b></h5></caption>
+                        <thead>
+                            <tr align = "center">
+                                <td style ="background-color:#ddd;"><b>일</b></td>
+                                <td style ="background-color:#ddd;"><b>월</b></td>
+                                <td style ="background-color:#ddd;"><b>화</b></td>
+                                <td style ="background-color:#ddd;"><b>수</b></td>
+                                <td style ="background-color:#ddd;"><b>목</b></td>
+                                <td style ="background-color:#ddd;"><b>금</b></td>
+                                <td style ="background-color:#ddd;"><b>토</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+
+                `;
+
+                //달력 숫자 출력
+                //week 수만큼 빈칸 그리기
+                for(let i=1;i<=week;i++){
+                    s+= `<td align="center">&nbsp;</td>`;
+                }
+
+                //1~endday까지 출력(토요일은 tr닫고 다시 열기)
+                for(let i=1;i<=endday; i++){
+                    week++; //1씩 증가시킬경우 토요일마다 7의 배수가 된다
+                    s+=`<td style ="color:${week%7==1?'red':'black'};
+                    background-color:${curYear==todayYear&&curMonth==todayMonth&&i==todayDay?"yellow":"white"};"> ${i} </td>`; //일요일은 글자색을 빨간색으로 칠하기
+
+                    if(week % 7 == 0){ //토요일 출력 후 빠져나가기
+                        if(week==endday)
+                            s+="</tr>";
+                        else
+                            s+="<tr></tr>";
+                    }
+                }
+
+                //빠져나온 후 나머지 칸에 회색으로 숫자 1,2,3,...토요일까지 출력후 tr닫기
+                if(week%7!=0){
+                    let n=1;
+                    while(true){
+                        week++;
+                        s+=`<td style="color:#ddd;" align="center">${n++}</td>`;
+                        if(week%7==0){
+                            s+="</tr>";
+                            break;
+                        }
+                    }
+                }
+
+                // //오늘 버튼
+                // s+=`
+                //     <tr align="center">
+                //         <td colspan="7">
+                //             <button type="button" id="btntoday" class="btn btn-danger btn-sm">
+                //                 오늘
+                //             </button>
+                //         </td>
+                //     </tr>
+                // `;
+
+                s+="</tbody></table>";
+                document.querySelector("div.dateview").innerHTML=s;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div style="margin:20px; width : 500px">
+            <h3 class="alert alert-danger">자바스크립트로 만든 달력</h3>
+            <div class="input-group" style="width: 300px;">
+                <select class="selyear from-select" style="width:100px;">
+                    <script>
+                        //현재 날짜 구하기
+                        let date=new Date();
+                        let curYear = date.getFullYear(); //현재년도
+                        let curMonth = date.getMonth()+1; //현재월
+                        //let curDay = date.getDate(); //현재일
+                        // console.log(curDay);
+
+                        let todayYear = curYear;
+                        let todayMonth=curMonth;
+                        let todayDay=date.getDate(); //현재 일
+
+                        for(let y=curYear;y>=1950;y--){
+                            document.write(`<option value="${y}">${y}</option>`);
+                        }
+                    </script>
+                </select>
+                &nbsp;
+                <h4>년</h4>
+                &nbsp;&nbsp;
+                <select class="selmonth from-select" style="width:100px;">
+                    <script>
+                        for(let m=1;m<=12;m++){
+                            document.write(`<option ${m==curMonth?"selected":""}>${m}</option>`);
+                        }
+                    </script>
+                </select>
+                &nbsp;
+                <h4>월</h4>
+            </div>
+            <!--달력 출력 부분-->
+            <div class="dateview">111</div>
+            <div>
+                <button type="button" id="btntoday">오늘</button>
+            </div>
+        </div>
+    </body>
+</html>

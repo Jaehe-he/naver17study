@@ -1,9 +1,0 @@
-package day0106db;
-
-public class PersonDto {
-	private int num;
-	private String name;
-	private int age;
-	private String hp;
-	private Stirng blood;
-}
