@@ -101,6 +101,19 @@
                     s+= `<td align="center">&nbsp;</td>`;
                 }
 
+                //빠져나온 후 나머지 칸에 회색으로 숫자 1,2,3,...토요일까지 출력후 tr닫기
+                if(week%7!=0){
+                    let n=31;
+                    while(true){
+                        week++;
+                        s+=`<td style="color:#ddd;" align="center">${n--}</td>`;
+                        if(week%7==0){
+                            s+="</tr>";
+                            break;
+                        }
+                    }
+                }
+
                 //1~endday까지 출력(토요일은 tr닫고 다시 열기)
                 for(let i=1;i<=endday; i++){
                     week++; //1씩 증가시킬경우 토요일마다 7의 배수가 된다

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <h5 class="alert alert-danger">jQuery Event</h5>
+        <div class="photos">
+            <img src="../mycar/mycar13.png" width="200">
+            <img src="../mycar/mycar15.png" width="200">
+            <img src="../mycar/mycar9.png" width="200">
+        </div>
+
+        <script>
+            //첫번째 이미지에 마우스를 올리면 mycar15으로 변경하고 벗어나면 다시 원래대로
+            $("div.photos>img:eq(0)").mouseover(function(){ //on이 없음. onmouseover 아님
+                $(this).attr("src","../mycar/mycar1.png");
+            });
+
+            $("div.photos>img:eq(0)").mouseout(function(){
+                $(this).attr("src","../mycar/mycar13.png");
+            });
+
+            //두번째, 세번째도 마찬가지로 변경하는데 방식을 모두 다르게 해보자
+            //hover=mouseover+mouseout
+            $("div.photos>img:eq(1)").hover(function(){
+                //over
+                $(this).attr("src","../mycar/mycar11.png");
+            },function(){
+                //out
+                $(this).attr("src","../mycar/mycar15.png");
+            });
+
+            //세번째
+            //on : 처음 로딩 시 존재하지 않았던 나중에 추가되는 요소들에 대해서도
+            //이벤트 적용이 된다(직접 주는 이벤트는 로딩 시 존재하지 않은 요소들은 적용안됨)
+            //1.8이전에는 live 였다가 1.8이후 on으로 변경
+
+            // $(document).on("mouseover","div.photos>img:eq(2)",function(){
+            //     $(this).attr("src","../mycar/mycar7.png");
+            // });
+
+            $("div.photos>img:eq(2)").on("mouseover",function(){
+                $(this).attr("src","../mycar/mycar15.png");
+            });
+            
+            $(document).on("mouseout","div.photos>img:eq(2)",function(){
+                $(this).attr("src","../mycar/mycar9.png");
+            });
+
+            //img:first를 이용해서 첫번째에 마우스를 올리면 border 설정
+            //벗어나면 border 없애기
+            //selector의 결과가 배열형이라 하더라도 바로 이벤트 적용
+            $("div.photos>img").hover(function(){
+                $(this).css("border","10px inset gold");
+            },function(){
+                $(this).css("border","none");
+            });
+        </script>
+        <hr>
+        <div style="border:1px solid black;width:200px;height:200px;" class="happy">
+            <button type="button" class="onebutton">버튼 추가</button>
+        </div>
+
+        <script>
+            $(".onebutton").click(function(){
+                let s=`<button type="button" class="twobutton">새로운 버튼</button>`;
+                
+                $(".happy").append(s);
+            })
+
+            // //나중에 추가된 .twobutton에 이벤트를 적용시켜보자
+            // $(".twobutton").click(function(){
+            //     alert("이벤트가 됩니다");
+            // }) //<- 안됨. 로딩 시 존재하지 않던 버튼. 즉, 나중에 추가된 요소는 일반 이벤트 적용 안됨
+
+            // $(".twobutton").on("click",function(){
+            //     alert("이벤트가 됩니다");
+            // }); //안됨
+
+            $(document).on("click",".twobutton",function(){
+                alert("이벤트가 됩니다");
+            });
+        </script>
+        <hr>
+        <img src="../photo/12.jpg" width="200" class="myphoto">
+
+        <script>
+            //.myphoto에 마우스를 올리면 이미지변경, 벗어나면 원래 이미지로
+            //클릭 시 alert 메세지
+            //bind : 여러 이벤트들을 묶어서 한꺼번에 처리한다
+            $(".myphoto").bind({
+                click:function(){ //클릭 시 발생하는 이벤트
+                        alert("사진을 누르셨습니다.")
+                },
+                mouseover:function(){
+                    $(this).attr("src","../photo/15.jpg")
+                },
+
+                mouseout:function(){
+                    $(this).attr("src","../photo/12.jpg")
+                }
+            });
+        </script>
+    </body>
+</html>

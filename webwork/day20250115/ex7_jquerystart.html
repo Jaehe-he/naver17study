@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+        <script>
+            //<onload 방법 3가지>
+            //방법1.
+            // window.onload = function(){
+            //     alert("load #1");
+            // }
+
+            //방법2.
+            // $(document).ready(function(){
+            //     alert("load #2");
+            // });
+
+            //방법3. 가장 많이 사용
+            $(function(){
+                // alert("load #3");
+                //style sheet 변경
+                //css("속성") : 해당 속성에 대한 값을 반환
+                //css("속성", "값") : 해당 속성의 값이 변환
+
+                //태그 안의 속성 변경
+                //attr("속성") : 해당 속성에 대한 값을 반환
+                //attr("속성", "값"): 해당 속성의 값이 변환
+
+                $("div.photos>img").css("width","200px");//style은 단위를 붙여줘야 함
+                $("div.photos>img").css("height","150px");
+                $("div.photos>img").css("border","2px solid green");
+
+                //여러개의 스타일을 한번에 변경할 경우 {}안에 적기
+                $("div.photos2>img").css({
+                    "width":"100px",
+                    "height":"130px",
+                    "border":"solid 1px red"
+                });
+
+                // 스타일을 연달아 쓰기
+                $("div.one>div").css("color","pink").css("background-color","black"); //div 아래 있는 one의 div에 각각 색상을 분홍, 배경을 블랙으로 놓겠다
+
+                $("div.one2>div.two").css({
+                    "color":"red",
+                    "background-color":"yellow",
+                    "font-size":"25px",
+                    "width":"200px",
+                    "border":"3px inset gray"
+                });
+
+                //selector를 여러개 지정 시
+                $("#container>.one,#container>.three").css("color","blue");
+
+                //다른 selector의 글자색을 얻어서 특정 selector에 적용하기
+                $("#container>.three").css("color",$("div.one>.two").css("color"));
+                //위와 같은 곳에 배경색도 얻어서 적용시켜보세요
+                $("#container>.three").css("background-color",$("div.one>.two").css("background-color"));
+
+                //attr로 속성을 변경해보자
+                $("div.photos>img").attr("src","../photo/12.jpg");
+                //여러개 중 특정 위치의 이미지만 변경하고자 할 경우
+                //0번 이미지만 변경 (eq를 밖에다 씀)
+                $("div.photos>img").eq(0).attr("src","../mycar/mycar1.png"); //eq : equals
+                
+                //1번 이미지만 변경 (eq를 안에다 씀)
+                $("div.photos>img:eq(1)").attr("src","../mycar/mycar10.png");
+
+                //2번 이후의 이미지 모두 변경
+                $("div.photos2>img:gt(2)").attr("src","../photo2/14.jpg");
+
+                //2번 이전의 이미지 모두 변경
+                $("div.photos2>img:lt(2)").attr("src","../photo2/29.jpg");
+                
+
+            });
+        </script>
+    </head>
+
+    <body>
+        <h5 class="alert alert-danger">jQuery의 css, attr 함수 공부하기</h5>
+        <div class="one">
+            <div class="two">One 아래의 Two</div>
+            <div class="three">One 아래의 Three</div>
+        </div>
+        <div class="one2">
+            <div class="two">One2 아래의 Two</div>
+            <div class="three">One2 아래의 Three</div>
+        </div>
+        <div id="container">
+            <h5 class="one">id-container 아래의 one클래스</h5>
+            <h5 class="two">id-container 아래의 two클래스</h5>
+            <h5 class="three">id-container 아래의 three클래스</h5>
+        </div>
+        <hr>
+        <div class="photos">
+            <img src="../mycar/mycar13.png">
+            <img src="../mycar/mycar15.png">
+            <img src="../mycar/mycar1.png">
+            <img src="../mycar/mycar12.png">
+        </div>
+        <div class="photos2">
+            <img src="../photo2/13.jpg">
+            <img src="../photo2/15.jpg">
+            <img src="../photo2/1.jpg">
+            <img src="../photo2/12.jpg">
+            <img src="../photo2/9.jpg">
+        </div>
+    </body>
+</html>

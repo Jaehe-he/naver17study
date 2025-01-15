@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+        <script>
+            let selcount;
+            window.onload=function(){
+                selcount=document.querySelector(".selcount");
+                imageGridView(); // 시작시 이미지 나타내기
+
+                selcount.onchange=function(){
+                    imageGridView();
+                }
+            }
+
+            function imageGridView(){
+                //갯수 구하기
+                let count=selcount.value;
+                let s=`
+                <table class="border bordered">
+                    <caption align="top"><b>${count}개씩 이미지 보기
+                        <tr>`;
+                let col=0;
+                for(let i=1;i<=34;i++){
+                    col++;
+
+                    s+=`
+                        <td align="center" valign="middle" style="background-color:lightcyan;">
+                            <img src="../photo2/${i}.${i==24?'gif':'jpg'}"
+                            style="width:90%;border:1px solid gray;">
+                        </td>
+                    `;
+                    if(col%count==0)
+                        s+="</tr><tr>";    
+                }
+                s+=`</table>`;
+
+                document.querySelector(".imageview").innerHTML=s;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div style="margin:20px; width:500px;">
+            <h6 class="alert alert-info">table로 이미지 나타내기</h6>
+            <select style="width:100px;" class="selcount">
+                <option value="3">3개씩</option>
+                <option value="4">4개씩</option>
+                <option value="5" selected>5개씩</option>
+                <option value="6">6개씩</option>
+                <option value="7">7개씩</option>
+                <option value="8">8개씩</option>
+            </select>
+            <!--이미지를 나타낼 영역-->
+            <div class="imageview" style="margin-top:20px;">
+                <!-- 111 --> 
+                <!-- document.querySelectorAll("select.selcount").onchange = function(){      
+                <table>             
+                            <tr>
+                                <script>
+                                for(let i=0;i<=selcount.value;i++){ 
+                                    <td>
+                                        <img src = "../photo2/1.jpg"></img>
+                                    </td>
+                            }
+                        </script>
+                    </tr>
+                        } -->
+                    
+                
+            </div>
+        </div>
+    </body>
+</html>
