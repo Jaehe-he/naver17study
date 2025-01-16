@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="margin:30px;">
+            <h3><b>글꼴 모양을 선택하세요</b></h3>
+            <div lcass="input-group">
+                <label>
+                    <input type="checkbox" class="form-check-input"
+                    id="chk1">&nbsp; 굵게
+                </label>
+                &nbsp;&nbsp;
+                <label>
+                    <input type="checkbox" class="form-check-input"
+                    id="chk2">&nbsp; 기울게
+                </label>
+                &nbsp;&nbsp;
+                <label>
+                    <input type="checkbox" class="form-check-input"
+                    id="chk3">&nbsp; 밑줄
+                </label>
+                &nbsp;&nbsp;
+            </div>
+            <br>
+            <h3 style="margin-top:30px;"><b>글자색을 선택하세요</b></h3>
+            <div class="input-group">
+                <label>
+                    <input type="radio" class="form-check-input fcolor"
+                    value="red" name="fontcolor">&nbsp; 빨간색
+                </label>
+                &nbsp;&nbsp;
+                <label>
+                    <input type="radio" class="form-check-input fcolor"
+                    value="black" checked name="fontcolor">&nbsp; 검정색
+                </label>
+                &nbsp;&nbsp;
+                <label>
+                    <input type="radio" class="form-check-input fcolor"
+                    value="pink" name="fontcolor">&nbsp; 분홍색
+                </label>
+                &nbsp;&nbsp;
+                <label>
+                    <input type="radio" class="form-check-input fcolor"
+                    value="orange" name="fontcolor">&nbsp; 오렌지색
+                </label>
+                &nbsp;&nbsp;
+                <label>
+                    <input type="radio" class="form-check-input fcolor"
+                    value="blue" name="fontcolor">&nbsp; 파란색
+                </label>
+            </div>
+            <br>
+            <button type="button" class="btn btn-outline-danger"
+            id="btnresult" style="margin : 20px 50px;">글꼴에 선택한 값 적용하기
+            </button>
+            
+            <div class="box" style="margin:20px 20px; font-size : 22px; font-family : 'Nanum Pen Script'; font-size : 30px;">
+                안녕하세요, I want to go Home!!! Please...
+            </div>
+        </div>
+
+        <script>
+            $("#btnresult").click(function(){ 
+                //굵게 //없애는게 none이 아닌 normal
+                let b = $("#chk1").is(":checked");
+                if(b)
+                    $(".box").css("font-weight","bold");
+                else
+                    $(".box").css("font-weight","normal");
+
+                //기울게 //없애는게 none이 아닌 normal
+                if ($("#chk2").is(":checked"))
+                    $(".box").css("font-style", "italic");
+                else
+                    $(".box").css("font-style", "normal");
+                
+                //밑줄 //없애는게 none
+                if ($("#chk3").is(":checked"))
+                    $(".box").css("text-decoration", "underline");
+                else
+                    $(".box").css("text-decoration", "none");
+
+                //글자색
+                //클래스로 선택된 값을 가져오기
+                //checked 적는 이유 : 체크 하는 순간 가져와야하기 때문
+                // let fcolor=$(".fcolor:checked").val();
+                // $(".box").css("color",fcolor);
+
+                //id, class 없고 name만 있을 경우 name으로 선택된 값 가져오려면,
+                //[name='']으로 가져와야함
+                let fcolor=$("[name='fontcolor']:checked").val();
+                $(".box").css("color",fcolor);
+
+            })
+        </script>
+    </body>
+</html>

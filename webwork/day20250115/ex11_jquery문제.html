@@ -32,7 +32,11 @@
             //문제1
             //largephoto의 위치를 position = left:100px,top:300px,border:10px solid gold
             //로 위치 변경(css사용)
-            $(".largephoto").css({"border" : "10px solid gold",
+            $(".largephoto").css({
+                /*속성값은 한단어일 경우는 따옴표("")생략 가능,
+                -(하이픈)이 들어가는 속성은 반드시 따옴표로 감싸야함
+                */
+                "border" : "10px solid gold",
                 "position" : "absolute",
                 "left" : "100px",
                 "top" : "300px"
@@ -41,15 +45,28 @@
 
             //문제2
             //.shop에 마우스를 올리면 사진을 추출해서 .largephoto의 사진을 변경하시오
+            // $(".shop").mouseover(function(){
+            //     $(".largephoto").attr("src",$(this).attr("src"))
+            // })
+
+            //문제 2의 강사님 코드
             $(".shop").mouseover(function(){
-                $(".largephoto").attr("src",$(this).attr("src"))
+                let srcImg = $(this).attr("src");
+                //큰 사진에 적용
+                $(".largephoto").attr("src",srcImg);
             })
+
             //문제3
             //.largephoto에 마우스를 올리면 해당 이미지 아래에
             //"안녕하세요!!"라는 메시지를 추가하시오.
+            // $(".largephoto").mouseover(function(){
+            //     $("img.largephoto").after("안녕하세요!!");
+            // })
+
+            //문제3의 강사님 코드
             $(".largephoto").mouseover(function(){
-                $("img.largephoto").after("안녕하세요!!");
-            })
+                $(this).after("<h6>안녕하세요</h6>");
+            });
             
         </script>
     </body>
