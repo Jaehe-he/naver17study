@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="a">
+            <h5>Hello #1</h5>
+            <img src="../mycar/mycar10.png" width="100">
+        </div>
+        <div class="a">
+            <h5>Hello #2</h5>
+            <img src="../mycar/mycar8.png" width="100">
+        </div>
+        <div class="a">
+            <h5>Hello #3</h5>
+            <img src="../mycar/mycar5.png" width="100">
+        </div>
+        <hr>
+        <h5 class="title">111</h5>
+        <img src="" class="mainphoto"
+        onerror="this.src='../food/11.jpg'" width="300">
+    </body>
+
+    <script>
+        $("div.a").css({
+            "width" : "200px",
+            "height" : "100px",
+            "border" : "1px solid gray",
+            "margin" : "20px",
+        });
+
+        //selector를 이용한 반복문 each문
+        $("div.a").each(function(idx, ele){ //ele : div a가 들어옴. 필요 없으면 생략해도 됨
+            let r=parseInt(Math.random()*256);
+            let g=parseInt(Math.random()*256);
+            let b=parseInt(Math.random()*256);
+            let color=`rgb(${r},${g},${b})`;
+
+            // $(this).css("background-color",color);
+            $(ele).css("background-color",color); // 위와 동일한 코드(화살표 함수 쓸 때 this 못쓰기 때문에 사용하면 됨)
+        });
+
+        /*jquery에서 노드 찾기
+        next() : 다음 노드(태그)
+        prev() : 이전 노드(태그)
+        find/children : 자식 노드에서 찾을 때 사용
+        parent : 부모 노드
+        parents : 최상위 부모노드
+        siblings : 형제 노드
+        */
+
+        /*
+        //div.a에서 mouseover 이벤트를 구현한 경우
+        $("div.a").mouseover(function(){
+            //1. 배경색을 얻어서 h5.title의 배경색으로 넣는다
+            let bcolor=$(this).css("background-color");
+            $("h5.title").css("background-color",bcolor);
+            //2. 하위태그(마우스 기준) 중 h5의 text를 얻어서 h5.title에 넣는다
+            
+            //방법1. find로 사용
+            // let msg=$(this).find("h5").text();
+            // $("h5.title").text(msg)
+
+            //방법2. children으로 사용
+            let msg=$(this).children("h5").text();
+            $("h5.title").text(msg);
+            
+            //3. 하위태그 중 img의 src를 얻어서 img.mainphoto에 넣는다
+            // let imgSrc = $(this).find("img").attr("src");
+            // $("img.mainphoto").attr("src",imgSrc);
+
+            let imgSrc = $(this).children("img").attr("src");
+            $("img.mainphoto").attr("src",imgSrc);
+        });
+        */
+
+        //div.a>img에서 mouseover 이벤트로 구현한 경우에
+        // 위와 같은 결과가 나오도록 하려면
+        $("div.a>img").mouseover(function(){
+            //이미지에 마우스를 올려야 색깔 추출됨
+            //1. 부모의 배경색을 얻어서 h5.title의 배경색으로 넣는다
+            let bcolor = $(this).parent().css("background-color");
+            $("h5.title").css("background-color",bcolor);
+
+            //2. 형제태그 중 h5의 text를 얻어서 h5.title에 넣는다
+            let msg=$(this).siblings("h5").text();
+            $("h5.title").text(msg);
+
+            //3. 자기 자신의 src를 얻어서 img.mainphoto에 넣는다
+            let imgSrc=$(this).attr("src");
+            $("img.mainphoto").attr("src",imgSrc);
+        });
+    </script>
+</html>
