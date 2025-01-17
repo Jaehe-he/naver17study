@@ -86,9 +86,6 @@
                 <h6 class="fnum" style="margin-left:10px;">30</h6>
             </div>
             <br>
-            <button type="button" class="btn btn-outline-danger"
-            id="btnresult" style="margin : 20px 50px;">글꼴에 선택한 값 적용하기
-            </button>
             
             <div class="box" style="margin:20px 20px; font-size : 22px; font-family : 'Nanum Pen Script'; font-size : 30px;">
                 안녕하세요, I want to go Home!!! Please...
@@ -104,47 +101,60 @@
                 $(".fnum").text($(this).val());
             });
 
-            $("#btnresult").click(function(){ 
-                //굵게 //없애는게 none이 아닌 normal
-                let b = $("#chk1").is(":checked");
-                if(b)
+            //굵게 이벤트
+            $("#chk1").click(function(){
+                if($(this).is(":checked"))
                     $(".box").css("font-weight","bold");
                 else
-                    $(".box").css("font-weight","normal");
+                    $(".box").css("font-weight", "normal");
+            });
 
-                //기울게 //없애는게 none이 아닌 normal
-                if ($("#chk2").is(":checked"))
-                    $(".box").css("font-style", "italic");
+            //기울게 이벤트
+            $("#chk2").click(function(){
+                if($(this).is(":checked"))
+                    $(".box").css("font-style","italic");
                 else
                     $(".box").css("font-style", "normal");
-                
-                //밑줄 //없애는게 none
-                if ($("#chk3").is(":checked"))
-                    $(".box").css("text-decoration", "underline");
+            });
+
+            //밑줄 이벤트
+            $("#chk3").click(function(){
+                if($(this).is(":checked"))
+                    $(".box").css("text-decoration","underline");
                 else
                     $(".box").css("text-decoration", "none");
-
-                //글자색
-                //클래스로 선택된 값을 가져오기
-                //checked 적는 이유 : 체크 하는 순간 가져와야하기 때문
-                // let fcolor=$(".fcolor:checked").val();
-                // $(".box").css("color",fcolor);
-
-                //name으로 선택된 값 가져오기
-                //id, class 없고 name만 있을 경우 name으로 선택된 값 가져오려면,
-                //[name='']으로 가져와야함
-                let fcolor=$("[name='fontcolor']:checked").val();
-                $(".box").css("color",fcolor);
-
-                //배경색 적용(버튼 눌렀을 때)
-                $(".box").css("background-color",$("#bcolor").val());
-
-                //버튼 안에 글꼴 적용
-                $(".box").css("font-family", $(".selfont").val());
-
-                //글자크기 적용하기
-                $(".box").css("font-size",$("#fsize").val()+"px");
             });
+
+
+            //글자색 이벤트
+            $(".fcolor").click(function(){
+                $(".box").css("color",$(this).val());
+            });
+
+            //배경색 이벤트
+            $("#bcolor").change(function(){
+                $(".box").css("background-color",$(this).val());
+            });
+
+            //글꼴
+            $(".selfont").change(function(){
+                $(".box").css("font-family",$(this).val());
+            });
+
+            //글자크기
+            //range 이벤트
+            // $("#fsize").change(function(){
+            //     $(".fnum").text($(this).val());
+
+            //     $(".box").css("font-size",$(this).val()+"px");
+            // });
+
+            //mousemove : 마우스 움직이지마자 바뀌도록 설정
+            $("#fsize").mousemove(function(){
+                $(".fnum").text($(this).val());
+
+                $(".box").css("font-size", $(this).val()+"px");
+            })
         </script>
     </body>
 </html>

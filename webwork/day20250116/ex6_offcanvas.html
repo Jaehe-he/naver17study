@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 Study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+
+            div.offcanvas-body>p{
+                cursor:pointer;
+            }
+
+            div.offcanvas-body>p:hover{
+                color:pink;
+                background-color : black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h5 class="alert alert-info" style = "width : 700px">BS5의 OffCanvas</h5>
+
+        <!--side bar에 나오는 부분-->
+        <!-- 사이드바 나오는 위치 : start,end,top,bottom
+        offcanvas offcanvas-start : 왼쪽, end : 오른쪽, top : 위쪽, bottom : 아래쪽-->
+        <!-- data-bs-dismiss=offcanvas" : 선택하면 닫힘(사이드바가 들어감)
+            data-bs-toggle = ?    
+        -->
+        <div class="offcanvas offcanvas-start" id="foodsbar">
+            <div class="offcanvas-header">
+              <h1 class="offcanvas-title">스타벅스 메뉴 선택</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+              <p src="../food/1.jpg" price="18000" data-bs-dismiss="offcanvas">햄에그 샌드위치</p>
+              <p src="../food/11.jpg" price="35000" data-bs-dismiss="offcanvas">망고빙수</p>
+              <p src="../food/8.jpg" price="8000" data-bs-dismiss="offcanvas">야채잔뜩샌드위치</p>
+              <p src="../food/6.jpg" price="11000" data-bs-dismiss="offcanvas">오므라이스</p>
+              <p src="../food/10.jpg" price="8000" data-bs-dismiss="offcanvas">햄마요덮밥</p>
+            </div>
+          </div>
+        <!--side bar에 나오는 부분 끝-->
+        
+        <!--body에 나오는 부분-->  
+        <!--data-bs-toggle="offcanvas" data-bs-target="#foodsbar" 때문에 나오는 것임
+        -> side bar의 id랑 동일해야함
+        -->
+          <div class="container-fluid mt-3" style="margin-left:300px;">
+            <h3> 오늘부터 3일간 세일 이벤트</h3>
+            <p>모든 제품 20% 세일합니다. 단, 사이렌 오더 안됩니다.</p>
+            <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#foodsbar">
+              스타벅스 메뉴 고르기
+            </button>
+            <br><br>
+            <h2 class="title">제품 제목 나오게 하기</h2>
+            <figure style="width:250px;" class="select-menu">
+                <img src="../food/11.jpg" width="250" border="2">
+                <figcaption style="text-align : center;">
+                    <h1>12000원</h1>
+                </figcaption>
+            </figure>
+          </div>
+    </body>
+
+    <script>
+        $(".offcanvas-body>p").click(function(){
+            //1. src 속성값 가져오기
+            let imgSrc=$(this).attr("src");
+
+            //2. figure.select-menu>img의 src변경
+            $("figure.select-menu>img").attr("src",imgSrc);
+
+            //3. price 속성 값 가져오기
+            let price = $(this).attr("price");
+
+            //4. figure.select-menu h1에 가격을 넣는데
+            //원래 가격은 빨간색으로 취소선 주고,
+            //그 옆에 검정색으로 20% 할인된 가격 넣어주기
+            let dc_price = price*0.8
+            //strike가 들어가기 때문에 html로 해야함
+            $("figure.select-menu h1").html(
+                `<strike style="color:red;">${price}</strike>
+                &nbsp;${dc_price}원`);
+
+            //5. 제목을 얻어서(text) h2.title에 넣기
+            $("h2.title").text($(this).text());
+        });
+    </script>
+</html>
