@@ -1,0 +1,73 @@
+body{
+    margin:0;
+    padding : 0;
+}
+
+li{
+    list-style:none;
+}
+
+body,html{
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background: url(../jquery_image/bg.png) center center;
+    background-size : cover;
+}
+
+#sunban_wrapper{
+    width:780px;
+    margin : 50px auto;
+}
+
+#control-wrapper{
+    width:300px;
+    height : 420px;
+    position : fixed;
+    left :0;
+    bottom: 0;
+}
+
+.sunban{
+    height : 150px;
+    margin-bottom: 50px;
+    width : 800px;
+    background : url(../jquery_image/sunban.png) no-repeat center bottom;
+}
+
+.sunban li{
+    float:left;
+    width:128px;
+    height : 128px;
+}
+
+.money li{
+    cursor : pointer;
+}
+
+.gun{
+    width:300px;
+    height:250px;
+    background:url(../jquery_image/gun.png) no-repeat;
+    cursor : pointer;
+    text-indent : -999px; /*총 글자 없애기*/
+}
+
+.gun:active{
+    background-position: bottom;
+}
+
+#msg{
+    clear:both;
+    position: absolute;
+    left:400px;
+    top:500px;
+    width:400px;
+    height : 90px;
+    line-height:90px;
+    font-size:22px;
+    border:10px groove orange;
+    text-align: center;
+}

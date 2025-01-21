@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+            div.box{
+                float: left;
+                width: 130px;
+                margin: 5px;
+                border: 1px solid gray;
+                border-radius: 20px;
+                text-align: center;
+                background-color: #ddd;
+                padding: 10px;
+            }
+            div.box>figure>img{
+                width: 110px;
+                height: 120px;
+                border-radius: 20px;
+            }
+            div.box>figure>figcaption{
+                text-align: center;
+            }
+
+            .del{
+                font-size: 1.3em;
+                color: red;
+                cursor: pointer;
+                position: relative;
+                left: 50px;
+                top:-180px;
+
+            }
+        </style>
+    </head>
+    <body>
+    <button type="button" id="alldel" class="btn btn-danger">
+        선택한 상품 모두 삭제하기
+    </button>
+    <label style="margin-left: 100px;">
+        <input type="checkbox" class="chkall">전체선택
+    </label>
+    <div class="main">
+     <script>
+        let arr=[
+        {"img":"../photo2/14.jpg","title":"색색단화",price:23000},
+        {"img":"../photo2/23.jpg","title":"갈색모자",price:19000},
+        {"img":"../photo2/32.jpg","title":"화이트투피스",price:35000},
+        {"img":"../photo2/30.jpg","title":"보라색머리띠",price:11000},
+        {"img":"../photo2/28.jpg","title":"원피스",price:43000},
+        {"img":"../photo2/26.jpg","title":"노랑색머리끈",price:5000},
+        {"img":"../photo2/10.jpg","title":"뿌띠스카프",price:19000},
+        {"img":"../photo2/8.jpg","title":"회색스웨터",price:31000}
+        ];
+
+        let s="";
+        $.each(arr,function(idx,item){
+            s+=
+            `
+            <div class="box">
+                <figure>
+                    <img src="${item.img}">
+                    <figcaption>
+                        <h6>${item.title}</h6>
+                        <h6>${item.price}원</h6>
+                        <i class="bi bi-x-circle del"></i>
+                        <br>
+                        <label>
+                            <input type="checkbox" class="chkdel">삭제
+                        </label>
+                    </figcaption>
+                </figure>
+            </div>
+            `;
+        });
+        document.write(s);
+     </script>   
+     </div>
+    </body>
+    <script>
+      $(".del").click(function(){
+        let ans=confirm("현재 상품을 삭제하시겠습니까?");
+        if(ans)
+           // $(this).parent().parent().parent().remove();//방법1
+           $(this).parents("div.box").remove();//방법2
+      }); 
+      
+      $("#alldel").click(function(){
+        //체크된 상품의 갯수
+        let len=$(".chkdel:checked").length;
+        if(len==0)
+            alert("삭제할 상품을 선택해주세요");
+        else{
+            $(".chkdel:checked").each((idx,ele)=>
+                $(ele).parents("div.box").remove());
+        }
+      });
+
+      $(".chkall").click(function(){
+        //체크상태알아보기
+        let ck=$(this).is(":checked");
+        //alert(ck);
+        //$(".chkdel").attr("checked",ck);
+        $(".chkdel").prop("checked",ck);//true/false로 되는 속성은 prop을 권장
+      });
+    </script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>502 study</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+    <body>
+     <div style="margin: 20px;">
+        <h5>취미를 모두 선택하세요</h5>
+        <div>
+            <label>
+                <input type="checkbox" class="hobby" value="게임">&nbsp;게임
+            </label>
+            <label>
+                <input type="checkbox" class="hobby" value="낚시">&nbsp;낚시
+            </label>
+            <label>
+                <input type="checkbox" class="hobby" value="여행">&nbsp;여행
+            </label>
+            <label>
+                <input type="checkbox" class="hobby" value="음악감상">&nbsp;음악감상
+            </label>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-danger"
+        id="btn1">결과 확인</button>
+    
+        <div class="result" style="font-size: 20px;margin: 20px 50px;"></div>
+    
+    </div>   
+    <script>
+        $("#btn1").click(function(){
+            let s="";
+            s+="총 취미 체크박스 갯수:"+$(".hobby").length+"<br>";
+            s+="체크된 갯수 : "+$(".hobby:checked").length+"<br>";
+            s+="<hr>";
+
+            let len=$(".hobby:checked").length;//체크된 갯수
+            if(len==0)
+                s+="선택된 취미가 없습니다<br>";
+            else{
+                s+="나의 취미는 ";
+                $(".hobby").each(function(idx,ele){
+                    if($(this).is(":checked"))
+                        s+="["+$(this).val()+"]";
+                });
+                s+="입니다<br>";
+            }
+
+            s+="<hr>";
+            if(len==0)
+                s+="선택된 취미가 없습니다<br>";
+            else{
+                s+="나의 취미는 ";
+                $(".hobby:checked").each(function(idx,ele){
+                    s+="["+$(this).val()+"]";
+                });
+                s+="입니다<br>";
+            }
+            $("div.result").html(s);
+        });
+    </script>
+    <hr>
+    <div style="margin: 30px;">
+        <h5>구현 가능한 IT언어를 모두 선택하시오</h5>
+        <label>
+            <input type="checkbox" name="itlang" value="Java">&nbsp;Java
+        </label>
+        <label>
+            <input type="checkbox" name="itlang" value="SpringBoot">&nbsp;SpringBoot
+        </label>
+        <label>
+            <input type="checkbox" name="itlang" value="Python">&nbsp;Python
+        </label>
+        <label>
+            <input type="checkbox" name="itlang" value="jQuery">&nbsp;jQuery
+        </label>
+    </div>
+    <button type="button" class="btn btn-outline-success btn-sm" id="btn2">
+        구현 가능한 언어는?
+    </button>
+    <div class="result2" style="margin: 30px;font-size: 20px;"></div>
+
+    <script>
+      $("#btn2").click(function(){
+        let len=$("input[name='itlang']:checked").length;
+        let s="";
+        if(len==0)
+            s+="구현 가능한 IT 언어가 없습니다";
+        else{
+            s+="구현 가능한 언어는 ";
+            $("input[name='itlang']:checked").each((idx,ele)=>{
+                s+="["+$(ele).val()+"]";
+            });
+            s+=" 구현 가능합니다";
+        }
+        $("div.result2").html(s);
+      });  
+    </script>
+    </body>
+</html>
