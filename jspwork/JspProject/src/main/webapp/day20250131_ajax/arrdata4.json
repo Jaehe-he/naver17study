@@ -1,0 +1,6 @@
+[
+	{"fname" : "햄치즈샌드위치", "photo" : "../image/food/1.jpg", "price" : 12000},
+	{"fname" : "망고빙수", "photo" : "../image/food/11.jpg", "price" : 9000},
+	{"fname" : "햄마요덮밥", "photo" : "../image/food/10.jpg", "price" : 8500},
+	{"fname" : "버섯솥밥", "photo" : "../image/food/7.jpg", "price" : 15000}
+]

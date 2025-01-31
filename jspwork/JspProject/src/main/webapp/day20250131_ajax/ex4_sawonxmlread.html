@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+   <title>502 html study</title>
+   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+   <style>
+      body *{
+         font-family: 'Jua';
+      }
+   </style>
+   <script type="text/javascript">
+      let searchword = "";
+         $(function(){
+            list();
+            
+            $(".searchword").keyup(function(e){
+               //searchword = e.target.value; // 방법 1
+               searchword = $(this).val(); // 방법 2
+               list();
+            });
+         });
+         
+         function list()
+         {
+            $.ajax({
+               type: "get",
+               dataType:"xml",
+               url:"./sawontoxml.jsp",
+               success: function(res){
+                  let s="";
+                  s+=`<table class="table table-bordered" style="width:400px;">`;
+                  
+                  // 반복문
+                  $(res).find("sawon").each(function(idx,ele){
+                     let e = $(ele);
+                     //if(e.find("sname").text().indexOf(searchword)!=-1){
+                      if(e.find("sname").text().includes(searchword)){
+                    	  
+                      
+                     s+=`
+                        <tr>
+                           <td width="180">
+                              <img src='${e.find("sphoto").text()}'
+                                 style="width:150px;height:170px">
+                           </td>
+                        
+                           <td valign="middle">
+                              이름: ${e.find("sname").text()}<br>
+                              혈액형: ${e.find("sblood").text()}<br>
+                              태어난 연도: ${e.find("sbirth").text()}<br>
+                              입사일: ${e.find("ipsaday").text()}<br>
+                              등록일: ${e.find("writeday").text()}<br>
+                           </td>
+                        </tr>   
+                     `;
+                     }
+                  });
+                  
+                  s+="</table>";
+                  $(".sawonlist").html(s);
+               }
+            });
+         }
+   </script>
+</head>
+<body>
+<div style="margin:20px;">
+   <h5 class="alert alert-danger">Sawon XML 데이터 읽기</h5>
+   <input type="text" class="searchword form-control" placeholder="검색할 이름 입력"
+      style="width:300px;">
+   <div class="sawonlist">111</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>502 html study </title>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+	<style>
+	body *{
+		font-family: 'Jua';
+	}
+	</style>
+</head>
+<body>
+<img src = "../image/food/11.jpg" width = "200" border="1">
+<br>
+<button type="button" id="btn1">data1.xml 읽기</button>
+<button type="button" id="btn2">data2.json 읽기</button>
+<hr>
+<div class="result">111</div>
+<script type="text/javascript">
+	$("#btn1").click(function(){
+		$.ajax({
+			type:"get", //get인지 post인지 먼저 type을 적어줌
+			dataType:"xml", //html인지 text인지 json인지...
+			url:"./data1.xml",
+			success:function(res){
+				let len=$(res).length;
+				//alert(len); //1
+				let s="";
+				
+				s+="이름 : " +$(res).find("name").text()+"<br>";
+				s+="지역 : " +$(res).find("name").attr("city")+"<br>";
+				s+="나이 : " +$(res).find("age").text()+"세";
+				$(".result").html(s).css("color","blue");
+				},
+			statusCode:{ //오류 발생 시 출력될 메시지
+				404:function(){
+					alert("xml 파일을 찾을 수 없습니다.");
+				},
+				505:function(){
+					alert("서버 오류.. 코드들 다시 한 번 보세요.");
+				}
+			}
+		});
+	});
+	
+	$("#btn2").click(function(){
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			url:"./data2.json",
+			success:function(res){
+				let s="";
+/* 				s+="이름:"+res.name+"<br>";
+				s+="주소:"+res.addr+"<br>";
+				s+="점수:"+res.score+"점"; */
+				
+				s=`
+				이름 : ${res.name}<br>
+				주소 : ${res.addr}<br>
+				점수 : ${res.score}점
+				`;
+				
+				$(".result").html(s).css("color","green");
+			}
+		})
+	});
+</script>
+</body>
+</html>
