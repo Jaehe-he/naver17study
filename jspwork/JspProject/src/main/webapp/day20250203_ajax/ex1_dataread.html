@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+   <title>502 html study </title>
+   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+   <style>
+   body *{
+      font-family: 'Jua';
+   }
+   
+   .tab1 thead tr th{
+      background-color : orange;
+      color : blue;
+      text-align:center;
+   }
+   
+   .tab2 thead tr th{
+      background-color : pink;
+      color : gray;
+      text-align : center;
+   }
+   .tab3 thead tr th{
+      background-color : pink;
+      color : gray;
+      text-align : center;
+   }
+   </style>
+</head>
+<body>
+<div style="margin : 20px;">
+   <button type="button" id="btn1">xml 데이터 읽기</button>
+   <button type="button" id="btn2">json 데이터 읽기</button>
+   <br>
+   <button type="button" id="btn3">문제 : munje.xml읽기</button>
+   <button type="button" id="btn4">문제 : munje.json읽기</button>
+   
+   <div class="result" style="margin-top: 30px; width : 400px;">111</div>
+   
+   <script type="text/javascript">
+      $("#btn1").click(function(){
+         $.ajax({
+            type:"get",
+            dataType:"xml",
+            url:"./mysawon.xml",
+            success:function(res){
+               let s="";
+               s+=`
+                  <table class="table table-bordered tab1">
+                     <thead>
+                        <tr>
+                           <th width="50">번호</th>
+                           <th width="80">이름</th>
+                           <th width="100">부서</th>
+                           <th width="100">급여</th>
+                           <th width="100">수당</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+               `;
+               
+               //반복문
+               $(res).find("sawon").each(function(idx,ele){
+                  let e = $(ele);
+                  
+                  s+=`
+                        <tr align="center">
+                           <td>${e.attr("no")}</td>
+                           <td>${e.find("name").text()}</td>
+                           <td>${e.find("buseo").text()}</td>
+                           <td>${e.find("pay").text()}</td>
+                           <td>${e.find("pay").attr("sudang")}</td>
+                        </tr>
+                  `;
+               });
+               
+               s+="</table>";
+               $(".result").html(s);
+            }
+         });
+      });
+      
+      $("#btn2").click(function(){
+         $.ajax({
+        	 type:"get",
+        	 dataType:"json",
+        	 url:"./myperson.json",
+        	 success:function(res){
+        		 let s="";
+        		 
+        		 s=`
+        		 	<table class="table table-bordered tab2">
+        		 		<thead>
+        		 			<tr>
+        		 				<th width="100">이름</th>
+        		 				<th width="100">나이</th>
+        		 				<th>취미>/th>
+        		 			</tr>
+        		 		</thead>
+        		 		<tbody>
+        		 	`;
+        		 //반복문 (``안에 if문 사용 못함. 대신 삼항연산자 사용 가능)
+        		 $.each(res,function(idx,ele){
+        			s+=`
+        				<tr>
+        					<td>${ele.name}</td>
+        					<td>${ele.age==null?"나이모름":ele.age}</td>
+        				`;
+        				
+        				//취미
+        				if(ele.hobby==null)
+        					s+="<td>취미 모름</td>";
+        					else{
+        						s+="<td>";
+        						//반복문	(ele는 밖에서 썼으므로 hobby로 적어줌)
+        						$.each(ele.hobby,function(i,hobby){
+        							s+=`[${i+1}:${hobby}]&nbsp;`;
+        						});
+        						
+        						s+="</td>";
+        					}
+        		 });
+        		 
+        		 
+        		 s+="</tbody></table>";
+        		 $(".result").html(s);
+        	 }
+         });
+      });
+      
+      $("#btn3").click(function(){
+    	  $.ajax({
+    		type:"get",
+    		dataType:"xml",
+    		url:"./munje.xml",
+    		success:function(res){
+    			let s="";
+    			
+    			s=`
+    				<table class="table table-bordered">`;
+    			
+				$(res).find("guest").each(function(idx,ele){
+                    let e = $(ele);
+    				s+=`
+    					<tr>
+							<td align="center" valign="middle">
+								<img src="${e.find("avata").text()}" width="120">
+							</td>
+							<td valign="middle">
+								<h6>이름 : ${e.attr("name")}</h6>
+								<h6>메세지 : ${e.find("message").text()}</h6>
+								<h6>생년월일 : ${e.find("birthday").text()}</h6>
+							</td>
+						</tr>
+    				`;
+    			});
+    			
+    			s+="</table>";
+    			$(".result").html(s);
+    		}
+    	  });
+      });
+      
+      $("#btn4").click(function(){
+    	 $.ajax({
+    		 type:"get",
+    	 	dataType:"json",
+    	 	url:"./munje.json",
+    	 	success:function(res){
+    	 		let s="";
+    	 		
+    	 		s=`
+    	 			<table class="table table-bordered tab1">
+    	 		`;
+    	 		
+    	 		$.each(res,function(idx,ele){
+    	 			s+=`
+    	 				<tr>
+    	 					<td align = "center" valign = "middle">
+    	 						<img src="${ele.photo}" width = "120">
+    	 					</td>
+    	 					<td valign = "middle">
+	    	 					<h6>이름 : ${ele.name}</h6>
+	    	 					<h6>나이 : ${ele.age}</h6>
+    	 			`;
+    	 			
+    	 			if(ele.score==null){
+    	 				s+="<h6>시험 안봄</h6>";
+    	 			}else{
+    	 				let sum=0;
+    	 				$.each(ele.score,function(i,score){
+    	 					sum+=score;
+    	 					s+=`<h6>점수 ${i+1} : ${score}</h6>`;
+    	 				});
+    	 				s+=`<h6 style="color : red;">총 합계 : ${sum} </h6>`;
+    	 			}
+    	 			s+="</td></tr>";
+    	 		});
+    		s+="</tbody></table>";
+    		$(".result").html(s);
+    	 	}
+    	 });
+      });
+   </script>
+</div>
+</body>
+</html>

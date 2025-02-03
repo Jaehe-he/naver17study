@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<board>
+	<sawon no="1">
+		<name>캐서린</name>
+		<buseo>홍보부</buseo>
+		<pay sudang="20000">120000</pay>
+	</sawon>
+	<sawon no="2">
+		<name>홍길동</name>
+		<buseo>총무부</buseo>
+		<pay sudang="34000">150000</pay>
+	</sawon>
+	<sawon no="3">
+		<name>카리나</name>
+		<buseo>댄스부</buseo>
+		<pay sudang="15000">260000</pay>
+	</sawon>
+	<sawon no="4">
+		<name>임윤아</name>
+		<buseo>미디어부</buseo>
+		<pay sudang="35000">450000</pay>
+	</sawon>
+</board>

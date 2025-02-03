@@ -1,0 +1,1 @@
+SELECT * FROM study502.ajaxmemo;
