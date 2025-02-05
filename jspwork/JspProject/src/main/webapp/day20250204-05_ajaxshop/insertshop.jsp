@@ -3,17 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<jsp:useBean id="dao" class="shop.data.ShopDao"/>
-<jsp:useBean id="dto" class="shop.data.ShopDto"/>
-<jsp:setProperty property="*" name="dto"/>
-
 <%
-	dao.insertShop(dto);
-%>
-
-
-<!--
-	아래 코드 맞는지 모름
+	//아래 코드 맞는지 모름
 	String sphoto = request.getParameter("sphoto");
 	String sangpum = request.getParameter("sangpum");
 	String scolor = request.getParameter("scolor");

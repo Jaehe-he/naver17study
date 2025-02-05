@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>502 html study</title>
+   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+    <style>
+        body *{
+            font-family: 'Jua';
+        }
+        
+        div.liststyle{
+           margin:20px 200px;
+        }
+        
+        div.liststyle i{
+           font-size:20px;
+           cursor : pointer;
+           margin-right : 10px;
+        }
+        
+        div.grid{
+           float:left;
+           width:170px;
+           height : 250px;
+           border : 1px solid gray;
+           border-radius : 20px;
+           padding : 10px;
+           text-align : center;
+           margin : 5px;
+           background-color:#ffe4e1;
+        }
+        
+        div.grid img{
+           width : 140px;
+           height : 160px;
+           border : 1px solid orange;
+           border-radius : 20px;
+        }
+        
+        .tab1 thead th{
+           text-align: center;
+           font-size : 0.9em;
+           background-color : #ffe4e1;
+        }
+        
+        .tab1 tbody td{
+           text-align: center;
+           font-size : 0.9em;
+           background-color : #f0fff0;
+        }
+        
+        .tab1 img{
+           width : 30px;
+           height : 30px;
+           border  :1px solid gray;
+           margin-right : 5px;
+        }
+        
+        div.scolor{
+           position: relative;
+           left: 115px;
+           top: -45px;
+           width: 30px;
+           height: 30px;
+           border-radius: 100px;
+           border: 1px solid black;
+        }
+     </style>
+     <script type="text/javascript">
+     let view="list";
+     
+     $(function(){
+        //list 모양 디폴트값을 list모양으로
+        $("div.liststyle i:eq(1)").css("color", "red");
+        
+        //목록모양 변경하는 이벤트
+        $("div.liststyle i").click(function(){
+           view=$(this).attr("view");
+           alert(view);
+           
+           $(this).siblings().css("color","black"); //형제태그의 글자색상을 블랙으로 하고
+           $(this).css("color","red"); //본인은 레드로
+           
+           list(); //바뀐 모양으로 다시 출력
+        })
+        list();//전체 목록 불러오기
+       
+       //상품등록버튼
+       $("#shopfrm").submit(function(e){
+          
+          e.preventDefault();//기본 이벤트를 무효화(action 호출되는거X)
+         $.ajax({
+            type:"get",
+            dataType:"html",
+            data:$(this).serialize(),
+            url:"./insertshop.jsp",
+            success:function(){
+               alert("상품이 추가되었습니다");
+               //입력값 초기화
+               $("#sangpum").val("");
+               $("#scnt").val(1);
+               $("#sprice").val("");
+               
+               //목록 다시 출력하기
+               list();
+            }
+         });
+       });
+        
+        //상세보기 클릭시 이벤트
+        $(document).on("click", "i.detail", function(){
+        	let num=$(this).attr("num");
+        	//상세 페이지로 이동
+        	location.href="./shopdetail.jsp?num="+num;
+        	
+        });
+     });
+     
+     function list()
+     {
+        let order = $("#selorder").val();
+        
+        $.ajax({
+          type:"get",
+          dataType:"json",
+          data:{"order":order},
+          url:"./listshop.jsp",
+          success:function(res){
+             writedata(res);
+          }
+        })
+     }
+     
+     function writedata(res)
+     {
+       let s="";
+       if(view=='list'){
+          s=`
+             <table class="table table-bordered tab1">
+                <thead>
+                   <th width="50">번호</th>
+                   <th width="200">상품명</th>
+                   <th width="50">색상</th>
+                   <th width="50">수량</th>
+                   <th width="80">단가</th>
+                   <th>상세보기</th>
+                </thead>
+                <tbody>
+          
+          `;
+          $.each(res,function(idx,ele){
+             s+=`
+                <tr>
+                   <td>${idx+1}</td>
+                   <td style="text-align:left;">
+                      <img src="${ele.sphoto}">
+                      ${ele.sangpum}
+                   </td>
+                   <td>
+                      <div style="width : 30px;height:30px;background-color:${ele.scolor};border:1px solid black;"></div>
+                   </td>
+                   <td>${ele.scnt}</td>
+                   <td style="text-align:right;">${ele.sprice}</td>
+                   <td>
+                      <i class="bi bi-person-lines-fill detail"
+                      style="font-size:1.5em;cursor:pointer;"
+                      num="${ele.num}">
+                      </i>
+                   </td>
+                </tr>
+             `
+             
+          });
+          s+="</tbody></table>";
+       }else{
+          $.each(res,function(idx,ele){
+             s+=`
+                <div class="grid">
+                   <img src="${ele.sphoto}">
+                   <br><br>
+                   <h6>${ele.sangpum}</h6>
+                   <h6>${ele.sprice}원</h6>
+                   <div style="background-color:${ele.scolor};" class="scolor"></div>
+                </div>
+             `;
+          });
+          
+       }
+       
+       $("div.result").html(s);
+     }
+     </script>
+</head>
+<body>
+<!-- 상품 추가 다이얼로그 -->
+<div class="modal" id="myShopModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">상품 등록</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       
+       <!-- 이번에 수정은 폼단위로 값을 얻어보자 -->
+       <form id="shopfrm">
+            
+      <table class="table table-bordered">
+         <tr>
+            <td width="100" style="background-color: lightgray;">상품사진</td>
+            <td>
+               <select id="sphoto" name="sphoto" class="form-select">
+                    <script>
+                       for(let i=1;i<=34;i++){
+                          let s=`<option value='../image/photo2/${i}.${i==24?"gif":"jpg"}'>상품 ${i}</option>`;
+                          document.write(s);
+                       }
+                    </script>      
+                </select>
+                <br>
+               <img src="" class="shopphoto" width="100">
+               
+               <script type="text/javascript">
+                  $(".shopphoto").attr("src",$("#sphoto").val());
+                  
+                  //이벤트
+                  $("#sphoto").change(function(){
+                     $(".shopphoto").attr("src",$(this).val());
+                  });
+               </script>
+          </td>
+         </tr>
+         <tr>
+            <td style="background-color: lightgray;">상품명</td>
+            <td>
+               <input type="text" name="sangpum" id="sangpum"
+            class="form-control">   
+            </td>
+         </tr>
+         <tr>
+            <td style="background-color: lightgray;">상품색상</td>
+            <td>
+               <input type="color" name="scolor" id="scolor"
+                   value="#ffccff">
+            </td>
+         </tr>
+         <tr>
+            <td style="background-color: lightgray;">상품가격</td>
+            <td>
+               <input type="text" name="sprice" id="sprice" 
+                 class="form-control">
+            </td>
+         </tr>
+         <tr>
+            <td style="background-color: lightgray;">상품갯수</td>
+            <td>
+               <input type="number" name="scnt" id="scnt" 
+                 class="form-control" min="1" max="10" value="1">
+            </td>
+         </tr>
+         <tr>
+            <td style="background-color: lightgray;">입고일</td>
+            <td>
+               <input type="date" name="ipgoday" id="ipgoday" 
+                 class="form-control" value="2025-01-01">
+            </td>
+         </tr>
+         <tr>
+            <td colspan="2" align="center">
+               <button type="submit"  data-bs-dismiss="modal"
+               style=width:120px;"
+               class="btn btn-sm btn-success">등록하기</button>
+            </td>
+         </tr>         
+      </table>
+         
+       </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+        data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- 상품등록 폼 끝 -->
+
+
+<div style="margin: 20px;width:500px;">
+   <h5 class="alert alert-success" style="text-align: center;">[전체 상품 목록]</h5>
+
+   <div class="input-group">
+      <button type="button"\ class="btn btn-sm btn-outline-secondary"
+      id="btnaddmodal"
+      data-bs-toggle="modal" data-bs-target="#myShopModal">상품등록</button>
+      
+      <select id="selorder" style="width: 150px;margin-left: 200px;" 
+         class="form-select" onchange="list()">
+         <option value="1">등록순</option>
+         <option value="2">높은가격순</option>
+         <option value="3">낮은가격순</option>
+         <option value="4">상품명순</option>      
+      </select>
+   </div>
+   <div class="liststyle">
+      <i class="bi bi-grid" view="grid"></i>
+      <i class="bi bi-card-list" view="list"></i>
+   </div>
+   
+   <div style="margin-top: 20px;" class="result">
+      111
+   </div>
+</div>
+</body>
+</html>
