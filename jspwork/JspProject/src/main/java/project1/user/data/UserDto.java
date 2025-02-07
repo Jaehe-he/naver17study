@@ -1,4 +1,4 @@
-package user.data;
+package project1.user.data;
 
 public class UserDto {
 	private String id;

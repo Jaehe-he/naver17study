@@ -1,5 +1,5 @@
-<%@page import="user.data.UserDao"%>
-<%@page import="user.data.UserDto"%>
+<%@page import="project1.user.data.UserDao"%>
+<%@page import="project1.user.data.UserDto"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>

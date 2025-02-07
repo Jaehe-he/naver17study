@@ -1,5 +1,5 @@
-<%@page import="user.data.UserDao"%>
-<%@page import="user.data.UserDto"%>
+<%@page import="project1.user.data.UserDao"%>
+<%@page import="project1.user.data.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -23,7 +23,7 @@
 		//로그인 성공 시 세션에 sId라는 이름으로 id값 저장
 		session.setAttribute("sId", id);
 		//세션에 아이디 저장 후 메인 페이지로 이동
-		response.sendRedirect("./main.jsp");
+		response.sendRedirect("../main.jsp");
 	} else{
 	%>
 	<script>

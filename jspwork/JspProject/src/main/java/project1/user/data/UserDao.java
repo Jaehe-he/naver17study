@@ -1,4 +1,4 @@
-package user.data;
+package project1.user.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +48,7 @@ public class UserDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from members where id = ? , pw = ?";
+		String sql = "select * from members where id = ? AND pw = ?";
 		
 
 		boolean loginSuccess = false;
