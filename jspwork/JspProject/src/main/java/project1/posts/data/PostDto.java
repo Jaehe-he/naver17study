@@ -7,7 +7,7 @@ public class PostDto {
 	private int subcategory_id;
 	private String title;
 	private String content;
-	private Timestamp created_at;
+	private Timestamp writeday;
 	
 	public PostDto() {
 		
@@ -45,11 +45,12 @@ public class PostDto {
 		this.content = content;
 	}
 
-	public Timestamp getCreated_at() {
-		return created_at;
+	public Timestamp getWriteday() {
+		return writeday;
 	}
 
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
+	public void setWriteday(Timestamp writeday) {
+		this.writeday = writeday;
 	}
+
 }

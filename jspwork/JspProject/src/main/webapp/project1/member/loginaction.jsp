@@ -24,6 +24,7 @@
 		session.setAttribute("sId", id);
 		//세션에 아이디 저장 후 메인 페이지로 이동
 		response.sendRedirect("../main.jsp");
+		
 	} else{
 	%>
 	<script>

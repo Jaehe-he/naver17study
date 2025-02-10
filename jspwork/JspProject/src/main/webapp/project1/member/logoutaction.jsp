@@ -1,10 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	//세션 초기화
-	session.invalidate();
-
-	response.sendRedirect("./main.jsp");
-
+    session.invalidate(); // 세션 초기화 (로그아웃)
+    response.sendRedirect("../main.jsp"); // 메인 페이지로 이동
 %>
