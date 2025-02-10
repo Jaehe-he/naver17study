@@ -162,15 +162,18 @@
 
     </style>
     <script>
+    let view = "list";
+    let selectedCategoryId = null;
         $(document).ready(function(){
+        	list();
             $(".list2").hide(); // Hide subcategories initially
             $(".list1 > input").click(function(){
                 $(this).next(".list2").slideToggle("fast");
             });
 
-            let view = "list";
-            let selectedCategoryId = null;
-            $(function() {
+           
+          //  $(function() {
+            	
                 $("div.liststyle i:eq(1)").css("color", "red");
 
                 $("div.liststyle i").click(function() {
@@ -179,73 +182,80 @@
                     $(this).css("color", "red");
                     list();
                 });
-                list(); // Default display as list
-
-                function list() {
-                    $.ajax({
-                        type: "get",
-                        dataType: "json",
-                        url: "./listposts.jsp",
-                        data: {categoryId: selectedCategoryId},
-                        success: function(res) {
-                            writedata(res);
-                        }
-                    });
-                }
-
-                function writedata(res) {
-                    let s = "";
-
-                    if (view == 'list') {
-                        // Table view
-                        s = `<table class="table table-bordered tab1">
-                            <thead>
-                               <th width="50">번호</th>
-                               <th width="200">카테고리</th>
-                               <th width="50">제목</th>
-                               <th width="50">내용</th>
-                               <th width="80">등록일</th>
-                            </thead>
-                            <tbody>
-                            `;
-
-                        $.each(res, function(idx, ele) {
-                            s += `
-                            <tr>
-                                <td>${ele.id}</td>
-                                <td>${ele.subcategory_id}</td>
-                                <td>${ele.title}</td>
-                                <td>${ele.content}</td>
-                                <td>${ele.writeday}</td>
-                            </tr>
-                            `;
-                        });
-                        s += "</tbody></table>";
-                    } else {
-                        // Grid view
-                        $.each(res, function(idx, ele) {
-                            s += `
-                            <div class="grid-item">
-                                <p><strong>ID:</strong> ${ele.id}</p>
-                                <p><strong>Category:</strong> ${ele.subcategory_id}</p>
-                                <p><strong>Title:</strong> ${ele.title}</p>
-                                <p><strong>Content:</strong> ${ele.content}</p>
-                                <p><strong>Date:</strong> ${ele.writeday}</p>
-                            </div>
-                            `;
-                        });
-                    }
-
-                    $("div.result").html(s);
-                }
-
+                
+                $(".list1 input").click(function() {
+                    selectedCategoryId = $(this).data("category-id"); // 카테고리 ID 가져오기
+                    list();
+                });
+                
                 // Category selection handling
                 $(".list1 input").click(function() {
                     selectedCategoryId = $(this).data("category-id");
                     list();
                 });
-            });
-        });
+          });
+             function list() {
+            	 alert(selectedCategoryId);
+             
+                 $.ajax({
+                     type: "get",
+                     dataType: "json",
+                     url: "./listposts.jsp", // listposts.jsp로 AJAX 요청
+                     data: {categoryId: selectedCategoryId}, // 카테고리 ID를 파라미터로 전달
+                     success: function(res) {
+                         writedata(res);
+                     }
+                 });
+             }
+
+             function writedata(res) {
+                 let s = "";
+
+                 if (view == 'list') {
+                     // Table view
+                     s = `<table class="table table-bordered tab1">
+                         <thead>
+                            <th width="50">번호</th>
+                            <th width="200">카테고리</th>
+                            <th width="50">제목</th>
+                            <th width="50">내용</th>
+                            <th width="80">등록일</th>
+                         </thead>
+                         <tbody>
+                         `;
+
+                     $.each(res, function(idx, ele) {
+                         s += `
+                         <tr>
+                             <td>${ele.id}</td>
+                             <td>${ele.subcategory_id}</td>
+                             <td>${ele.title}</td>
+                             <td>${ele.content}</td>
+                             <td>${ele.writeday}</td>
+                         </tr>
+                         `;
+                     });
+                     s += "</tbody></table>";
+                 } else {
+                     // Grid view
+                     $.each(res, function(idx, ele) {
+                         s += `
+                         <div class="grid-item">
+                             <p><strong>ID:</strong> ${ele.id}</p>
+                             <p><strong>Category:</strong> ${ele.subcategory_id}</p>
+                             <p><strong>Title:</strong> ${ele.title}</p>
+                             <p><strong>Content:</strong> ${ele.content}</p>
+                             <p><strong>Date:</strong> ${ele.writeday}</p>
+                         </div>
+                         `;
+                     });
+                 }
+
+                 $("div.result").html(s);
+             }
+
+
+     
     </script>
 </head>
 <body>

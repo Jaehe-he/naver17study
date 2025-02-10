@@ -67,6 +67,10 @@
             <%
                 }
             %>
+            
+            <form action="../project1/member/joinuser.jsp" style = "padding-left : 10px;">
+			    <button class="btn btn-outline-light" type="submit">회원가입</button>
+			</form>
         </div>
     </nav>
 

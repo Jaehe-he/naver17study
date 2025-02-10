@@ -1,7 +1,8 @@
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="project1.posts.data.SubcategoryDto" %>
 <%@ page import="project1.posts.data.SubcategoryDao" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%
     String categoryId = request.getParameter("category_id");
     if (categoryId != null && !categoryId.isEmpty()) {
