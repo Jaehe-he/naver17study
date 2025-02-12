@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reboard.data.BoardDao">
+	<select id="getMaxNum" resultType="int">
+		select ifnull(max(num),0) from reboard
+	</select>
+	<select id="totalCount" resultType="int">
+		select count(*) from reboard
+	</select>
+	<select id="selectPagingList" parameterType="Map" resultType="BoardDto"> <!-- Map은 클래스를 따로 안만들어도 되고 개별적으로 만들수 있음? Dto는 따로 만들어줘야하는데 2개만 하는데 따로 만들기 귀찮으니 Map으로 함 -->
+		select * from reboard order by regroup desc, restep asc limit #{start}, #{perpage} <!-- #{start}, #{perpage} : Map이 가지고 있는 key값 -->
+	</select>
+	<update id="updateRestep" parameterType="Map">
+		update reboard set restep=restep+1 where regroup = #{regroup} and restep &gt; #{restep} <!-- &gt : 크다. 부등호로 넣으면 에러는 아니고 가끔 오류 날수 있어서 웬만하면 기호로 -->
+	</update>
+	<insert id="insertBoard" parameterType="BoardDto">
+		insert into reboard (writer, photo, passwd, subject, content, writeday, regroup, relevel, restep)
+		values (#{writer}, #{photo}, #{passwd}, #{subject}, #{content}, now(), #{regroup}, #{relevel}, #{restep})
+	</insert>
+	<update id="updateReadCount" parameterType="int">
+		update reboard set readcount=readcount+1 where num=#{num}
+	</update>
+	<select id="selectOneByNum" parameterType="int" resultType="BoardDto">
+		select * from reboard where num=#{num}
+	</select>
+</mapper>

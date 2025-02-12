@@ -15,35 +15,9 @@
 	body *{
 		font-family: 'Jua';
 	}
-	
-	.tab1 thead th{
-		background-color : #ddd;
-		color : blue;
-		text-align : center;
-	}
 	</style>
 </head>
-
 <body>
-<h3 class="alert alert-danger">구구단 출력</h3>
 
-<table class="table table-bordered tab1" style="margin:20px; width : 800px;">
-	<thead>
-		<tr>
-			<c:forEach var="dan" begin="2" end="9">
-				<th>[${dan}단]</th>
-			</c:forEach>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="gu" begin="1" end="9">
-			<tr>
-				<c:forEach var="dan" begin="2" end="9">
-					<td align="center">${dan} X ${gu} = ${dan*gu}</td>
-				</c:forEach>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
 </body>
 </html>

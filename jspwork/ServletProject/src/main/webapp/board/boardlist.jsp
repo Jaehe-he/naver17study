@@ -15,35 +15,44 @@
 	body *{
 		font-family: 'Jua';
 	}
-	
-	.tab1 thead th{
-		background-color : #ddd;
-		color : blue;
-		text-align : center;
-	}
 	</style>
 </head>
-
 <body>
-<h3 class="alert alert-danger">구구단 출력</h3>
-
-<table class="table table-bordered tab1" style="margin:20px; width : 800px;">
-	<thead>
-		<tr>
-			<c:forEach var="dan" begin="2" end="9">
-				<th>[${dan}단]</th>
-			</c:forEach>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="gu" begin="1" end="9">
+<jsp:include page="../kakao/kakaologin.jsp"/>
+<hr>
+<div style="margin: 20px; width : 600px;">
+	<table class="tab1 table table-bordered">
+		<caption align="top">
+			<b>총 ${totalCount}개의 글이 있습니다.</b>
+			
+			<button type="button" class="btn btn-sm btn-outline-secondary" style="float:right;"
+			onclick="location.href='./writeform'">글쓰기</button>
+		</caption>
+		<thead>
 			<tr>
-				<c:forEach var="dan" begin="2" end="9">
-					<td align="center">${dan} X ${gu} = ${dan*gu}</td>
-				</c:forEach>
+				<th width="50">번호</th>
+				<th width="300">제목</th>
+				<th width="70">작성자</th>
+				<th width="70">작성일</th>
+				<th>조회</th>
 			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<c:if test="${totalCount==0}">
+				<tr height="50">
+					<td colspan="5" align="center" valign="middle">
+						<b> 등록된 게시글이 없습니다 </b>
+					</td>
+				</tr>
+			</c:if>
+			<c:if test="${totalCount>0}">
+				<c:forEach var="dto" items="${list}">
+				
+				</c:forEach>
+			</c:if>
+		</tbody>
+	</table>
+
+
 </body>
 </html>

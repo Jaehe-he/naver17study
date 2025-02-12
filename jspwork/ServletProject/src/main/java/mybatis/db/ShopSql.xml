@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.data.ShopDao"> <!-- namespace가 없으면 오류남 namespace 사용하는 이유 : 다른 곳에 똑같은 파일이 있더라도 오류가 안생김 -->
+	<select id="totalCount" resultType="int">
+		select count(*) from shop
+	</select>
+	<select id="selectAllList" resultType="ShopDto"> <!-- Configuration.xml에 <typeAlias type="shop.data.ShopDto"이라고 적었기 때문에 resultType에 ShopDto라고만 적어도 됨 -->
+		select * from shop order by num;
+	</select>
+	<insert id="insertShop" parameterType="ShopDto">
+		insert into shop (sangpum, scolor, scnt, sprice, sphoto, ipgoday, writeday)
+		values (#{sangpum}, #{scolor}, #{scnt}, #{sprice}, #{sphoto}, #{ipgoday}, now()) <!-- 바인딩 : #{} -->
+	</insert>
+	<select id="selectOneByNum" parameterType="int" resultType="ShopDto">
+		select * from shop where num=#{num}
+	</select>
+	<update id="updateShop" parameterType="ShopDto">
+		update shop set sangpum=#{sangpum}, scolor=#{scolor}, scnt=#{scnt},
+		sprice=#{sprice}, sphoto=#{sphoto}, ipgoday=#{ipgoday} where num=#{num}
+	</update>
+	<delete id="deleteShop" parameterType="int">
+		delete from shop where num = #{num}
+	</delete>
+	
+</mapper>
