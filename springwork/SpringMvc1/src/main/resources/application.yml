@@ -1,0 +1,7 @@
+server:
+  port: 9000
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/day20250214/
+      suffix: .jsp
