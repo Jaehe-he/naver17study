@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.ShopRepleMapper">
+	<insert id="insertShopReple" parameterType="ShopRepleDto">
+		insert into bootshopreple (num,photo,message)
+		values (#{num},#{photo},#{message})
+	</insert>
+	<delete id="deleteShopReple" parameterType="int">
+		delete from bootshopreple where idx=#{idx}
+	</delete>
+	<select id="getRepleByNum" parameterType="int" resultType="ShopRepleDto">
+		select * from bootshopreple where num=#{num} order by idx desc
+	</select>
+	<select id="getPhoto" parameterType="int" resultType="String">
+		select photo from bootshopreple where idx=#{idx}
+	</select>
+	<update id="updateLikes" parameterType="int">
+		update bootshopreple set likes=likes+1 where idx=#{idx}
+	</update>
+	<select id="getLikes" parameterType="int" resultType="int">
+		select likes from bootshopreple where idx=#{idx}
+	</select>
+</mapper>

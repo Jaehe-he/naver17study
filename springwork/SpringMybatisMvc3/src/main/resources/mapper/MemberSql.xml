@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.MemberMapper">
+	<select id="checkMyid" parameterType="String" resultType="int">
+		select count(*) from member where myid=#{myid}
+	</select>
+	<insert id="insertMember" parameterType="MemberDto">
+		insert into member (mname, mpass, myid, mhp, maddr, mphoto, gaipday) values
+		(#{mname}, #{mpass}, #{myid}, #{mhp}, #{maddr}, #{mphoto}, now())
+	</insert>
+	
+	<select id="getAllMembers" resultType="MemberDto">
+		select * from member order by num
+	</select>
+	
+	<delete id="deleteMember" parameterType="int">
+		delete from member where num=#{num}
+	</delete>
+	
+	<select id="loginCheck" parameterType="Map" resultType="int">
+		select count(*) from member where myid=#{loginid} and mpass=#{loginpass}
+	</select>
+	
+	<select id="getSelectByNum" parameterType="int" resultType="MemberDto">
+		select * from member where num=#{num}
+	</select>
+	
+	<select id="getSelectByMyid" parameterType="String" resultType="MemberDto">
+		select * from member where myid=#{myid}
+	</select>
+	
+	<update id="changePhoto" parameterType="Map">
+		update member set mphoto=#{mphoto} where num=#{num}
+	</update>
+	
+	<update id="updateMember" parameterType="String">
+		update member set mname=#{mname}, mhp=#{mhp}, maddr=#{maddr} where num=#{num}
+	</update>
+</mapper>

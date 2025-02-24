@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.ShopMapper">
+	<select id="getTotalCount" resultType="int">
+		select count(*) from bootshop
+	</select>
+	<insert id="insertShop" parameterType="sdto">
+		insert into bootshop (sangpum,scolor,sprice,scnt,sphoto,ipgoday,writeday)
+		values (#{sangpum},#{scolor},#{sprice},#{scnt},#{sphoto},#{ipgoday},now())
+		
+		<!-- insert 후에 자동추가된 num 값을 얻어서 dto의 num에 넣어준다 -->
+		<selectKey keyProperty="num" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		
+	</insert>
+	<select id="getAllSangpum" resultType="sdto">
+		select * from bootshop order by num
+	</select>
+	<select id="getSelectOne" parameterType="int" resultType="sdto">
+		select * from bootshop where num=#{num}
+	</select>
+	<update id="updateShop" parameterType="sdto">
+		update bootshop set sangpum=#{sangpum},scolor=#{scolor},sprice=#{sprice},
+		scnt=#{scnt},ipgoday=#{ipgoday} where num=#{num}
+	</update>
+	<delete id="deleteShop" parameterType="int">
+		delete from bootshop where num=#{num}
+	</delete>
+	<update id="updatePhoto" parameterType="Map">
+		update bootshop set sphoto=#{photo} where num=#{num}
+	</update>
+</mapper>
