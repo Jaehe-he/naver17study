@@ -16,13 +16,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.ShopRepleDto;
 import data.service.ShopRepleService;
+import data.service.ShopService;
 import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @RestController
 public class ShopRepleController {
 	
 	@Autowired
 	ShopRepleService repleService;
+	
+	private String bucketName = "bitcamp-bucket-122";
+	
+	@Autowired
+	NcpObjectStorageService storageService;
 	
 	@PostMapping("/shop/addreple")
 	public void insertReple(
@@ -33,6 +40,7 @@ public class ShopRepleController {
 			)
 	{
 		System.out.println(upload.getOriginalFilename()+","+message);
+		/*
 		//save 의 실제 경로 구하기
 		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");
 		//업로드할 파일명(랜덤문자열.확장자)
@@ -44,6 +52,11 @@ public class ShopRepleController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+		
+		//네이버 스토리지에 사진 업로드
+		String uploadFilename = storageService.uploadFile(bucketName, "shop", upload);
+		
 		//dto 생성
 		ShopRepleDto dto=new ShopRepleDto();
 		dto.setNum(num);
@@ -66,6 +79,7 @@ public class ShopRepleController {
 	@GetMapping("/shop/repledel")
 	public void repleDelete(@RequestParam int idx,HttpServletRequest request)
 	{
+		/*
 		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");
 		//삭제할 사진명
 		String photo=repleService.getPhoto(idx);
@@ -73,6 +87,14 @@ public class ShopRepleController {
 		File file=new File(uploadFolder+"/"+photo);
 		if(file.exists())
 			file.delete();
+		*/
+		
+		//네이버 스토리지의 사진 삭제
+		//삭제할 사진명
+		String photo = repleService.getPhoto(idx);
+		storageService.deleteFile(bucketName, "shop", photo);
+		
+		//db 삭제
 		repleService.deleteShopReple(idx);
 	}
 	

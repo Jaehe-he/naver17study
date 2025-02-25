@@ -42,6 +42,10 @@ public class ShopListController {
 		//모델에 저장
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("list", list);
+		
+		model.addAttribute("fronturl", "https://mloudbtf8734.edge.naverncp.com/6Qfbox1TDs");
+		model.addAttribute("backurl", "?type=f&w=30&h=30&faceopt=true&ttype=jpg");
+		
 		//포워드
 		return "shop/shoplist";
 	}

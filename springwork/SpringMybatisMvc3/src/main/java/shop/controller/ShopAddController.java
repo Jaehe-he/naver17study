@@ -16,11 +16,17 @@ import org.springframework.web.multipart.MultipartFile;
 import data.dto.ShopDto;
 import data.service.ShopService;
 import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @Controller
 public class ShopAddController {
 	@Autowired
 	ShopService shopService;
+	
+	private String bucketName = "bitcamp-bucket-122";
+	
+	@Autowired
+	NcpObjectStorageService storageService;
 	
 	@GetMapping("/shop/addform")
 	public String addForm()
@@ -35,6 +41,7 @@ public class ShopAddController {
 			@RequestParam("upload") List<MultipartFile> uploadList
 			)
 	{
+		/*
 		//업로드할 save 경로 구하기
 		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");		
 		
@@ -42,29 +49,44 @@ public class ShopAddController {
 		String sphoto="";
 		for(MultipartFile upload:uploadList)
 		{
-			//파일명을 랜덤값.확장자 형식으로 만들기
-			String uploadFilename=UUID.randomUUID()+"."+(upload.getOriginalFilename().split("\\.")[1]);
-			sphoto+=uploadFilename+",";
 			
-			//업로드
-			try {
-				upload.transferTo(new File(uploadFolder+"/"+uploadFilename));				
-				
-			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			  //파일명을 랜덤값.확장자 형식으로 만들기 String
+			  uploadFilename=UUID.randomUUID()+"."+(upload.getOriginalFilename().split(
+			  "\\.")[1]); sphoto+=uploadFilename+",";
+			 /		
+			
+			  //업로드 try { upload.transferTo(new File(uploadFolder+"/"+uploadPhotoname));
+			  
+			  } catch (IllegalStateException | IOException e) { // TODO Auto-generated
+			  catch block e.printStackTrace(); }
+			 
 		}
 		
-		//sphoto 에서 마지막 컴마는 제거
-		sphoto=sphoto.substring(0,sphoto.length()-1);
-		//dto 에 저장
-		dto.setSphoto(sphoto);
+		
+		  //sphoto 에서 마지막 컴마는 제거 sphoto=sphoto.substring(0,sphoto.length()-1); //dto 에
+		  저장 dto.setSphoto(sphoto);
+		 
 		//db insert
 		shopService.insertShop(dto);
 		
-		//insert 후 num값을 얻는 sql문 추가후 상세보기 페이지로 이동할수 있다
-		System.out.println("num="+dto.getNum());
+		
+		  //insert 후 num값을 얻는 sql문 추가후 상세보기 페이지로 이동할수 있다
+		  System.out.println("num="+dto.getNum());
+		 */
+		
+		String sphoto="";
+		for(MultipartFile file:uploadList) {
+			String uploadFilename = storageService.uploadFile(bucketName, "shop", file);
+			sphoto += uploadFilename+",";			
+		}
+		
+		//sphoto에서 마지막 comma(,)는 제거
+		sphoto=sphoto.substring(0, sphoto.length()-1);
+		dto.setSphoto(sphoto);
+		
+		//db insert
+		shopService.insertShop(dto);
+
 		
 		//return "redirect:./list";
 		return "redirect:./detail?num="+dto.getNum();

@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import data.dto.MemberDto;
 import data.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @Controller
 @RequestMapping("/member")
@@ -26,6 +27,12 @@ public class MemberAddController {
    
    @Autowired
    MemberService memberService;
+   
+   //버켓 이름
+   private String bucketName = "bitcamp-bucket-122"; //각자 자기꺼 써야함
+   
+   @Autowired
+   NcpObjectStorageService storageService;
    
    @GetMapping("/form")
    public String form() {
@@ -64,21 +71,25 @@ public class MemberAddController {
          dto.setMphoto("no");
          
       } else {
-         // 실제 파일 저장 처리
-         String uploadFolder = request.getSession().getServletContext().getRealPath("save"); // 업로드 할 폴더명
-         String uploadFilename = UUID.randomUUID()+"."+upload.getOriginalFilename().split("\\.")[1]; // 업로드 할 파일명
-         
-         // 업로드
-         try {
-         upload.transferTo(new File(uploadFolder+"/"+uploadFilename));
-         dto.setMphoto(uploadFilename);
-      } catch (IllegalStateException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      } catch (IOException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
+//         // 실제 파일 저장 처리
+//         String uploadFolder = request.getSession().getServletContext().getRealPath("save"); // 업로드 할 폴더명
+//         String uploadFilename = UUID.randomUUID()+"."+upload.getOriginalFilename().split("\\.")[1]; // 업로드 할 파일명
+//         
+//         // 업로드
+//         try {
+//         upload.transferTo(new File(uploadFolder+"/"+uploadFilename));
+//         dto.setMphoto(uploadFilename);
+//      } catch (IllegalStateException e) {
+//         // TODO Auto-generated catch block
+//         e.printStackTrace();
+//      } catch (IOException e) {
+//         // TODO Auto-generated catch block
+//         e.printStackTrace();
+//      }
+    	  
+    	  //네이버 스토리지에 사진 저장하기 -> 네이버 오브젝트스토리지 member 폴더에 사진을 업로드 후 업로드한 파일명을 반환
+    	  String uploadFilename = storageService.uploadFile(bucketName, "member", upload);
+    	  dto.setMphoto(uploadFilename); //업로드한 파일명 저장
       }
 
       // DB 저장

@@ -17,12 +17,18 @@ import org.springframework.web.multipart.MultipartFile;
 import data.dto.ShopDto;
 import data.service.ShopService;
 import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @Controller
 public class ShopDetailDeleteController {
 	@Autowired
 	ShopService shopService;
-
+	
+	private String bucketName = "bitcamp-bucket-122";
+	
+	@Autowired
+	NcpObjectStorageService storageService;
+	
 	@GetMapping("/shop/detail")
 	public String detail(@RequestParam int num,Model model)
 	{
@@ -31,22 +37,28 @@ public class ShopDetailDeleteController {
 		dto.setMainPhoto(mainPhoto);
 
 		model.addAttribute("dto", dto);
+		model.addAttribute("naverurl", "https://kr.object.ncloudstorage.com/bitcamp-bucket-122");
+		
 		return "shop/detail";
 	}
 
 	@GetMapping("/shop/delete")
 	public String delete(
-			HttpServletRequest request,
+			/*HttpServletRequest request,*/
 			@RequestParam int num
 			)
 	{
+		/*
 		//배포된 프로젝트의 save 의 위치 구하기
 		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");
+		*/
+		
 		//삭제전에 사진명들을 얻어야한다
 		String photos=shopService.getSelectOne(num).getSphoto();
 		//, 로 분리
 		String []photo=photos.split(",");
 
+		/*
 		//실제 경로에서 파일을 찾아서 삭제
 		for(String f:photo)
 		{
@@ -54,6 +66,12 @@ public class ShopDetailDeleteController {
 			//save 폴더에 파일이 존재할경우 삭제
 			if(file.exists())
 				file.delete();
+		}
+		*/
+		
+		//네이버 스토리지의 사진 삭제
+		for(String f:photo) {
+			storageService.deleteFile(bucketName, "shop", f);
 		}
 
 		//db 의 데이타도 삭제
@@ -69,6 +87,8 @@ public class ShopDetailDeleteController {
 		String sphoto=shopService.getSelectOne(num).getSphoto();
 		model.addAttribute("sphoto", sphoto);
 		model.addAttribute("num", num);
+		model.addAttribute("fronturl", "https://mloudbtf8734.edge.naverncp.com/6Qfbox1TDs");
+		model.addAttribute("backurl", "?type=f&w=30&h=30&faceopt=true&ttype=jpg");
 		return "shop/photos";
 	}
 
@@ -77,12 +97,14 @@ public class ShopDetailDeleteController {
 	public void deletePhoto(@RequestParam int num,@RequestParam String pname,
 			HttpServletRequest request)
 	{
-		//업로드 경로 구하기
-		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");
-		//스토리지의 사진도 삭제
-		File file=new File(uploadFolder+"/"+pname);
-		if(file.exists())
-			file.delete();
+		/*
+		 * //업로드 경로 구하기 String
+		 * uploadFolder=request.getSession().getServletContext().getRealPath("/save");
+		 * //스토리지의 사진도 삭제 File file=new File(uploadFolder+"/"+pname); if(file.exists())
+		 * file.delete();
+		 */
+		
+		storageService.deleteFile(bucketName,  "shop", pname);
 
 		//num 에 해당하는 sphoto 를 db 에서 얻는다
 		String sphoto=shopService.getSelectOne(num).getSphoto();
@@ -103,6 +125,7 @@ public class ShopDetailDeleteController {
 			@RequestParam("upload") List<MultipartFile> uploadList,
 			HttpServletRequest request)
 	{
+	/*
 		//업로드 경로 구하기
 		String uploadFolder=request.getSession().getServletContext().getRealPath("/save");
 		//새로 업로드할 파일명 구할 변수
@@ -120,6 +143,15 @@ public class ShopDetailDeleteController {
 				e.printStackTrace();
 			}
 		}
+		*/
+		
+		//새로 업로드할 파일명 구할 변수
+		String photos="";
+		for(MultipartFile f:uploadList) {
+			String uploadFilename=storageService.uploadFile(bucketName, "shop", f);
+			photos+=uploadFilename+",";
+		}
+		
 		//마지막 컴마 제거
 		photos=photos.substring(0,photos.length()-1);
 		//db 에서의 sphoto 얻기

@@ -48,7 +48,7 @@ public class MemberService {
 	}
 	
 
-	public void updateMember(String mname, String mhp, String maddr) {
-		memberMapper.updateMember(mname, mhp, maddr);
+	public void updateMember(MemberDto dto) {
+		memberMapper.updateMember(dto);
 	}
 }

@@ -5,17 +5,15 @@
 		select count(*) from member where myid=#{myid}
 	</select>
 	<insert id="insertMember" parameterType="MemberDto">
-		insert into member (mname, mpass, myid, mhp, maddr, mphoto, gaipday) values
-		(#{mname}, #{mpass}, #{myid}, #{mhp}, #{maddr}, #{mphoto}, now())
+		insert into member (mname,mpass,myid,mhp,maddr,mphoto,gaipday) values 
+		(#{mname},#{mpass},#{myid},#{mhp},#{maddr},#{mphoto},now())	
 	</insert>
-	
 	<select id="getAllMembers" resultType="MemberDto">
 		select * from member order by num
 	</select>
-	
 	<delete id="deleteMember" parameterType="int">
 		delete from member where num=#{num}
-	</delete>
+	</delete>	
 	
 	<select id="loginCheck" parameterType="Map" resultType="int">
 		select count(*) from member where myid=#{loginid} and mpass=#{loginpass}
@@ -24,16 +22,13 @@
 	<select id="getSelectByNum" parameterType="int" resultType="MemberDto">
 		select * from member where num=#{num}
 	</select>
-	
 	<select id="getSelectByMyid" parameterType="String" resultType="MemberDto">
 		select * from member where myid=#{myid}
 	</select>
-	
 	<update id="changePhoto" parameterType="Map">
 		update member set mphoto=#{mphoto} where num=#{num}
 	</update>
-	
-	<update id="updateMember" parameterType="String">
-		update member set mname=#{mname}, mhp=#{mhp}, maddr=#{maddr} where num=#{num}
+	<update id="updateMember" parameterType="MemberDto">
+		update member set mname=#{mname},mhp=#{mhp},maddr=#{maddr} where num=#{num}
 	</update>
 </mapper>

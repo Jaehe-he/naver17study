@@ -12,9 +12,9 @@ public interface MemberMapper {
 	public void insertMember(MemberDto dto);
 	public List<MemberDto> getAllMembers();
 	public void deleteMember(int num);
-	public int loginCheck(String loginid, String loginpass);
+	public int loginCheck(String loginid,String loginpass);
 	public MemberDto getSelectByNum(int num);
 	public MemberDto getSelectByMyid(String myid);
-	public void changePhoto(String mphoto, int num);
-	public void updateMember(String mname, String mhp, String maddr);
+	public void changePhoto(String mphoto,int num);
+	public void updateMember(MemberDto dto);
 }

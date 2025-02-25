@@ -121,26 +121,38 @@ img.profilephoto{
 		<div style="margin: 10px;">
 			<!-- 제목 클릭시 메인 페이지로 이동 -->
 			<h2 class="alert alert-success">
-				<a href="${root}/"> <img src="${root}/s4.JPG" width="50">
+				<a href="${root}/">
+					<img src="${root}/s4.JPG" width="50">
 					SpringBoot와 Mybatis 를 이용한 프로젝트
-				</a> <span style="margin-left: 300px; font-size: 15px;">
-				
-				<c:if test="${sessionScope.loginstatus !=null}">
-					<img src="${root}/save/${sessionScope.loginphoto}" class="profilephoto"
-					onerror="this.src='${root}/save/noimage.png'"> <!-- controller로 온게 아니라서 model에 없고 sessionScope에 넣어놓음 -->
-					<script>
-						$(".profilephoto").click(function(){
-							location.href=`${root}/member/mypage`;
-						});
-					</script>
-					
-					
-					<b>${sessionScope.loginid}</b>님이 로그인 중입니다.
-			</c:if>
+				</a>
+				<br>
+				<span style="margin-left: 300px; font-size: 15px;">
+					<c:if test="${sessionScope.loginstatus !=null}">
+						<c:set var="naverurl" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-122"/>
+						
+						<%-- <img src="${root}/save/${sessionScope.loginphoto}" class="profilephoto"
+						onerror="this.src='${root}/save/noimage.png'"> <!-- controller로 온게 아니라서 model에 없고 sessionScope에 넣어놓음 -->
+						--%>
+						
+						<img src="${naverurl}/member/${sessionScope.loginphoto}" class="profilephoto"
+						onerror="this.src='${root}/save/noimage.png'">
+						
+						<script>
+							$(".profilephoto").click(function(){
+								location.href=`${root}/member/mypage`;
+							});
+						</script>
+						
+						
+						<b>${sessionScope.loginid}</b>님이 로그인 중입니다.
+				</c:if>
 				</span>
 			</h2>
 			<ul class="mymenu">
 				<li><a href="${root}/">Home</a></li>
+				<li>
+					<a href="${root}/naver/papago">Papago</a>
+				</li>
 				<li><a href="${root}/shop/list">상품목록</a></li>
 				<li><a href="${root}/member/form">회원가입</a></li>
 				<c:if test="${sessionScope.loginstatus != null and sessionScope.loginid == 'admin'}">
