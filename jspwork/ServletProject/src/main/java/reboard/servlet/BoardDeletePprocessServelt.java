@@ -7,33 +7,39 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import reboard.data.BoardDao;
-import reboard.data.BoardDto;
 
 import java.io.IOException;
 
 /**
- * Servlet implementation class BoardDetailServlet
+ * Servlet implementation class BoardDeletePprocessServelt
  */
-@WebServlet("/board/detail")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/board/delete")
+public class BoardDeletePprocessServelt extends HttpServlet {
+	
 	BoardDao dao=new BoardDao();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//num 읽기
+		//num
 		int num=Integer.parseInt(request.getParameter("num"));
-		//pageNum 읽기
+		//pageNum		
 		String pageNum=request.getParameter("pageNum");
-		//조회수 증가
-		dao.updateReadCount(num);
-		//dto 얻기
-		BoardDto dto=dao.getData(num);
-		//request 에 dto 저장
-		request.setAttribute("dto", dto);
-		request.setAttribute("pageNum", pageNum);
+		//passwd
+		String passwd=request.getParameter("passwd");
 		
-		//포워드
-		RequestDispatcher rd=request.getRequestDispatcher("./content.jsp");
-		rd.forward(request, response);	
+		//비번이 맞는지 boolean 으로 얻기
+		//true면 삭제후 목록으로 이동(페이지번호 전달)
+		//false면 fail.jsp 로 포워드
+		boolean b=dao.isCheckPass(num, passwd);
+		if(b) {
+			//해당글 삭제
+			dao.deleteBoard(num);
+			//보던 페이지로 이동
+			response.sendRedirect("./list?pageNum="+pageNum);
+		}else {
+			RequestDispatcher rd=request.getRequestDispatcher("./fail.jsp");
+			rd.forward(request, response);
+		}			
+	
 	}
 
 	/**

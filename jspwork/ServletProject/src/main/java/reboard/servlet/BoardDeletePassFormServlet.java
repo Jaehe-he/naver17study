@@ -6,34 +6,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import reboard.data.BoardDao;
-import reboard.data.BoardDto;
-
 import java.io.IOException;
 
 /**
- * Servlet implementation class BoardDetailServlet
+ * Servlet implementation class BoardDeletePassFormServlet
  */
-@WebServlet("/board/detail")
-public class BoardDetailServlet extends HttpServlet {
-	BoardDao dao=new BoardDao();
+@WebServlet("/board/deletepassform")
+public class BoardDeletePassFormServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//num 읽기
-		int num=Integer.parseInt(request.getParameter("num"));
-		//pageNum 읽기
+		//num,pageNum 을 읽어서 request 에 저장
+		String num=request.getParameter("num");
 		String pageNum=request.getParameter("pageNum");
-		//조회수 증가
-		dao.updateReadCount(num);
-		//dto 얻기
-		BoardDto dto=dao.getData(num);
-		//request 에 dto 저장
-		request.setAttribute("dto", dto);
+		
+		request.setAttribute("num", num);
 		request.setAttribute("pageNum", pageNum);
 		
-		//포워드
-		RequestDispatcher rd=request.getRequestDispatcher("./content.jsp");
-		rd.forward(request, response);	
+		RequestDispatcher rd=request.getRequestDispatcher("./deletepassform.jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**

@@ -11,29 +11,24 @@ import reboard.data.BoardDto;
 import java.io.IOException;
 
 /**
- * Servlet implementation class BoardInsertServlet
+ * Servlet implementation class BoardUpdateProcessServlet
  */
-@WebServlet("/board/insert")
-public class BoardInsertServlet extends HttpServlet {
+@WebServlet("/board/update")
+public class BoardUpdateProcessServlet extends HttpServlet {
 	BoardDao dao=new BoardDao();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pageNum=request.getParameter("pageNum");
+		
 		BoardDto dto=new BoardDto();
 		dto.setNum(Integer.parseInt(request.getParameter("num")));
-		dto.setRegroup(Integer.parseInt(request.getParameter("regroup")));
-		dto.setRestep(Integer.parseInt(request.getParameter("restep")));
-		dto.setRelevel(Integer.parseInt(request.getParameter("relevel")));
-		dto.setWriter(request.getParameter("writer"));
 		dto.setSubject(request.getParameter("subject"));
-		dto.setPhoto(request.getParameter("photo"));
 		dto.setContent(request.getParameter("content"));
-		dto.setPasswd(request.getParameter("passwd"));
 		
-		//insert
-		dao.insertBoard(dto);		
-		
-		//목록으로 이동
-		response.sendRedirect("./list");
+		//수정
+		dao.updateBoard(dto);
+		//상세보기 페이지로 이동
+		response.sendRedirect("./detail?num="+dto.getNum()+"&pageNum="+pageNum);		
 	}
 
 	/**

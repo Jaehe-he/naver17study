@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.BoardFileMapper">
+	<insert id="insertBoardFile" parameterType="BoardFileDto">
+		insert into boardfile (idx, filename) values (#{idx}, #{filename})
+	</insert>
+	<select id="getFiles" parameterType="int" resultType="BoardFileDto">
+		select * from boardfile where idx=#{idx} order by num
+	</select>
+	<delete id="deleteFile" parameterType="int">
+		delete from boardfile where num=#{num}
+	</delete>
+</mapper>
