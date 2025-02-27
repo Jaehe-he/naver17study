@@ -10,4 +10,7 @@
 	<delete id="deleteFile" parameterType="int">
 		delete from boardfile where num=#{num}
 	</delete>
+	<select id="getFilename" parameterType="int" resultType="String">
+		select filename from boardfile where num=#{num}
+	</select>
 </mapper>

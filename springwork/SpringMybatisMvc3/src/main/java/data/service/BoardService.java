@@ -58,8 +58,8 @@ public class BoardService {
    }
    
    public void updateReadcount(int idx) {
-	   boardMapper.updateReadCount(idx);
-   }
+		boardMapper.updateReadcount(idx);
+	}
    
    public BoardDto getSelectByIdx(int idx) {
 	   return boardMapper.getSelectByIdx(idx);
@@ -67,5 +67,12 @@ public class BoardService {
 
    public List<BoardDto> getSelectById(String myid){
 	   return boardMapper.getSelectById(myid);
+   }
+   
+   public void updateBoard(BoardDto dto) {
+	   boardMapper.updateBoard(dto);
+   }
+   public void deleteBoard(int idx) {
+	   boardMapper.deleteBoard(idx);
    }
 }

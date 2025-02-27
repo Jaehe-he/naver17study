@@ -2,6 +2,7 @@ package member.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import data.dto.BoardDto;
 import data.dto.MemberDto;
+import data.service.BoardFileService;
+import data.service.BoardService;
 import data.service.MemberService;
 import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,6 +42,8 @@ public class MemberDelUpdateController {
 	
 	//@Autowired
 	final NcpObjectStorageService storageService;
+	final BoardService boardService;
+	final BoardFileService fileService;
 	
 	@GetMapping("/delete")
 	public String deleteMember(@RequestParam int num) {
@@ -75,8 +81,19 @@ public class MemberDelUpdateController {
 		String myid = (String)session.getAttribute("loginid");
 		//아이디에 해당하는 dto 얻기
 		MemberDto dto = memberService.getSelectByMyid(myid);
+		
+		//내가 쓴 게시글 가져오기
+		List<BoardDto> list = boardService.getSelectById(myid);
+		
+		//각 list 안에 dto에 파일의 갯수 저장
+		for(int i=0;i<list.size();i++) {
+			int count=fileService.getFiles(list.get(i).getIdx()).size();
+			list.get(i).setPhotoCount(count);
+		}
+		
 		//모델에 dto저장
 		model.addAttribute("dto", dto);
+		model.addAttribute("list", list);
 		model.addAttribute("naverurl", "https://kr.object.ncloudstorage.com/bitcamp-bucket-122");
 		
 		return "member/mypage";

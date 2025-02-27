@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="data.mapper.BoardMapper">
-   <select id="getTotalCount" resultType="int">
-      select count(*) from board
-   </select>
-   
-   <select id="getMaxIdx" resultType="int">
-         select ifnull(max(idx),0) from board
-   </select>
-   
-   <update id="updateRestep" parameterType="Map">
-         update board set restep = restep+1 where regroup=#{regroup} and restep &gt; #{restep} <!-- &gt;가 >임. -->
-   </update>
-   
-   <insert id="insertBoard" parameterType="BoardDto">
-         insert into board (myid, writer, subject, content, regroup, restep, relevel)
-         values (#{myid}, #{writer}, #{subject}, #{content}, #{regroup}, #{restep}, #{relevel})
-         
-         <selectKey keyProperty="idx" resultType="int" order="AFTER">
-            SELECT LAST_INSERT_ID()
-         </selectKey>
-   </insert>
-   
-   <select id="getPagingList" parameterType="Map" resultType="BoardDto">
-         select * from board order by regroup desc, restep asc limit #{start}, #{perpage}
-   </select>
-   
-   <update id="updateReadcount" parameterType="int">
-         update board set readount = readcount+1 where idx=#{idx}
-   </update>
-   
-   <select id="getSelectByIdx" parameterType="int" resultType="BoardDto">
-         select * from board where idx=#{idx}
-   </select>
-   
-   <select id="getSelectById" parameterType="String" resultType="BoardDto">
-         select * from board where myid=#{myid}
-   </select>
+	<select id="getTotalCount" resultType="int">
+		select count(*) from board
+	</select>
+
+	<select id="getMaxIdx" resultType="int">
+		select ifnull(max(idx),0) from board
+	</select>
+
+	<update id="updateRestep" parameterType="Map">
+		update board set restep = restep+1 where regroup=#{regroup} and restep &gt; #{restep} <!-- &gt;가 >임. -->
+	</update>
+
+	<insert id="insertBoard" parameterType="BoardDto">
+		insert into board (myid, writer, subject, content, regroup, restep, relevel)
+		values (#{myid}, #{writer}, #{subject}, #{content}, #{regroup}, #{restep}, #{relevel})
+
+		<selectKey keyProperty="idx" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<select id="getPagingList" parameterType="Map" resultType="BoardDto">
+		select * from board order by regroup desc, restep asc limit #{start}, #{perpage}
+	</select>
+
+	<update id="updateReadcount" parameterType="int">
+		update board set readcount = readcount+1 where idx=#{idx}
+	</update>
+
+	<select id="getSelectByIdx" parameterType="int" resultType="BoardDto">
+		select * from board where idx=#{idx}
+	</select>
+
+	<select id="getSelectById" parameterType="String" resultType="BoardDto">
+		select * from board where myid=#{myid}
+	</select>
+
+	<update id="updateBoard" parameterType="BoardDto">
+		update board set subject=#{subject}, content=#{content} where idx=#{idx}
+	</update>
+
+	<delete id="deleteBoard" parameterType="int">
+		delete from board where idx=#{idx}
+	</delete>
    
 </mapper>

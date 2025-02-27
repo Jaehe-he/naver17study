@@ -8,7 +8,8 @@ import data.dto.BoardFileDto;
 
 @Mapper
 public interface BoardFileMapper {
-	public void insertBoardfile(BoardFileDto dto);
+	public void insertBoardFile(BoardFileDto dto);
 	public List<BoardFileDto> getFiles(int idx);
 	public void deleteFile(int num);
+	public String getFilename(int num);
 }

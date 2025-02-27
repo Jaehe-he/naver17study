@@ -35,7 +35,7 @@ body * {
 	cursor: pointer;
 	font-size: 1.5em;
 	left: -30px;
-	top: 50px;
+	top : -60px;
 }
 </style>
 </head>
@@ -163,6 +163,48 @@ body * {
 			<button type="button" class="btn btn-sm btn-success"
 				data-bs-toggle="modal" data-bs-target="#myUpdateModal">회원
 				정보 수정</button>
+		
+		</div>
+		<!-- 내가 쓴 게시글 -->
+		<div style="margin: 20px; width: 600px; clear: both;">
+			<h5>내가 쓴 게시글</h5>
+			<table class="table table-bordered tabmyboard">
+				<thead>
+					<tr>
+						<th width="60">번호</th>
+						<th width="350">제 목</th>
+						<th width="100">작성일</th>
+						<th>조회</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="dto" items="${list}" varStatus="i">
+						<tr>
+							<td align="center">${i.count}</td>
+							<td>
+								<a href="../board/detail?idx=${dto.idx}" style="color:black; text-decoration:none">
+									<c:if test="${dto.relevel!=0}"><mark>[답글]</mark></c:if>
+									${dto.subject}
+									
+									<!--  이미지가 한개 이상있는 경우 이미지 아이콘 넣기
+								1개일 경우 한개이미지, 2개 이상일 경우 여러개 이미지 -->
+								<c:if test="${dto.photoCount == 1}">
+									<i class="bi bi-image picon"></i>
+								</c:if>
+								<c:if test="${dto.photoCount>1}">
+									<i class="bi bi-images picon"></i>
+								</c:if>
+								</a>
+							</td>
+							<td align="center">
+								<span style="font-size:0.8em;">
+									<fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd"/>
+								</span>
+							</td>
+							<td align="center">${dto.readcount}</td>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>

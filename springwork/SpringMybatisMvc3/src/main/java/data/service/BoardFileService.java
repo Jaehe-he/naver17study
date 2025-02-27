@@ -14,10 +14,18 @@ public class BoardFileService {
 	BoardFileMapper fileMapper;
 	
 	public void insertBoardFile(BoardFileDto dto) {
-		fileMapper.insertBoardfile(dto);
+		fileMapper.insertBoardFile(dto);
 	}
 	
 	public List<BoardFileDto> getFiles(int idx){
 		return fileMapper.getFiles(idx);
+	}
+	
+	public void deleteFile(int num) {
+		fileMapper.deleteFile(num);
+	}
+	
+	public String getFilename(int num) {
+		return fileMapper.getFilename(num);
 	}
 }
