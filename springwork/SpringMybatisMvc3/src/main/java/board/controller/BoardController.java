@@ -113,7 +113,8 @@ public class BoardController {
 	@GetMapping("/detail")
 	//boardlist에서 idx와 pageNum만 받고 있으므로 ()안에 넣어주면 됨
 	//Model : 저장하기 위함
-	public String detail(@RequestParam int idx, @RequestParam(defaultValue="1") int pageNum, Model model) {
+	public String detail(@RequestParam int idx, @RequestParam(defaultValue="1") int pageNum, Model model,
+			HttpSession session) {
 		
 		//조회수 1 증가
 		boardService.updateReadcount(idx);
@@ -134,8 +135,13 @@ public class BoardController {
 		//해당 아이디에 대한 사진을 멤버 테이블에서 얻기
 		String memberPhoto = memberService.getSelectByMyid(dto.getMyid()).getMphoto();
 		
+		//로그인한 아이디에 해당하는 이름
+		String loginid=(String)session.getAttribute("loginid");
+		String writer = memberService.getSelectByMyid(loginid).getMname();
+		
 		//모델에 저장
 		model.addAttribute("dto", dto);
+		model.addAttribute("writer", writer);
 		model.addAttribute("memberPhoto", memberPhoto);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("naverurl", "https://kr.object.ncloudstorage.com/"+bucketName);
@@ -200,9 +206,20 @@ public class BoardController {
 			}
 		}
 		
-		
 		return "redirect:./detail?idx="+dto.getIdx()+"&pageNum="+pageNum;
+	}
+	
+	@GetMapping("/delete")
+	@ResponseBody
+	public void boardDelete(@RequestParam int idx) {
+		//idx에 해당하는 파일들 삭제
+		List<BoardFileDto> filelist = fileService.getFiles(idx);
+		for(BoardFileDto fdto:filelist) {
+			String filename = fdto.getFilename();
+			storageService.deleteFile(bucketName, "board", filename);
+		}
 		
+		boardService.deleteBoard(idx); //원글을 지우면 그 글에 업로드된 파일들 db정보는 자동으로 지워짐 on delete cascade를 설정했기 때문
 	}
 	
 
