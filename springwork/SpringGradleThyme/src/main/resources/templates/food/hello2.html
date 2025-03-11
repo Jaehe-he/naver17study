@@ -15,6 +15,9 @@
 </style>
 </head>
 <body>
+<!-- fragement 추가 -->
+	<header th:replace = "~{layout/header::menuFragement}"></header>s
+	
 	<h4 th:text="${name}">이름</h4>
 	<h4 th:text="${age}">나이</h4>
 	
@@ -36,5 +39,8 @@
 	<th:block th:unless="${age>=20}">
 		<b style="color:red;">[[${name}]]님은 미성년자군요!!!</b>
 	</th:block>
+	
+	<!-- fragement 추가 -->
+	<footer th:replace="~{layout/footer::footerFragment}"></footer>
 </body>
 </html> 

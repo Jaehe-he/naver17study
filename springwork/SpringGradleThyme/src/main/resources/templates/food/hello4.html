@@ -33,6 +33,9 @@
 </style>
 </head>
 <body>
+<!-- fragement 추가 -->
+	<header th:replace = "~{layout/header::menuFragement}"></header>
+
 <h4 class="alert alert-danger">숫자 반복해서 출력하는 방법</h4>
 <!-- 1~10까지 출력 -->
 <span th:each="num:${#numbers.sequence(1,10)}">[[${num}]]&nbsp;</span>
@@ -56,6 +59,9 @@
 			<h6>[[${iter.index}]], [[${iter.count}]]</h6>
 		</figcaption>
 	</figure>
+	
+	<!-- fragement 추가 -->
+	<footer th:replace="~{layout/footer::footerFragment}"></footer>
 
 </div>
 </body>

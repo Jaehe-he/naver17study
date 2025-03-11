@@ -15,6 +15,9 @@
 </style>
 </head>
 <body>
+<!-- fragement 추가 -->
+	<header th:replace = "~{layout/header::menuFragement}"></header>
+
 <h4 class="alert alert-success">dto 출력하는 여러가지 방법</h4>
 <div style="background-color: #fdf;">
 	<h5>메뉴명 : [[${dto.foodName}]]</h5>
@@ -60,5 +63,8 @@
 	<!-- calendars에 있는 시간 출력 -->
 	[[${#calendars.format(#calendars.createNow(), 'yyyy년 MM월 dd일 HH시 mm분')}]]
 </h2>
+
+<!-- fragement 추가 -->
+	<footer th:replace="~{layout/footer::footerFragment}"></footer>
 </body>
 </html> 

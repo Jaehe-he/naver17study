@@ -15,6 +15,9 @@
 </style>
 </head>
 <body>
+	<!-- fragement 추가 -->
+	<header th:replace = "~{layout/header::menuFragement}"></header>
+	
 	<h3 class="alert alert-danger">Spring Boot의 Thymeleaf 공부하기 </h3>
 	
 	<img src="./짱구1.jpg" width="200" border="2">
@@ -32,5 +35,8 @@
 	<img th:src="|./${socute}|" width="200"> <!--  방법 3. || 안에 적기 -->
 	
 	<!-- <img th:src="./${myfood}" width="200"> 오류발생 -->
+	
+	<!-- fragement 추가 -->
+	<footer th:replace="~{layout/footer::footerFragment}"></footer>
 </body>
 </html> 

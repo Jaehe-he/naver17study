@@ -15,6 +15,11 @@
 </style>
 </head>
 <body>
+	<!-- fragement 추가
+	th:replace=~{패키지명/파일명::Fragement명}
+	 -->
+	<header th:replace="~{layout/header::menuFragement}"></header>
+
 	<h3 class="alert alert-danger">타임리프 공부하기</h3>
 	
 	<h5>
@@ -36,5 +41,9 @@
 	<h5>
 		<a th:href="@{/hello5(myid='admin')}">session 출력하는 방법</a>
 	</h5>
+	
+	<hr>
+	<!-- fragement 추가 -->
+	<footer th:replace="~{layout/footer::footerFragment}"></footer>
 </body>
 </html> 
