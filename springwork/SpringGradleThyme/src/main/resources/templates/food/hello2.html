@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>502 thymeleaf study</title>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+     
+   <style>
+       body *{
+           font-family: 'Jua';
+       }
+</style>
+</head>
+<body>
+	<h4 th:text="${name}">이름</h4>
+	<h4 th:text="${age}">나이</h4>
+	
+	<hr>
+	
+	<h4> 이름 : [[${name}]]</h4>
+	<h4> 나이 : [[${age}]]</h4>
+	
+	<!-- 조건에 따라 다른 메세지를 출력하고자 할 경우 -->
+	<h3 th:if="${age>=20}">당신은 성인입니다.</h3>
+	<h3 th:if="${age<20}">당신은 미성년자입니다.</h3>
+	<h3 th:unless="${age>=20}">당신은 미성년자입니다.</h3> <!-- th:unless : 조건이 맞지 않을 경우 -->
+
+	<hr>
+	
+	<th:block th:if="${age>=20}">
+		<b style="color:blue;">[[${name}]]님은 성인이군요!!!</b>
+	</th:block>
+	<th:block th:unless="${age>=20}">
+		<b style="color:red;">[[${name}]]님은 미성년자군요!!!</b>
+	</th:block>
+</body>
+</html> 

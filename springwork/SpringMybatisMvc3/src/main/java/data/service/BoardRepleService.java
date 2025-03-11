@@ -13,21 +13,21 @@ import lombok.AllArgsConstructor;
 public class BoardRepleService {
 	BoardRepleMapper repleMapper;
 	
-	public void insertReple(BoardRepleDto dto) {
+	public void insertReple(BoardRepleDto dto)
+	{
 		repleMapper.insertReple(dto);
 	}
-	
 	public List<BoardRepleDto> getSelectReples(int idx)
-	   {
-	      return repleMapper.getSelectReples(idx);
-	   }
-	
-	public void deleteBoardReple(int num) {
-		repleMapper.deleteBoardReple(num);
+	{
+		return repleMapper.getSelectReples(idx);
 	}
 	
-	public String getPhoto(int num) {
-		return repleMapper.getPhoto(num);
+	public BoardRepleDto getSelectData(int num)
+	{
+		return repleMapper.getSelectData(num);
 	}
-	
+	public void deleteReple(int num)
+	{
+		repleMapper.deleteReple(num);
+	}
 }

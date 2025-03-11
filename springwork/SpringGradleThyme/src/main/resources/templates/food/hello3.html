@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>502 thymeleaf study</title>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+     
+   <style>
+       body *{
+           font-family: 'Jua';
+       }
+</style>
+</head>
+<body>
+<h4 class="alert alert-success">dto 출력하는 여러가지 방법</h4>
+<div style="background-color: #fdf;">
+	<h5>메뉴명 : [[${dto.foodName}]]</h5>
+	<h5>가 격 : [[${dto.foodPrice}]]원</h5>
+	<h5>사 진 :
+		<img th:src="|../${dto.foodPhoto}|" width="150">
+	</h5>
+</div>
+
+<!-- th:object로 dto를 선언해줌으로써 dto.foodName으로 안적어도 됨 -->
+<div style="background-color: #ccf; margin-top: 30px" th:object="${dto}">
+	<h5> 메뉴명 : [[*{foodName}]]</h5>
+	<h5> 가 격 : [[*{foodPrice}]]원</h5>
+	<h5> 사진 : 
+		<img th:src="|../*{foodPhoto}|" width="150">
+	</h5>
+</div>
+
+<div th:style="'background-color:'+${bgcolor}+'; margin-top: 30px'" th:object="${dto}">
+	<h5> 메뉴명 : [[*{foodName}]]</h5>
+	<h5> 가 격 : [[*{foodPrice}]]</h5>
+	<h5> 사진 :
+		<img th:src="|../*{foodPhoto}|" width="150">
+	</h5>
+</div>
+
+<div th:style="|background-color:${bgcolor}; margin-top: 30px|" th:object="${dto}">
+	<h5> 메뉴명 : [[*{foodName}]]</h5>
+	<h5> 가 격 : [[*{foodPrice}]]</h5>
+	<h5> 사진 :
+		<img th:src="|../*{foodPhoto}|" width="150">
+	</h5>
+</div>
+
+<h3> 타임리프로 숫자에 comma(,) 찍는 방법 </h3>
+<h1 th:text="${#numbers.formatInteger(dto.foodPrice,0,'COMMA')}"></h1>
+<h1> [[${#numbers.formatInteger(dto.foodPrice,0,'COMMA')}]]원</h1>
+
+<h3> 타임리프로 날짜 출력하는 방법</h3>
+<h2> [[${#calendars.format(today, 'yyyy-MM-dd HH:mm')}]]</h2>
+<h2> [[${#calendars.format(today, 'yyyy년 MM월 dd일 HH시 mm분')}]]</h2>
+<h2>
+	<!-- calendars에 있는 시간 출력 -->
+	[[${#calendars.format(#calendars.createNow(), 'yyyy년 MM월 dd일 HH시 mm분')}]]
+</h2>
+</body>
+</html> 

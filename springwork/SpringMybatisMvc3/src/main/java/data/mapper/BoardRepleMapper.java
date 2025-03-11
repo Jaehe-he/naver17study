@@ -9,9 +9,7 @@ import data.dto.BoardRepleDto;
 @Mapper
 public interface BoardRepleMapper {
 	public void insertReple(BoardRepleDto dto);
-	public void deleteBoardReple(int idx);
-	public String getPhoto(int idx);
 	public List<BoardRepleDto> getSelectReples(int idx);
-	
-
+	public BoardRepleDto getSelectData(int num);
+	public void deleteReple(int num);
 }
